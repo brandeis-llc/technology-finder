@@ -18,7 +18,7 @@ You can test wether it all works by running
 
 ```bash
 cd code
-python3 main.py --input data/sleep.txt --output out.json --verbose
+python3 main.py --input data/example-input/sleep.txt --output out.json --verbose
 ```
 
 This should create a file named `out.json` which contains the result of the processing. And when running the command with the --verbose flag something like the following should be printed to the output console.

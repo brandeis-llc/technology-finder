@@ -1,3 +1,9 @@
+import time
+
+
+def timestamp():
+    return time.strftime("%Y%m%d-%H%M%S")
+
 
 def vocab(short_form):
     """Expand the annotation type name to the full URL."""
