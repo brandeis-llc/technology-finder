@@ -1,0 +1,1068 @@
+3LCD
+AAL1gator
+Accelerometer
+Actinometer
+Active load
+Active pixel sensor
+Actuator
+Advanced Arresting Gear
+Advanced Stirling radioisotope generator
+Air bearing
+Air core gauge
+Air flow meter
+Airborne wind turbine
+Airspeed indicator
+Alarm sensor
+Alexanderson alternator
+Alkali-metal thermal to electric converter
+Allam power cycle
+Alphabet Energy
+Alternator
+Alternator 
+Altimeter
+Aluminium gallium arsenide
+Aluminium gallium indium phosphide
+Aluminium gallium nitride
+Aluminium nitride
+Ambient light sensor
+AmBX
+AMOLED
+Amplified piezoelectric actuator
+Amplifier
+Amplitude
+Anaesthetic machine
+Anemometer
+Angular rate sensor
+Anomalous photovoltaic effect
+ANS synthesizer
+Antenna 
+Anti-twister mechanism
+Apatite
+Application of silicon-germanium thermoelectrics in space exploration
+Aquanator
+Armature 
+Armature Controlled DC Motor
+Armstrong Hydroelectric Generator
+Armstrong Hydroelectric Machine
+Atomic battery
+Attenuator 
+Attitude indicator
+Audio signal
+Auston switch
+Automatic watch
+Automation
+Automotive thermoelectric generator
+Autopen
+Auxanometer
+Auxiliary power unit
+Avalanche photodiode
+Back-illuminated sensor
+Backlash 
+Bagel machine
+Ball differential
+Ball screw
+Ballast
+Barium titanate
+Barnacle 
+Barograph
+Barometer
+Battery balancing
+Battery charger
+Battery management system
+Bedwetting alarm
+Beta-M
+Bhangmeter
+Bicycle dynamo
+Bicycle tree
+Bimetallic strip
+Bimorph
+Bin tipper
+Biochip
+Biosensor
+Bismuth telluride
+Bismuth titanate
+Bleeder resistor
+Blind spot monitor
+Block and tackle
+Boiling water reactor safety systems
+Bolometer
+Boost gauge
+Booster 
+Bottle dynamo
+Bourdon gauge
+Breathalyzer
+Bubble chamber
+Buchholz relay
+Cable robots
+Calorimeter
+Cam actuator
+Cam timer
+Camcon binary actuator
+Camcon Technology
+Capacitance probe
+Capacitive displacement sensor
+Capacitive micromachined ultrasonic transducer
+Capacitive sensing
+Capacitor
+Caplock mechanism
+Carbon dioxide sensor
+Carbon monoxide detector
+Carbon nanotube actuators
+Carbon nanotube nanomotor
+Carbon paste electrode
+Carnot method
+Carrier generation and recombination
+Catadioptric sensor
+Catalytic bead sensor
+Cathode ray tube
+Cavity magnetron
+Cavity switch
+Ceilometer
+Centrifugal governor
+Ceramic heat cell
+Charge-coupled device
+Chemical field-effect transistor
+Clockwork
+Cloud chamber
+Coaxial relay
+Cogeneration
+Coherence 
+Coil tap
+Color Light Output
+Color wheel 
+Comb drive
+Combined cycle power plant
+Communications system
+Commutator 
+Conductive ink
+Conductive wireless charging
+Contact image sensor
+Contactor
+Control knob
+Control system
+Core losses
+Corona poling
+Counterfeit electronic components
+Coupling
+Crankshaft position sensor
+Crayford focuser
+Critical field resistance
+Crookes radiometer
+Crossbar latch
+Crystal LED
+Crystal oscillator frequencies
+Curb feeler
+Current sensing
+Current sensor
+Cyclone furnace
+Dark current 
+Dashpot
+DC block
+Deep-level trap
+Defect detector
+Delivery bar code sorter
+Demaco extruder
+Depth gauge
+Detent
+Developable mechanism
+Dew warning
+Diesel generator
+Differential 
+Differential pulley
+Differential screw
+Digifold
+Digital Light Processing
+Digital micromirror device
+Digital potentiometer
+Digital protective relay
+Digital sensors
+Diode-pumped solid-state laser
+Diode
+Diodes
+Direct and indirect band gaps
+Direct drive mechanism
+Direct energy conversion
+Direct exchange geothermal heat pump
+Disk read-and-write head
+Displacement receiver
+Distributed Bragg reflector laser
+Distributed feedback laser
+Distributed temperature sensing
+Docter Optics
+Doppler radar
+Double-T armature
+Doubly-fed electric machine
+Draft 
+Drakoo wave energy converter
+Draw twister
+Dual quaternion
+Duplicating machines
+Dye-and-pry
+Dynamic microphone
+Dynamic range
+DYNAMIXEL
+Dynamo
+Dynamo 
+Earphone
+Eccentric 
+Economizer
+Eddy current brake
+Elastic and inelastic collisions apparatus
+Electric bath 
+Electric bell
+Electric generator
+Electric light
+Electric machine
+Electric motor
+Electric switchboard
+Electrical ballast
+Electrical contacts
+Electrical element
+Electrical noise
+Electrical resistance
+Electrical steel
+Electricity
+Electro-galvanic oxygen sensor
+Electro-mechanical
+Electro-optical sensor
+Electro-optics
+Electroactive polymers
+Electrochemical energy conversion
+Electrochemical gas sensor
+Electrochemiluminescence
+Electrodynamic tether
+Electrohydrodynamics
+Electromagnetic acoustic transducer
+Electromagnetic Aircraft Launch System
+Electromagnetic coil
+Electromagnetic propulsion
+Electromagnetic radio frequency convergence
+Electromagnetic suspension
+Electromagnetic wave
+Electromagnetism
+Electromechanical film
+Electrometer
+Electronic color code
+Electronic component
+Electronic nose
+Electronics
+Electropermanent magnet
+Electrophorus
+Electroscope
+Electrostatic generator
+ELED
+Embedded instrumentation
+Energy
+Energy conversion efficiency
+Energy factor
+Energy recycling
+Energy technology
+Energy tower 
+Energy transformation
+Engine-generator
+Engine coolant temperature sensor
+Error signal
+Ettingshausen effect
+Euphonia 
+European Thermoelectric Society
+Excitation 
+Exhaust gas temperature gauge
+Fault indicator
+Feedthrough
+Ferrite core
+Fessenden oscillator
+Fiber optic current sensor
+Field-programmable gate array
+Field effect tetrode
+Field of regard
+FinFET
+Finite state transducer
+Fish counter
+Fisheries acoustics
+Flame detection
+Flame detector
+FlexGen Power Systems
+Flexible organic light-emitting diode
+Float switch
+Flow sensor
+Fluidized bed combustion
+Fluorescent chloride sensors
+Fluorescent lamp
+Flux switching alternator
+Fluxgate compass
+Force-sensing resistor
+Force gauge
+Form of energy
+Forms of energy
+Four-slide
+Frequency domain sensor
+Fuel cell
+Fuel cell auxiliary power unit
+Fuse 
+Fuse 
+Gagik Shmavonyan
+Gallium arsenide
+Gallium arsenide phosphide
+Gallium phosphate
+Gallium phosphide
+Galvanometer
+Gardon gauge
+Gas-filled tube
+Gas detector
+Gas meter
+Gas meter prover
+Gasification
+Gate oxide
+Gear train
+Geiger counter
+General Microelectronics
+Geneva drive
+Gentherm Incorporated
+Geophone
+Geothermal heat pump
+Geothermal heating
+Germanane
+GgNMOS
+Gimbal
+Glass-coated wire
+Glazing jack
+Global OLED Technology LLC
+Golay cell
+Governor 
+Gramme machine
+Graphotype 
+Grate firing
+Grating light valve
+Gravimeter
+Gross generation
+Ground-penetrating radar
+Gunderson Do-All Machine
+Gyroscope
+Hall effect sensor
+Hall probe
+Handle-o-Meter
+Hardy Spicer
+Head-end power
+Headphones
+Heat engine
+Heat flux sensor
+Heat pump
+Heat rate 
+Helianthos
+Heliatek
+Helical band actuator
+Helical railgun
+Heterostasis 
+High-CRI LED lighting
+High value resistors 
+High voltage interface relays
+History of optical storage media
+Hoist 
+Holding current 
+Holographic sensor
+Homogeneous charge compression ignition
+Homopolar generator
+Hook gauge evaporimeter
+Horn analyzer
+Hot-filament ionization gauge
+Hotel electric power
+Hub dynamo
+Human
+Humbucker
+Humistor
+Hybrid silicon laser
+Hybrid solar lighting
+Hydraulic cylinder
+Hydristor
+Hydrocarbon dew point
+Hydrogen sensor
+Hydrogen sulfide sensor
+Hydrogen turboexpander-generator
+Hydrometer
+Hydrophone
+Hydropower
+Hygrometer
+Hysteresis
+IBUS 
+Ignition magneto
+Image sensor
+Image sensor format
+Impulse relay
+Incandescent lamp
+Inclinometer
+Indium gallium nitride
+Indium gallium phosphide
+Indium phosphide
+Inductance
+Induction cooking
+Induction generator
+Induction loop
+Induction regulator
+Inductive sensor
+Inductor
+Inertial navigation system
+Inertial reference unit
+Infrared
+Infrared open-path detector
+Infrared point sensor
+Infrared thermometer
+Inrush current limiter
+Institute of Optronics
+Integrated circuit
+Integrated circuit piezoelectric sensor
+Integrated gasification combined cycle
+Integrated gasification fuel cell cycle
+Integrated water and power plant
+Intelligent sensor
+Interband cascade laser
+Interconnect bottleneck
+Interdigital transducer
+Intermediate band photovoltaics
+International Center on Small Hydro Power
+Interrupter
+Ion selective electrode
+Ionization chamber
+Ionization gauge
+Isolation condensor
+Jackscrew
+Jet engine
+Jet propulsion
+JIS semiconductor designation
+Johnson thermoelectric energy converter
+JORDY
+Joseph Farcot
+Kelvin water dropper
+Kentledge
+Kinematic chain
+Kinematic diagram
+Kinematics
+Kinetic inductance detector
+L pad
+Lab-on-a-chip
+Lamina emergent mechanism
+Lanthanum gallium silicate
+Large electrostatic generator 
+Laser diode
+Laser diode rate equations
+Laser rangefinder
+Laser surface velocimeter
+Laycock Engineering
+Laying
+LBCAST
+Lead 
+Lead scandium tantalate
+Lead telluride
+Lead zirconate titanate
+Leaf sensor
+LED-backlit LCD
+LED art
+LED as light sensor
+LED backlight
+LED circuit
+LED display
+LED driver
+LED filament
+LED film
+LED lamp
+LED street light
+LED strip light
+LED tattoo
+LED to LED Communication
+LED wallpaper
+Leddar
+Level sensor
+Lever
+Lidar
+Lifting equipment
+Light-addressable potentiometric sensor
+Light-emitting diode
+Light-emitting diode physics
+Light-emitting diodes
+Light-emitting transistor
+Light extraction in LEDs
+Lin Xiangdi
+Linear actuator
+Linear alternator
+Linear diode array
+Linear encoder
+Linear induction motor
+Linear motor
+Linear variable differential transformer
+Linkage 
+Liquid capacitive inclinometers
+Liquid resistor
+Liquid rheostat
+List of companies in the nuclear sector
+List of largest machines
+List of LED failure modes
+List of sensors
+Lithium tantalate
+Load cell
+Lock time
+Lolland Hydrogen Community
+Loom
+Loss free resistor
+Loudspeaker
+Luminescent solar concentrator
+Machine
+Machine 
+Machine element
+Machine industry
+Machine shop
+Machine tool
+Machine vision
+Machmeter
+Magnetic amplifier
+Magnetic anomaly detector
+Magnetic cartridge
+Magnetic compass
+Magnetic core
+Magnetic field
+Magnetic flow meter
+Magnetic level gauge
+Magnetic medium
+Magnetic proximity fuze
+Magnetism
+Magneto
+Magnetohydrodynamic converter
+Magnetohydrodynamic generator
+Magnetometer
+MAGPIE
+Manijeh Razeghi
+MAP sensor
+Mass flow sensor
+McLeod gauge
+Mean Length Turn
+Measuring instrument
+Mecanum wheel
+Mechanical advantage
+Mechanical arm
+Mechanical efficiency
+Mechanical network
+Mechanical paradox
+Mechanism 
+Mechanophilia
+Memistor
+Memristor
+MEMS magnetic actuator
+MEMS magnetic field sensor
+MEMS thermal actuator
+Mercury-wetted relay
+Mercury relay
+Metal detector
+Metal rectifier
+Metglas
+MHD sensor
+Micro-Opto-Electro-Mechanical Systems
+Microactuator
+Microbolometer
+Microchannel plate detector
+Microcoil
+Microelectromechanical systems
+MicroLED
+Micromirror device
+Microphone
+Micropower
+Microwave chemistry sensor
+Microwave radiometer
+Mist lift
+Molypermalloy Powder Core
+MOS composite static induction thyristor
+Motion 
+Motion compensator
+Motion detector
+Motor soft starter
+Moving magnet actuator
+Multi-junction solar cell
+Multi-mission radioisotope thermoelectric generator
+Nameplate capacity
+Nanoelectromechanical relay
+Nanoionic supercapacitor
+Nanoneedle
+NEMA contact ratings
+Nernst effect
+Net generation
+Net radiometer
+Neutron detection
+Newage
+Nichols radiometer
+Nitrogen oxide sensor
+Noise 
+Non-radiative dielectric waveguide
+Non linear piezoelectric effects in polar semiconductors
+Nondispersive infrared sensor
+Nonlinear theory of semiconductor lasers
+Norator
+Nuclear density gauge
+Nuclear fusion
+Nuclear power
+Nuclear reactor
+Nullator
+Nullor
+Occupancy sensor
+Ocean Power Technologies
+Ocean Power Technologies Australasia
+Ocean thermal energy conversion
+Odometer
+OECC
+Oil burner 
+OLED
+Olfactometer
+Omniview technology
+Opple Lighting
+Optical disc
+Optical disc drive
+Optical fiber
+Optical fiber cable
+Optical IP Switching
+Optical modulators using semiconductor nano-structures
+Optical transistor
+Optimized power control
+Opto-isolator
+Optode
+Optoelectronic plethysmography
+Optoelectronics
+Orthomode transducer
+Oscillating U-tube
+Oscillistor
+Osmotic power
+Overspeed
+Oxide thin-film transistor
+Oxygen sensor
+Oyster wave energy converter
+Pakistan-China Fiber Optic Project
+Paper-ruling machine
+Paper machine
+Parking sensors
+Particle detector
+Passive infrared sensor
+Passive nuclear safety
+Passivity 
+Pawl
+Pelletron
+Pellistor
+Peltric set
+Pendulum-and-hydrostat control
+Permanent Downhole Gauge
+Permanent magnet synchronous generator
+Petoscope
+PH glass electrode
+PH meter
+Philips
+Phonograph
+Phosphorescent organic light-emitting diode
+Photodetector
+Photodiode
+Photoelasticity
+Photoelectric effect
+Photoelectric sensor
+Photoelectrochemical cell
+Photoelectrochemical oxidation
+Photoelectrochemical reduction of CO2
+Photoelectrochemistry
+Photoelectrolysis
+Photoinduced electron transfer
+Photoionization detector
+Photomagnetic effect
+Photomultiplier
+Photomultiplier tube
+Photon-intermediate direct energy conversion
+Photonic
+Photonic curing
+Photonics mast
+Photoresistor
+Photostat machine
+Photoswitch
+Phototransistor
+Phototube
+Photovoltaic
+Photovoltaic effect
+Pickup 
+Piezoelectric
+Piezoelectric accelerometer
+Piezoelectric microelectromechanical systems
+Piezoelectric sensor
+Piezoelectric speaker
+Piezoelectricity
+Piezomagnetism
+Piezometer
+Piezotronics
+Piklington Optronics
+PIN diode
+Pirani gauge
+PixMob
+Planar Hall sensor
+Plant LED Incubator
+Plasma actuator
+Plasma speaker
+PMUT
+Pneumatic actuator
+Pneumatic gripper
+Polariton laser
+Polyfuse 
+Polysilicon depletion effect
+Polyvinylidene fluoride
+Position sensitive device
+Position sensor
+Potassium sodium tartrate
+Potentiometer
+Potentiometric sensor
+Pothead
+Power loss factor
+Power semiconductor device
+Pressure-retarded osmosis
+Pressure-tolerant electronics
+Pressure gauge
+Pressure sensor
+Pro Electron
+Propeller speed reduction unit
+Proper zero-signal collector current
+Proportional counter
+Protective relay
+Proximity sensor
+Psychrometer
+Pull-up resistor
+Pulverized coal-fired boiler
+Pure homopolar generator
+Pyranometer
+Pyrgeometer
+Pyroelectricity
+Quantum cascade laser
+Quantum dot laser
+Quantum efficiency
+Quantum photoelectrochemistry
+Quantum sensor
+Quantum tunnelling composite
+Quantum well infrared photodetector
+Quantum well laser
+Quartz
+Quartz thermometer
+Quick return mechanism
+Quill drive
+Rack and pinion
+Radar
+Radar gun
+Radar tracker
+Radio direction finder
+Radio receiver
+Radio wave
+Radioisotope piezoelectric generator
+Radioisotope thermoelectric generator
+Railgun
+Railroad switch
+Rain gauge
+Rain sensor
+Rainbow heterodyne detection
+Ram air turbine
+Ratchet 
+Receiver 
+Reciprocity 
+Recirculating ball
+Record press
+Rectiformer
+Recycling
+Recycling rates by country
+Redox electrode
+Reed relay
+Reed switch
+Rejuvenation 
+Relay
+Relay logic
+Reliability prediction for electronic components
+Remote Center Compliance
+Repeatability
+Repulsion motor
+Resettable fuse
+Resistance temperature detector
+Resistance thermometer
+Resistance wire
+Resistive opto-isolator
+Resistor
+Resonant-cavity-enhanced photo detector
+Respiratory quotient
+Reversed electrodialysis
+Rheochord
+Rigid belt actuator
+Rigid chain actuator
+Ring laser gyroscope
+Ringle Crouch Green Mill
+Robot
+Roller screw
+Roof seamer
+Rope light
+Rotary actuator
+Rotary encoder
+Rotary transfer machine
+Rotary union
+Rotary variable differential transformer
+Rotating magnetic field
+Rube Goldberg machine
+Rutilated quartz
+Safety relay
+Saturable reactor
+Sauerbrey equation
+Schurter
+Scintillation counter
+Scintillator
+Scintillometer
+Scissors mechanism
+Scratch drive actuator
+Screw axis
+Seebeck coefficient
+Seed-counting machine
+Segmented spindle
+Seismometer
+Selenium rectifier
+Self-propelled modular transporter
+Self-replicating machine
+Selsyn
+Semiconductor detector
+Semiconductor device
+Semiconductor laser theory
+Semiconductor optical gain
+Semiconductor ring laser
+Sensor
+Sensor array
+Sensor fusion
+Sensor grid
+Sensor node
+Serpentine geometry plasma actuator
+Servo 
+Servomechanism
+Servomotor
+Shading coil
+Shaft 
+Shunt generator
+Signal
+Signal 
+Silicon-germanium
+Silicon bandgap temperature sensor
+Silicon photomultiplier
+Single-phase generator
+Single-photon avalanche diode
+Singly-fed electric machine
+Skimmer 
+Slot insulation
+Slotted optical switch
+Small molecule sensors
+Smart transducer
+SmartSlab
+Smoke detector
+SNOTEL
+Snow gauge
+Sodium bismuth titanate
+Soft sensor
+Software
+Soil moisture sensor
+Soil salinity
+Solar-assisted heat pump
+Solar cell
+Solar cell fabric
+Solar cell research
+Solar energy
+Solar energy conversion
+Solar lamp
+Solar power
+Solar power tower
+Solar thermal energy
+Solar updraft tower
+Solaristor
+Solenoid
+Solid-state lighting
+Solid-state relay
+Sonar
+Sonar
+Sound
+Sound amplification by stimulated emission of radiation
+Sound reflection
+Space-based solar power
+Speed limiter
+Speed sensor
+Speedometer
+SpellBrite
+Stabistor
+Stall 
+Stall torque
+Staring array
+Starter solenoid
+Static induction thyristor
+Static induction transistor
+Static synchronous compensator
+Steam-electric power station
+Steam engine
+Steering column
+Stepper motor
+Stewart platform
+Stick bomb
+Stirling radioisotope generator
+Stochastic Signal Density Modulation
+Strain gauge
+Strained quantum-well laser
+Strand jack
+Stream gauge
+Stretch sensor
+String potentiometer
+Stud finder
+Sudden Motion Sensor
+Suntory Mermaid II
+Supercapacitor
+Superconducting electric machine
+Superconducting nanowire single-photon detector
+Superluminescent diode
+Surface condenser
+Surge arrester
+Switch
+Synchro
+Synchronous condenser
+Synthetic aperture radar
+Systems for Nuclear Auxiliary Power
+T pad
+Tablet press
+Tachometer
+Tactile sensor
+Tactile transducer
+Tape head
+Telegraph sounder
+Telephone magneto
+Terminal 
+Test light
+Tetrahedrite
+The Big Dish 
+Thermal efficiency
+Thermal management of high-power LEDs
+Thermal power station
+Thermally activated delayed fluorescence
+Thermionic converter
+Thermionic emission
+Thermistor
+Thermo-dielectric effect
+Thermoacoustics
+Thermocouple
+Thermoelectric battery
+Thermoelectric cooling
+Thermoelectric effect
+Thermoelectric generator
+Thermoelectric materials
+Thermoluminescent dosimeter
+Thermometer
+Thermopile
+Thermopile laser sensor
+Third-brush dynamo
+Three-Axis Acceleration Switch
+Throttle position sensor
+Thunderbolt 
+Tide gauge
+Tilt sensor
+Time pressure gauge
+Timeline of heat engine technology
+Tire-pressure monitoring system
+Torque limiter
+Torque motor
+Torque multiplier
+Torque sensor
+Tortilla machine
+Touch switch
+Trammel of Archimedes
+Trancitor
+Transducer
+Transductor
+Transient voltage suppressor
+Transistor
+Transistor laser
+Transition edge sensor
+Transmission 
+Transmission control unit
+Transmission control unit
+Transmission control unit
+Transmitter
+Transmitter 
+Triangulation sensor
+Tribonucleation
+Trigger 
+Trigger 
+Trimmer 
+Tristimulus colorimeter
+Trompe
+True DC
+Trunnion
+Tubular linear motor
+Tunnel finisher
+Tunnel washer
+Turbo generator
+Turn coordinator
+Two-photon photovoltaic effect
+Ultrasonic sensor
+Ultrasonic thickness gauge
+Ultrasonic transceiver
+Ultrasound
+Uncore
+Uniformity tape
+Unimorph
+Uniselector
+United States hydrogen policy
+Universal joint
+Useless machine
+V curve
+Vacuum tube
+Valve actuator
+Valve guide
+Van de Graaff generator
+Vaneless ion wind generator
+Variable reluctance sensor
+Variometer
+Varistor
+VEB Carl Zeiss Jena
+Velocity receiver
+Vertical-cavity surface-emitting laser
+Vertical-external-cavity surface-emitting-laser
+Vibrating structure gyroscope
+Vibration-powered generator
+Vibration powered generator
+Vibrator 
+Video sensor technology
+Viscometer
+Visible-light photon counter
+Vision chip
+Visual sensor network
+Voice coil
+Voltage-controlled resistor
+Voltage-sensitive relay
+Voltage
+Vortex engine
+WakaWaka
+Wall-plug efficiency
+Waste heat
+Water metering
+Water sensor
+Wave farm
+Wave motor
+Wave power
+Wavefront sensor
+Waveguide
+Wax motor
+Wax thermostatic element
+Weather radar
+Weight machine
+Wells turbine
+Wheatstone bridge
+Wheel speed sensor
+Wig wag 
+Wimshurst machine
+Winch
+Wind transducer
+Wind turbine
+Windbelt
+Winding factor
+Winding machine
+Windlass
+Wire chamber
+Wire spring relay
+Wired glove
+Wireless sensor network
+Woolrich Electrical Generator
+Yaw-rate sensor
+Yaw drive
+Zero-ohm link
+Zetatron
+Zhaga Consortium
+Zinc oxide nanorod sensor

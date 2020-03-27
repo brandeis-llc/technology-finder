@@ -77,7 +77,7 @@ class LIF(LappsObject):
             self.metadata = self.json_object['metadata']
             self.text = Text(self.json_object['text'])
             for v in self.json_object['views']:
-                self.views.append(View(v))
+                self.views.append(View(json_obj=v))
 
     def __str__(self):
         view_ids = [view.id for view in self.views]
