@@ -1,0 +1,1000 @@
+n	10526	it
+n	4285	It
+n	3752	they
+n	2099	example
+	1666	the sample
+n	1573	light
+n	1482	them
+n	1404	They
+n	1188	time
+n	1146	order
+n	1146	water
+n	1131	use
+n	1009	the use
+n	995 	citation
+n	916 	the surface
+n	886 	%
+n	773 	addition
+n	761 	he
+n	757 	who
+n	738 	the number
+n	696 	energy
+n	664 	we
+n	663 	the s
+	662 	electrons
+n	660 	the time
+n	640 	the amount
+y	635 	the system
+n	613 	the case
+n	604 	i
+n	596 	temperature
+n	593 	itself
+n	587 	one
+n	573 	information
+n	562 	°C
+n	562 	a number
+n	554 	interest
+y	534 	the device
+n	520 	data
+y	517 	the instrument
+n	514 	I
+n	508 	nm
+n	507 	the presence
+n	503 	images
+n	501 	the field
+y	501 	the signal
+	498 	the image
+n	482 	part
+y	481 	radiation
+n	475 	"\"\<Category
+n	447 	the temperature
+y	447 	applications
+n	444 	He
+n	442 	mm
+y	435 	proteins
+	433 	the light
+n	433 	heat
+y	432 	the detector
+n	431 	what
+n	431 	air
+	421 	ions
+n	419 	the object
+n	414 	the development
+n	412 	a function
+n	411 	a result
+n	411 	a variety
+n	410 	pressure
+n	410 	contrast
+	397 	a sample
+	393 	particles
+n	389 	the process
+y	388 	measurements
+n	384 	terms
+	382 	the energy
+n	381 	place
+y	375 	electricity
+n	375 	the direction
+	368 	power
+n	368 	C
+y	362 	Xrays
+n	360 	analysis
+y	356 	a device
+	355 	samples
+y	352 	cells
+y	352 	the sensor
+n	352 	the material
+n	351 	molecules
+n	349 	the column
+n	349 	the distance
+n	348 	a series
+n	348 	this case
+n	346 	the tip
+n	340 	changes
+n	339 	the range
+n	338 	instance
+n	337 	the need
+n	336 	the difference
+n	335 	the ability
+y	332 	the tube
+n	330 	respect
+n	329 	the concentration
+	328 	the speed
+	328 	materials
+	327 	detection
+	324 	others
+	323 	the United States
+	319 	the form
+	317 	the current
+	317 	°
+	313 	the size
+	311 	m
+	309 	operation
+	306 	the world
+	306 	the end
+	304 	R
+	303 	the body
+	301 	DNA
+	300 	a type
+	298 	this method
+	296 	an image
+	293 	the measurement
+	292 	−
+	289 	measurement
+	283 	the source
+	282 	the water
+	278 	the voltage
+	278 	atoms
+	277 	the beam
+	272 	the order
+	271 	the aircraft
+	268 	This method
+	267 	size
+	266 	H
+	265 	research
+	264 	degrees
+	264 	the position
+	264 	the user
+	263 	the specimen
+	262 	the sun
+	262 	space
+	260 	the ratio
+	260 	the data
+	258 	turn
+	258 	the atmosphere
+	253 	the fact
+	253 	the ground
+	252 	this type
+	251 	T
+	250 	photons
+	249 	accuracy
+	248 	objects
+	248 	the frequency
+	247 	the technique
+	247 	the effect
+	245 	a method
+	244 	practice
+	242 	the air
+	241 	k
+	240 	the solution
+	239 	this technique
+	237 	Examples
+	237 	frequency
+	236 	contact
+	236 	the intensity
+	235 	the top
+	235 	people
+	234 	the gas
+	232 	the probe
+	232 	the analyte
+	231 	the th century
+	230 	the cell
+	229 	means
+	228 	a range
+	227 	an object
+	226 	a set
+	225 	t
+	223 	years
+	222 	the electrons
+	222 	the analysis
+	222 	the center
+	220 	the angle
+	219 	the brain
+	219 	view
+	219 	aircraft
+	219 	resolution
+	218 	the spectrum
+	217 	the pressure
+	216 	the magnetic field
+	215 	an instrument
+	214 	The use
+	214 	the area
+	212 	V
+	212 	the type
+	211 	the cathode
+	211 	MHz
+	211 	the other hand
+	210 	the rate
+	210 	gas
+	209 	the application
+	208 	cm
+	208 	sound
+	208 	the change
+	206 	the output
+	205 	phase
+	205 	B
+	204 	the flow
+	204 	S
+	204 	instruments
+	204 	oxygen
+	203 	devices
+	203 	n
+	202 	This technique
+	202 	the detection
+	202 	the study
+	202 	the result
+	201 	you
+	199 	voltage
+	198 	the volume
+	198 	the same time
+	198 	D
+	198 	a system
+	198 	mass
+	197 	hours
+	197 	A
+	196 	magnitude
+	195 	the coil
+	195 	Figure
+	194 	the crystal
+	194 	the bottom
+	194 	a wide range
+	193 	the University
+	192 	motion
+	191 	K
+	191 	sensitivity
+	191 	a change
+	190 	development
+	190 	the meter
+	189 	the design
+	189 	mass spectrometry
+	189 	glass
+	188 	series
+	188 	the ions
+	188 	the target
+	187 	the length
+	187 	the basis
+	187 	techniques
+	187 	researchers
+	185 	sensors
+	185 	a process
+	184 	hydrogen
+	183 	the lens
+	183 	the circuit
+	182 	the reaction
+	181 	Fig
+	181 	s
+	180 	the liquid
+	180 	The technique
+	180 	the fluid
+	180 	fact
+	180 	conjunction
+	179 	temperatures
+	179 	This type
+	179 	comparison
+	179 	patients
+	178 	signals
+	178 	a signal
+	178 	systems
+	177 	the cost
+	176 	An example
+	176 	the wavelength
+	176 	a form
+	175 	some cases
+	175 	the method
+	175 	noise
+	174 	the right
+	174 	a mixture
+	173 	seconds
+	173 	the electrodes
+	173 	a technique
+	173 	the potential
+	173 	the accuracy
+	173 	the molecule
+	172 	neutrons
+	172 	rotation
+	172 	response
+	172 	the stationary phase
+	172 	wavelengths
+	171 	solution
+	171 	distance
+	171 	speed
+	171 	the particles
+	170 	Germany
+	169 	the gel
+	169 	Hz
+	168 	minutes
+	168 	the value
+	168 	the density
+	167 	themselves
+	166 	meters
+	166 	the equation
+	166 	the Earth
+	166 	charge
+	166 	the power
+	166 	material
+	165 	the protein
+	164 	scientists
+	163 	a combination
+	162 	frequencies
+	161 	the results
+	160 	the heat
+	160 	California
+	160 	the effects
+	157 	a pair
+	157 	the patient
+	157 	account
+	156 	the electric field
+	156 	the separation
+	155 	June
+	155 	silicon
+	155 	the mass
+	154 	physics
+	154 	MRI
+	154 	an example
+	154 	the company
+	154 	separation
+	154 	the term
+	154 	the product
+	153 	visible light
+	153 	pixels
+	153 	the receiver
+	153 	gases
+	153 	sample
+	152 	L
+	152 	methods
+	152 	the late s
+	151 	a solution
+	151 	the resolution
+	150 	the operator
+	150 	equipment
+	150 	times
+	149 	animals
+	148 	fluorescence
+	148 	gravity
+	148 	the structure
+	148 	current
+	147 	λ
+	147 	We
+	147 	the particle
+	147 	the efficiency
+	147 	compounds
+	146 	resistance
+	146 	the location
+	145 	the level
+	145 	areas
+	145 	j
+	145 	an electron
+	145 	direction
+	145 	length
+	144 	the membrane
+	144 	December
+	143 	the anode
+	143 	this way
+	143 	position
+	142 	a magnetic field
+	142 	units
+	142 	LEDs
+	142 	P
+	142 	imaging
+	142 	the shape
+	141 	the advantage
+	141 	e
+	141 	volume
+	141 	liquid
+	141 	the phase
+	141 	a material
+	140 	M
+	140 	the images
+	140 	liquids
+	140 	parts
+	139 	RFID
+	139 	the rotor
+	139 	the name
+	139 	the possibility
+	139 	the environment
+	138 	this problem
+	138 	results
+	138 	the point
+	137 	the plane
+	136 	PCR
+	136 	France
+	136 	vacuum
+	135 	c
+	135 	parallel
+	135 	radar
+	135 	the base
+	135 	The method
+	135 	absorption
+	134 	the force
+	134 	the movement
+	134 	The device
+	134 	the sensitivity
+	133 	µm
+	133 	interference
+	133 	E
+	133 	a measure
+	133 	wavelength
+	132 	rise
+	132 	ω
+	132 	humans
+	132 	the cells
+	132 	diameter
+	132 	a surface
+	132 	the technology
+	132 	electromagnetic radiation
+	131 	v
+	131 	gamma rays
+	131 	a time
+	131 	other types
+	131 	differences
+	130 	reference
+	130 	World War II
+	130 	the scale
+	130 	the motion
+	130 	a source
+	129 	front
+	129 	r
+	129 	the cantilever
+	129 	the mobile phase
+	129 	experiments
+	129 	the introduction
+	129 	the US
+	129 	f
+	128 	inches
+	128 	September
+	128 	second
+	127 	depth
+	127 	the Sun
+	127 	optics
+	127 	the display
+	127 	work
+	127 	tissue
+	127 	the line
+	127 	the problem
+	127 	the medium
+	127 	the figure
+	126 	the early s
+	126 	Europe
+	126 	d
+	126 	the interaction
+	126 	the addition
+	126 	the way
+	126 	the determination
+	126 	this reason
+	125 	the microscope
+	125 	the resistance
+	125 	advantage
+	125 	principle
+	125 	the screen
+	125 	components
+	125 	a detector
+	124 	CO
+	124 	efficiency
+	123 	θ
+	123 	the formation
+	123 	The instrument
+	122 	the charge
+	122 	the sum
+	122 	August
+	122 	application
+	121 	diffusion
+	121 	the laser
+	121 	the cavity
+	121 	the height
+	120 	Philips
+	120 	the film
+	120 	the electrode
+	120 	the wire
+	120 	mercury
+	120 	hundreds
+	120 	the velocity
+	120 	January
+	120 	shape
+	120 	studies
+	120 	combination
+	119 	the horizon
+	119 	the magnitude
+	119 	the chamber
+	119 	the properties
+	119 	products
+	119 	the principle
+	118 	chemistry
+	118 	the UK
+	118 	October
+	118 	the production
+	118 	the s.
+	117 	a way
+	117 	November
+	117 	a voltage
+	117 	production
+	117 	the concept
+	117 	a wide variety
+	116 	metal
+	116 	May
+	116 	an array
+	116 	this process
+	116 	detectors
+	115 	July
+	115 	the information
+	115 	This process
+	115 	movement
+	114 	the distribution
+	114 	a beam
+	114 	variations
+	114 	The term
+	114 	the refractive index
+	113 	test
+	113 	matter
+	113 	the radiation
+	112 	the subject
+	112 	the needle
+	112 	a vacuum
+	112 	atmospheric pressure
+	111 	ionization
+	111 	April
+	111 	users
+	111 	errors
+	111 	density
+	111 	The result
+	111 	km
+	110 	protein
+	110 	the nature
+	109 	Earth
+	109 	tissues
+	109 	room temperature
+	109 	him
+	109 	technology
+	109 	π
+	109 	an electric field
+	109 	The process
+	109 	the quality
+	109 	a factor
+	108 	the axis
+	108 	batteries
+	108 	day
+	108 	laser
+	108 	blood
+	108 	elements
+	108 	F
+	108 	surfaces
+	107 	steam
+	107 	the heart
+	107 	damage
+	106 	a distance
+	106 	other words
+	106 	feet
+	106 	et al
+	106 	top
+	106 	a molecule
+	105 	y
+	105 	.%
+	105 	the plate
+	105 	The difference
+	105 	March
+	105 	the amplitude
+	105 	the absence
+	105 	currents
+	105 	the camera
+	105 	g
+	105 	lenses
+	105 	one side
+	104 	performance
+	104 	CT
+	104 	the beginning
+	104 	the mechanism
+	104 	the molecules
+	103 	Q
+	103 	the engine
+	103 	this purpose
+	103 	RNA
+	103 	us
+	103 	a computer
+	103 	angles
+	103 	refraction
+	103 	illumination
+	102 	the components
+	102 	the pilot
+	102 	the mirror
+	102 	the region
+	102 	The advantage
+	102 	Canada
+	102 	Applications
+	102 	vibration
+	102 	sunlight
+	101 	exposure
+	101 	concentration
+	101 	electrodes
+	101 	two types
+	101 	force
+	101 	oil
+	101 	an increase
+	101 	the work
+	101 	real time
+	101 	the solvent
+	100 	the plasma
+	100 	paper
+	100 	China
+	100 	thousands
+	100 	metals
+	100 	field
+	100 	problems
+	100 	software
+	100 	the depth
+	100 	features
+	99  	a large number
+	99  	the composition
+	99  	the input
+	99  	a scale
+	99  	Australia
+	99  	control
+	99  	a point
+	99  	A number
+	99  	spectroscopy
+	99  	the experiment
+	99  	the purpose
+	98  	the market
+	98  	pulses
+	98  	crystals
+	98  	cancer
+	98  	protons
+	98  	construction
+	98  	the wind
+	98  	the clock
+	98  	z
+	98  	values
+	98  	precision
+	97  	gold
+	97  	holes
+	97  	the invention
+	97  	scanning
+	97  	Japan
+	97  	X
+	97  	lasers
+	96  	volts
+	96  	the sky
+	96  	London
+	96  	February
+	96  	solutions
+	96  	the vehicle
+	96  	altitude
+	96  	structures
+	96  	GHz
+	96  	lines
+	95  	helium
+	95  	W
+	95  	England
+	95  	the grid
+	95  	testing
+	95  	The system
+	95  	the path
+	95  	kHz
+	95  	error
+	95  	the observer
+	94  	The amount
+	94  	cost
+	94  	the battery
+	94  	intensity
+	94  	p
+	94  	waves
+	94  	design
+	94  	conditions
+	94  	change
+	93  	the atoms
+	93  	O
+	93  	U
+	93  	Technology
+	93  	a microscope
+	93  	the thickness
+	93  	this technology
+	93  	the absorption
+	92  	carbon dioxide
+	92  	the nucleus
+	92  	an angle
+	92  	the cylinder
+	92  	the DNA
+	92  	bacteria
+	92  	carbon
+	92  	navigation
+	92  	a sensor
+	91  	points
+	91  	a liquid
+	91  	that time
+	91  	the rest
+	91  	the risk
+	91  	the samples
+	91  	calibration
+	91  	the head
+	90  	range
+	90  	the channel
+	90  	the state
+	90  	color
+	90  	the performance
+	90  	the signals
+	90  	industry
+	90  	nitrogen
+	90  	solids
+	89  	the matrix
+	89  	equilibrium
+	89  	a problem
+	89  	loss
+	89  	evidence
+	89  	polymers
+	89  	GPS
+	89  	many applications
+	89  	the mixture
+	89  	cases
+	88  	capacitance
+	88  	year
+	88  	q
+	88  	flow
+	88  	percent
+	88  	stability
+	88  	the discovery
+	88  	N
+	88  	u
+	88  	electronics
+	88  	a means
+	87  	plants
+	87  	a lens
+	87  	the filter
+	87  	case
+	87  	weight
+	87  	the filament
+	87  	something
+	87  	the left
+	87  	these devices
+	87  	the theory
+	87  	the microphone
+	87  	a small amount
+	87  	ultrasound
+	86  	the substrate
+	86  	nature
+	86  	the electron
+	86  	diffraction
+	86  	The concept
+	86  	minute
+	86  	the test
+	86  	medicine
+	86  	the unit
+	86  	the width
+	85  	the capacitor
+	85  	astronomy
+	85  	the eye
+	85  	antibodies
+	85  	NASA
+	85  	each pixel
+	85  	the tissue
+	85  	excitation
+	84  	IMC
+	84  	×
+	84  	service
+	84  	heating
+	84  	electrophoresis
+	84  	chromatography
+	84  	ships
+	84  	days
+	83  	w
+	83  	The company
+	83  	access
+	83  	location
+	83  	the degree
+	83  	the side
+	82  	one end
+	82  	the U.S.
+	82  	a gas
+	82  	an atom
+	81  	RowBox
+	81  	the proteins
+	81  	a photon
+	81  	tubes
+	81  	+
+	81  	wire
+	81  	the sample surface
+	81  	copper
+	81  	the piston
+	81  	output
+	81  	velocity
+	81  	reflection
+	80  	RFID tags
+	80  	Light
+	80  	the idea
+	80  	the relationship
+	80  	the diameter
+	80  	the strength
+	80  	device
+	80  	alcohol
+	80  	night
+	80  	the weight
+	80  	its use
+	80  	the transmitter
+	79  	care
+	79  	coal
+	79  	a laser
+	79  	unit
+	79  	height
+	79  	analyte
+	79  	manufacturers
+	79  	science
+	79  	an area
+	79  	interactions
+	78  	the core
+	78  	the motor
+	78  	glucose
+	78  	axis
+	78  	a current
+	78  	the load
+	78  	theory
+	78  	examples
+	78  	different types
+	78  	structure
+	78  	recent years
+	78  	the response
+	78  	a substance
+	78  	transmission
+	78  	the creation
+	77  	the atom
+	77  	the centre
+	77  	display
+	77  	the quantity
+	77  	fuel
+	77  	nucleic acids
+	77  	processes
+	77  	properties
+	77  	date
+	77  	the mids
+	77  	magnetic fields
+	77  	treatment
+	77  	ground
+	76  	computers
+	76  	lidar
+	76  	metres
+	76  	The number
+	76  	α
+	76  	most cases
+	76  	contamination
+	76  	flight
+	76  	this approach
+	76  	The principle
+	76  	number
+	76  	maintenance
+	75  	the middle
+	75  	children
+	75  	peptides
+	75  	the majority
+	75  	the reading
+	75  	the emission
+	74  	quartz
+	74  	o
+	74  	stars
+	74  	a cell
+	74  	film
+	74  	study
+	74  	a period
+	74  	natural gas
+	74  	the skin
+	74  	biology
+	74  	the earth
+	74  	the orientation
+	74  	the electromagnetic spectrum
+	73  	a capacitor
+	73  	the machine
+	73  	clarification
+	73  	the operation
+	73  	the pointer
+	73  	τ
+	73  	an aircraft
+	73  	surface
+	73  	G
+	73  	emission
+	72  	storage
+	72  	fields
+	72  	the wall
+	72  	amplification
+	72  	regions
+	72  	the glass
+	72  	ethanol
+	72  	course
+	72  	the advent
+	72  	the past
+	72  	the origin
+	72  	reactions
+	72  	the geometry
+	72  	vehicles
+	72  	accelerometers
+	72  	radio waves
+	71  	The development
+	71  	concentrations
+	71  	relation
+	71  	India
+	71  	quantification
+	71  	keV
+	71  	substances
+	71  	pH
+	71  	this system
+	71  	a battery
+	71  	the event
+	71  	the actuator
+	71  	advantages
+	71  	distances
+	71  	sources
+	71  	a line
+	70  	the electron beam
+	70  	methane
+	70  	a person
+	70  	DC
+	70  	plastic
+	70  	focus
+	70  	the light source
+	70  	chemicals
+	70  	many cases
+	70  	The sample
+	69  	high temperatures
+	69  	x
+	69  	the aperture
+	69  	analytes
+	69  	the construction
+	69  	this effect
+	69  	clocks
+	69  	AFM
+	69  	Research
+	69  	the space
+	68  	a camera
+	68  	hour
+	68  	a wavelength
+	68  	food
+	68  	evaporation
+	68  	al
+	68  	The data
+	68  	the wave
+	68  	a
+	68  	species
+	68  	the influence
+	68  	the procedure
+	68  	mirrors
+	67  	The image
+	67  	the antenna
+	67  	nuclei
+	67  	tomography
+	67  	analytical chemistry
+	67  	the diagram
+	67  	a piece
+	67  	the equipment
+	67  	a column
+	67  	a resolution
+	67  	water vapor
+	67  	the loss
+	67  	many types
+	67  	sight
+	67  	the same way
+	67  	both sides
+	66  	Physics
+	66  	tens
+	66  	the metal
+	66  	the tag
+	66  	an electric current
+	66  	wind
+	66  	the calculation
+	66  	iron
+	66  	its ability
+	66  	ratio
+	66  	the part
+	66  	the start
+	65  	nuclear power
+	65  	Researchers
+	65  	nanometers
+	65  	this point
+	65  	the values
+	65  	The effect
+	65  	signal
+	65  	acceleration
+	65  	spectra
+	64  	CLEO
+	64  	observation
+	64  	solar cells
+	64  	the year
+	64  	energies
+	64  	the objective lens
+	64  	the edge
+	64  	the human eye
+	64  	angle
+	64  	the vessel
+	64  	cameras
+	64  	engineering
+	64  	The presence
+	63  	micrometers
+	63  	b
+	63  	The technology
+	63  	the scene
+	63  	the mass spectrometer
+	63  	standards
+	63  	processing
+	63  	the inside

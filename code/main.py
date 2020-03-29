@@ -21,6 +21,7 @@ def load_spacy():
 class TechnologyFinder(object):
 
     def __init__(self, infile, outfile):
+        AnnotationFactory.reset()
         if NLP is None:
             load_spacy()
         self.infile = infile

@@ -1,8 +1,16 @@
 from utils.lif import Annotation
-from utils.misc import vocab, Identifier
+
+
+def vocab(short_form):
+    """Expand the annotation type name to the full URL."""
+    return "http://vocab.lappsgrid.org/%s" % short_form
 
 
 class AnnotationFactory(object):
+
+    @classmethod
+    def reset(cls):
+        Identifier.reset()
 
     @classmethod
     def sentence_annotation(cls, sent, doc):
@@ -59,3 +67,33 @@ class AnnotationFactory(object):
                  "text": noun_chunk.text}})
         anno.text = noun_chunk.text
         return anno
+
+    @classmethod
+    def technology_annotation(cls, term_annotation):
+        text = term_annotation.features.get('text')
+        anno = Annotation(
+            {"id": Identifier.new('tech'),
+             "@type": vocab('Technology'),
+             "start": term_annotation.start,
+             "end": term_annotation.end,
+             "features": {
+                 "text": text }})
+        # TODO: why do I have both of these?
+        anno.text = text
+        return anno
+
+
+class Identifier(object):
+
+    """Class to keep track of what identifiers have been used."""
+
+    COUNTS = {}
+
+    @classmethod
+    def reset(cls):
+        cls.COUNTS = {}
+
+    @classmethod
+    def new(cls, prefix):
+        cls.COUNTS[prefix] = cls.COUNTS.get(prefix, 0) + 1
+        return "%s%s" % (prefix, cls.COUNTS[prefix])

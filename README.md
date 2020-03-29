@@ -45,7 +45,7 @@ This should create a file named `out.json` which contains the result of the proc
 sentence_loc=0 prev_n1= prev_n2= prev_n3= next_n2= first_word=Jane last_word=Doe suffix3=Doe suffix4=Doe suffix5=Doe plen=2 tag_list=NNP_NNP prev_J=None prev_Npr=None prev_Jpr=None dep_nsubj=sleeps
 ```
 
-To get other command line options type
+To see other command line options type
 
 ```bash
 python3 main.py -h

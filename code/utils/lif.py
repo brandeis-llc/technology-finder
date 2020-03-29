@@ -214,10 +214,17 @@ class Annotation(object):
             self.features[feat] = val
 
     def __str__(self):
-        text = '' if self.text is None else self.text.replace("\n", "\\n")
-        s = "<{} {} {}-{} '{}'>".format(os.path.basename(self.type), self.id,
-                                        self.start, self.end, text)
-        return s
+        text = self.get_text()
+        text = '' if text is None else text.replace("\n", "\\n")
+        return "<{} {} {}-{} '{}'>".format(os.path.basename(self.type), self.id,
+                                           self.start, self.end, text)
+
+    def get_text(self):
+        """Return the text string from the text instance variable or the text feature,
+        returns None of there is no string available."""
+        if self.text is not None:
+            return self.text
+        return self.features.get('text')
 
     def as_json(self):
         d = {"id": self.id, "@type": self.type, "features": self.features}
