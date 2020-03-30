@@ -22,12 +22,12 @@ TODO:
 - figure out why some terms do not have any features
 - some terms start with a space, need some kind of massaging of the term
 - we are not yet using any filters for terms, all chunks are taken in their
-  entirity
+  entirity, part of the reason why the performance is so bad
 
 
 == model creation
 
-$ python3 classify.py --train FEATURES_FILE VECTORS_FILE MODEL_FILE
+$ python3 classify.py --train FEATURES_FILE MODEL_NAME
 
 This assumes that there are lists of technologies and non-technologies (these
 are not necessarily from the domain you are working on). All available lists in
@@ -35,13 +35,29 @@ data/lists/technologies are used. Positive and negative examples will be created
 from those lists and the feature vectors from the corpus. These will be used to
 create the model.
 
+TODO:
+- need to do some experiments with sampling etcetera
+- probably add a utils.ml module with trainers and classifiers
+- experiment with classifiers, now use naieve bayes, should use maxent with
+  confidence scores
+- need to classify at the document level (collect all terms)
+
 
 == classification
 
-$ python3 classify.py --classify MODEL_FILE LIF_FILE
+$ python3 classify.py --classify MODEL_FILE LIF_FILE OUT_FILE
+
+Classify a LIF given the model handed in. The LIF is accumed to be created by
+the code in main.py. The output is another LIF file with a technologies view
+added.
+
 $ python3 classify.py --classify-vectors MODEL_FILE VECTORS_FILE
 
+Run the classifier saved in MODEL_FILE on a file with vectors. Labels are
+written to the standard output, one label per line.
+
 """
+
 
 import os
 import sys
@@ -75,6 +91,21 @@ class Vector(object):
         return "\t".join(self.vector)
 
 
+def vectors_file_name(model_name):
+    """Standardized name of the raw text vectors file for a model."""
+    return "%s-model-vectors.txt" % model_name
+
+
+def vectorizer_file_name(model_name):
+    """Standardized name of the vectorizer file for a model."""
+    return "%s-model-vectorizer.jl" % model_name
+
+
+def model_file_name(model_name):
+    """Standardized name of the fitted model."""
+    return "%s-model-fitted.jl" % model_name
+
+
 def get_features(directory, features_file, n):
     """Extract all term features from n files in the directory and write them as
     vectors to the features file."""
@@ -102,12 +133,10 @@ def get_features(directory, features_file, n):
             fh_counts.write("%-4d\t%s\n" % (count, term))
 
 
-# TODO: probably add a utils.ml module with trainers and classifiers
-
-def train(features_file, vectors_file, model_file):
+def train(features_file, model_name):
     technologies, non_technologies = _read_lists()
-    _create_examples(features_file, vectors_file, technologies, non_technologies)
-    _create_model(vectors_file, model_file)
+    _create_examples(features_file, model_name, technologies, non_technologies)
+    _create_model(model_name)
 
 
 def _read_lists():
@@ -133,10 +162,12 @@ def _read_lists():
     return technologies, non_technologies
 
 
-def _create_examples(features_file, vectors_file, technologies, non_technologies):
+def _create_examples(features_file, model_name, technologies, non_technologies):
     """Given a file with feature bundle for each term and a list of positive and
     negative seeds, create a file with the vectors for the known positive and
     negative examples. Also create the model from the vectors."""
+    vectors_file = vectors_file_name(
+        model_name)
     print('Reading feature vectors and extracting pos and neg examples...')
     with open_file(features_file) as feats, \
          open_file(vectors_file, 'w') as vectors:
@@ -164,7 +195,10 @@ def _get_label(term, technologies, non_technologies):
         return None
 
 
-def _create_model(vectors_file, model_file):
+def _create_model(model_name):
+    vectors_file = vectors_file_name(model_name)
+    vectorizer_file = vectorizer_file_name(model_name)
+    model_file = model_file_name(model_name)
     print('Creating and saving the model and the vectorizer...')
     with open(vectors_file) as vectors:
         labels = []
@@ -178,7 +212,7 @@ def _create_model(vectors_file, model_file):
     model_bernoulli = BernoulliNB()
     model_bernoulli.fit(feature_vectors, labels)
     dump(model_bernoulli, model_file)
-    dump(vectorizer, 'SensorData-vectorizer.joblib')
+    dump(vectorizer, vectorizer_file)
 
 
 def _parse_line(line):
@@ -195,16 +229,29 @@ def _parse_line(line):
 MODEL = None
 VECTORIZER = None
 
-def classify_file(model_file, lif_file, out_file):
-    global MODEL
+DEFAULT_MODEL_NAME = 'data/models/SensorData'
+
+
+def load_model(model_name = None):
+    global MODEL, VECTORIZER
+    if model_name is None:
+        model_name = DEFAULT_MODEL_NAME
     if MODEL is None:
-        MODEL = load(model_file)
-        VECTORIZER = load('SensorData-vectorizer.joblib')
-    lif = LIF(json_file=lif_file)
+        MODEL = load(model_file_name(model_name))
+        VECTORIZER = load(vectorizer_file_name(model_name))
+
+def classify_file(model_name, lif_file, out_file):
+    load_model(model_name)
+    lif = LIF(json_string=read_file(lif_file))
+    classify_lif(model_name, lif)
+    lif.write(fname=out_file, pretty=True)
+
+def classify_lif(model_name, lif):
+    load_model(model_name)
     tech_view = View('technologies')
     lif.views.append(tech_view)
     for anno in lif.get_view('terms').annotations:
-        vector = _get_vector_from_term(anno)
+        vector = anno.features.get('vector')
         if vector is None:
             continue
         # create a line with dummy values so we can reuse _parse_line
@@ -214,27 +261,21 @@ def classify_file(model_file, lif_file, out_file):
         label = MODEL.predict(feature_vectors[0])
         if label == 'y':
             tech_view.annotations.append(AnnotationFactory.technology_annotation(anno))
-    print(out_file)
-    lif.write(fname=out_file, pretty=True)
 
-
-def _get_vector_from_term(term):
-    return term.features.get('vector')
-
-
-def classify_vectors(model_file, vectors_file):
+def classify_vectors(model_name, vectors_file):
     """Generate a lable for all vectors in the file. Useful for batch processing of
-    a large number of vectors from some corpus."""
-    model = load(model_file)
+    a large number of vectors from some corpus. Results are written one label per
+    line to the standard output."""
+    model = load(model_file_name(model_name))
     with open(vectors_file) as vectors:
         features = []
         for line in vectors:
-            _, _, label, dictionary = _get_label_and_dictionary(line)
+            _, _, _, dictionary = _parse_line(line)
             features.append(dictionary)
         vectorizer = DictVectorizer()
         feature_vectors = vectorizer.fit_transform(features)
-    for instance in feature_vectors[:10]:
-        print(model.predict(instance))
+    for instance in feature_vectors:
+        print(model.predict(instance)[0])
 
 
 if __name__ == '__main__':
@@ -247,9 +288,8 @@ if __name__ == '__main__':
 
     elif sys.argv[1] == '--train':
         features = sys.argv[2]
-        vectors = sys.argv[3]
-        model = sys.argv[4]
-        train(features, vectors, model)
+        model = sys.argv[3]
+        train(features, model)
 
     elif sys.argv[1] == '--classify':
         model = sys.argv[2]

@@ -5,11 +5,12 @@ This repository contains the Brandeis Technology Finder, a streamlined version o
 
 ## Getting started
 
-To run this you need Python 3.7 (versions 3.5 and 3.6 may work though) and you need to install the spaCy natural language processing software library as well as its core NLP module (all command line examples below assume a Linux or OSX like terminal):
+To run this you need Python 3.7 (versions 3.5 and 3.6 may work though) and you need to install (1) the spaCy natural language processing software library and its core NLP module and (2) the scikit-learn machine learning package (all command line examples below assume a Linux or OSX like terminal):
 
 ```bash
 pip3 install spacy
 python3 -m spacy download en_core_web_sm
+pip3 install sklearn
 ```
 
 The modules installed with the above two commands are listed in `code/requirements.txt`. The spaCy library is used for most of the NLP processing, see https://spacy.io/ for more information.
@@ -18,7 +19,7 @@ You can test wether it all works by running
 
 ```bash
 cd code
-python3 main.py --input data/example-input/sleep.txt --output out.json --verbose
+python3 main.py --input data/input/sleep.txt --output out.json --verbose
 ```
 
 This should create a file named `out.json` which contains the result of the processing. And when running the command with the --verbose flag something like the following should be printed to the output console.
@@ -44,6 +45,14 @@ This should create a file named `out.json` which contains the result of the proc
 
 sentence_loc=0 prev_n1= prev_n2= prev_n3= next_n2= first_word=Jane last_word=Doe suffix3=Doe suffix4=Doe suffix5=Doe plen=2 tag_list=NNP_NNP prev_J=None prev_Npr=None prev_Jpr=None dep_nsubj=sleeps
 ```
+
+Not visible above is that the code also classifies terms as technologies and non-technologies and creates a new view with the technologies. To see this at work run the code on another larger file:
+
+```bash
+python3 main.py --input data/input/auger-architectomics.txt --output out2.json
+```
+
+The output file will have a view with technologies. Note that the technology classifier is in a very early incarnation and at the moment its performance is very poor.
 
 To see other command line options type
 

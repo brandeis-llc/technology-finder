@@ -21,7 +21,7 @@ import sys
 import time
 
 import main
-from utils.misc import timestamp
+from utils import timestamp
 
 
 def process_directory(indir, outdir, n):

@@ -4,6 +4,7 @@ import argparse
 
 import spacy
 
+from classify import classify_lif
 from utils.lif import LIF, View
 from utils.graph import create_graph
 from utils.features import add_term_features
@@ -35,6 +36,7 @@ class TechnologyFinder(object):
         self._run_spacy(verbose)
         self._create_graph(verbose)
         self._add_features(verbose)
+        self._classify_terms(verbose)
         self._write_output()
 
     def _create_lif(self):
@@ -121,6 +123,10 @@ class TechnologyFinder(object):
     def _add_features(self, verbose):
         """Pull features from the graph and add them as a vector to the term."""
         add_term_features(self.graph, verbose)
+
+    def _classify_terms(self, verbose):
+        # When called from this main script we use the small default classifier
+        classify_lif(None, self.lif)
 
     def _write_output(self):
         """Save the LIF object into outfile or write it to standard output if outfile is
