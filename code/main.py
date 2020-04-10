@@ -1,10 +1,16 @@
+"""main.py
+
+"""
+
+import os
 import sys
 import json
 import argparse
 
 import spacy
 
-from classify import classify_lif
+from classify import Classifier
+from utils import exists, isdir, isfile, logger
 from utils.lif import LIF, View
 from utils.graph import create_graph
 from utils.features import add_term_features
@@ -17,6 +23,53 @@ NLP = None
 def load_spacy():
     global NLP
     NLP = spacy.load("en_core_web_sm")
+
+
+class Batch(object):
+
+    """Class to manage processing of files and directories."""
+
+    def __init__(self, input, output):
+        self.input = input
+        self.output = output
+
+    def run(self, classifier=True, limit=None, verbose=False):
+        if exists(self.output):
+            exit('Warning: output already exists')
+        elif isdir(self.input):
+            if self.output is None:
+                exit('Warning: output directory must be specified')
+            self.process_directory(classifier, limit=limit, verbose=verbose)
+        elif isfile(self.input):
+            self.process_file(classifier, verbose)
+        elif self.input is None:
+            # TODO: implement this
+            print('piping input from standard input')
+        else:
+            print('Warning: input does not exist')
+
+    def process_file(self, classifier=True, verbose=False):
+        if verbose:
+            print("Processing file '%s'" % self.input)
+        TechnologyFinder(self.input, self.output).run(classifier, verbose)
+
+    def process_directory(self, classifier, limit=sys.maxsize, verbose=False):
+        # TODO: replace .txt extension with .lif extension
+        if verbose:
+            print("Processing directory '%s'" % self.input)
+        if not os.path.exists(self.output):
+            os.makedirs(self.output)
+        with logger.Logger() as log:
+            fnames = list(sorted(os.listdir(self.input)))
+            for c, fname in enumerate(fnames[:limit]):
+                infile = os.path.join(self.input, fname)
+                outfile = os.path.join(self.output, fname)
+                log.write_line(fname, c)
+                try:
+                    TechnologyFinder(infile, outfile).run(classifier, verbose)
+                except Exception as e:
+                    log.write_error(e)
+            log.write_time_elapsed()
 
 
 class TechnologyFinder(object):
@@ -32,11 +85,12 @@ class TechnologyFinder(object):
         self.graph = None
         self._create_lif()
 
-    def run(self, verbose=False):
+    def run(self, classifier=True, verbose=False):
         self._run_spacy(verbose)
         self._create_graph(verbose)
         self._add_features(verbose)
-        self._classify_terms(verbose)
+        if classifier:
+            self._classify_terms(verbose)
         self._write_output()
 
     def _create_lif(self):
@@ -126,7 +180,9 @@ class TechnologyFinder(object):
 
     def _classify_terms(self, verbose):
         # When called from this main script we use the small default classifier
-        classify_lif(None, self.lif)
+        # (triggered by None as the first argument)
+        Classifier().classify_lif(self.lif)
+        #classify_lif(None, self.lif)
 
     def _write_output(self):
         """Save the LIF object into outfile or write it to standard output if outfile is
@@ -164,13 +220,27 @@ def _get_sentences_and_tokens(doc):
 
 if __name__ == '__main__':
 
+    h_input = \
+        "The input file or input directory to process," \
+        + " take standard input if this is not specified."
+    h_output = \
+        "The output file or output directory to write the results to," \
+        + " write to standard output if not specified. If INPUT is a" \
+        + " directory then this should be a directory too, it will be " \
+        + " created if it does not exist."
+    h_classifier = "Switch of the classifier."
+    h_verbose = "Print some of the created data structures to standard output."
+    h_limit = "The maximum number of files to process."
+
     parser = argparse.ArgumentParser()
-    input_help = "the file to process"
-    output_help = "the output file, print to standard output if not specified"
-    verbose_help = "print some created data structures to standard output"
-    parser.add_argument("--input", help=input_help, required=True)
-    parser.add_argument("--output", help=output_help)
-    parser.add_argument("--verbose", help=verbose_help, action="store_true")
+    parser.add_argument("-i", metavar='INPUT', help=h_input)
+    parser.add_argument("-o", metavar='OUTPUT', help=h_output)
+    parser.add_argument("--classifier-off", dest='classifier',
+                        help=h_classifier, action="store_false")
+    parser.add_argument("--verbose", help=h_verbose, action="store_true")
+    parser.add_argument("--limit", help=h_limit, type=int)
     args = parser.parse_args()
 
-    TechnologyFinder(args.input, args.output).run(verbose=args.verbose)
+    Batch(args.i, args.o).run(limit=args.limit,
+                              verbose=args.verbose,
+                              classifier=args.classifier)

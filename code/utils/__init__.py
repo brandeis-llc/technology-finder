@@ -1,9 +1,37 @@
+import os
+import sys
 import time
 import gzip
 
 
-def timestamp():
-    return time.strftime("%Y%m%d-%H%M%S")
+def timer(fun):
+   def wrapper(*args):
+       print("$ python3 %s\n" % ' '.join(sys.argv))
+       t0 = time.time()
+       fun(*args)
+       print("\nTime elapsed: %d seconds\n" % int(time.time() - t0))
+   return wrapper
+
+
+def exists(path):
+    """Return True if path exists, False otherwise."""
+    if path is None:
+        return False
+    return os.path.exists(path)
+
+
+def isdir(path):
+    """Return True if path is a directory, False otherwise."""
+    if path is None:
+        return False
+    return os.path.isdir(path)
+
+
+def isfile(path):
+    """Return True if file is a directory, False otherwise."""
+    if path is None:
+        return False
+    return os.path.isfile(path)
 
 
 def read_file(fname):
