@@ -13,7 +13,7 @@ This document does not include notes on extracting states and further technology
 
 ## 1. Summary
 
-<img src="images/architecture.png" width="600" align=left />
+<img src="images/architecture.png" width="600" />
 
 - Data handling
   - Taking a text document and transforming it into a unified format
@@ -50,14 +50,7 @@ This document does not include notes on extracting states and further technology
   - Scores are compiled indexed by time.
 
 
-
 ## 2. Data Handling
-
-- Data handling
-  - Taking a text document and transforming it into a unified format
-  - Document structure: recognizing sections and headers
-
----
 
 The data are handed in as a LIF file or as a text file without any markup. The former is a JSON-LD format used for the LAPPS Grid that puts the text data in a read-only text field and that has all annotations stored in views (also known as annotation layers) that are separate from the text data. For now, we assume the input is plain text so loading a file or string does not involve any parsing of a JSON-LD file.
 
@@ -117,26 +110,11 @@ The identifier can be any string, but usually is made to be somewhat descriptive
 
 ## 3. Feature Extraction
 
-- Feature extraction
-  - Basic NLP processing
-    - Tokenization, sentence splitting, part-of-speech tagging
-    - Dependency parsing and noun chunks extraction
-  - Term extraction:
-    - Start with nounchunks as proposed by the basic NLP processing
-    - Extract tag signature from the chunk (for example "DET JJ NP NP")
-    - Run a simple pattern over the tag signature and restrict the term to the matching part
-  - Feature extraction for each candidate technical term
-    - Extract features using the results from basic NLP processing
-    - Extract classic feature vectors as well as word embeddings
+Three kinds of annotations are created during feature extraction:
 
----
-
-Four kinds of annotations are created during feature extraction:
-
-1. Document structure
-2. Tokens, sentence boundaries, art of speech tags and dependencies
-3. Cancidate terms
-4. Feature vectors
+1. Tokens, sentence boundaries, art of speech tags and dependencies
+2. Cancidate terms
+3. Feature vectors
 
 These annotations are all stored into views.
 
@@ -488,11 +466,6 @@ There are three kinds of nodes: token nodes, term nodes and sentence nodes. The 
   - Technologies are annotated as "main", "component", "related" or "attribute"
   - Use logic regression.
 
----
-
-More prose to be added.
-
-
 
 ## 5. Maturity Score
 
@@ -501,8 +474,3 @@ More prose to be added.
   - Based on textual evidence on whether a technology was used or referred to
   - Evidence for use is collected from the feature vectors and quantified as a weighted count
   - Scores are compiled indexed by time.
-
----
-
-More prose to be added.
-
