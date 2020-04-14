@@ -1,15 +1,63 @@
 # Technology Finder -  Code Design
 
-This design is based on the code used for the FUSE project, but simplified as much as possible by removing most of the housekeeping code and by using Python third-party modules instead of interacting with Java modules for tagging and classifying. It consists of three parts:
+This design is based on the code initially developed for the FUSE project, but simplified as much as possible by (1) removing most of the housekeeping code, (2) simplifying a couple of overly complex components and (3) using Python third-party modules instead of interacting with Java modules for tagging and classifying. This design has been partially implemented and it appears that the size of the code will be reduced by a factor 5. The technology finder consists of four parts:
 
 1. Data handling
 2. Feature extraction
 3. Classification
+4. Maturity scoring
 
-This document takes us from input document to a list of technologies for the document. It does not include notes on extracting states and technology characterization.
+This document does not include notes on extracting states and further technology characterization (beyond maturity scores).
 
 
-## 1. Data Handling
+
+## 1. Summary
+
+<img src="images/architecture.png" width="600" align=left />
+
+- Data handling
+  - Taking a text document and transforming it into a unified format
+  - Document structure: recognizing sections and headers
+- Feature extraction
+  - Basic NLP processing
+    - Tokenization, sentence splitting, part-of-speech tagging
+    - Dependency parsing and noun chunks extraction
+  - Term extraction:
+    - Start with nounchunks as proposed by the basic NLP processing
+    - Extract tag signature from the chunk (for example "DET JJ NP NP")
+    - Run a simple pattern over the tag signature and restrict the term to the matching part
+  - Feature extraction for each candidate technical term
+    - Extract features using the results from basic NLP processing
+    - Extract classic feature vectors as well as word embeddings
+- Classification - technologies
+  - Create seeds by compiling lists of technology terms and lists of terms that are not technologies
+    - Inherit existing lists fom the FUSE code
+    - Additional term-level annotation candidate terms from WIkipedia data
+    - Technologies as mentioned in the Wikipedia article titles
+  - Create positive and negative examples of each term by collecting and typing feature vectors 
+  - Use a logic regression algorith for the actual classification
+- Classification - main technology
+  - To extract the main technology in the text
+  - Uses same vectors as before
+  - Training data is created by manual annotation over technologies in documents
+  - Annotation is limited to some section of the document
+  - Technologies are annotated as "main", "component", "related" or "attribute"
+  - Use logic regression.
+- Maturity Score
+  - Score between 0 and 1 that indicates maturity level of a technology
+  - Based on textual evidence on whether a technology was used or referred to
+  - Evidence for use is collected from the feature vectors and quantified as a weighted count
+  - Scores are compiled indexed by time.
+
+
+
+## 2. Data Handling
+
+- Data handling
+  - Taking a text document and transforming it into a unified format
+  - Document structure: recognizing sections and headers
+
+---
 
 The data are handed in as a LIF file or as a text file without any markup. The former is a JSON-LD format used for the LAPPS Grid that puts the text data in a read-only text field and that has all annotations stored in views (also known as annotation layers) that are separate from the text data. For now, we assume the input is plain text so loading a file or string does not involve any parsing of a JSON-LD file.
 
@@ -37,18 +85,6 @@ In Python code we have a method that takes a document and turns it into a LIF ob
 ```
 
 The object created is represented as a JSON structure in the representation above, but in the implementation it will be a data structure appropriate for the language. For example, in Python it will most likely be a user-defined class named LIF whereas in Mathematica we may use a DataSet.
-
-
-## 2. Feature Extraction
-
-Four kinds of annotations are created during feature extraction:
-
-1. Document structure
-2. Tokens, sentence boundaries, art of speech tags and dependencies
-3. Feature vectors
-
-Every single one of these is stored into a view.
-
 
 ### 2.1. Document structure
 
@@ -78,7 +114,62 @@ Document structure we skip for now because in the first stage of the project we 
 The identifier can be any string, but usually is made to be somewhat descriptive. Note that the above is a somewhat simplified version of LIF because in LIF a view is typically associated with some metadata that indicates what kind of annotations are in the view.
 
 
-### 2.2. Tokens, sentences, parts of speech and dependencies
+
+## 3. Feature Extraction
+
+- Feature extraction
+  - Basic NLP processing
+    - Tokenization, sentence splitting, part-of-speech tagging
+    - Dependency parsing and noun chunks extraction
+  - Term extraction:
+    - Start with nounchunks as proposed by the basic NLP processing
+    - Extract tag signature from the chunk (for example "DET JJ NP NP")
+    - Run a simple pattern over the tag signature and restrict the term to the matching part
+  - Feature extraction for each candidate technical term
+    - Extract features using the results from basic NLP processing
+    - Extract classic feature vectors as well as word embeddings
+
+---
+
+Four kinds of annotations are created during feature extraction:
+
+1. Document structure
+2. Tokens, sentence boundaries, art of speech tags and dependencies
+3. Cancidate terms
+4. Feature vectors
+
+These annotations are all stored into views.
+
+
+### 3.1. Tokens, sentences, parts of speech and dependencies
+
+Document structure we skip for now because in the first stage of the project we focus only on files from Wikipedia where the name of the file reflects the title of the page and the body contains all the text. But with the trivial example above, we would get
+
+```json
+{
+    "text": {
+        "@value": "A thermometer is a device that measures temperature or a temperature gradient."
+    },
+    "views": [
+        {
+            "id": "document-structure",
+            "annotions": [
+                {
+                    "@type": "Paragraph",
+                    "id": "p1",
+                    "begin": 0,
+                    "end": 78
+                }
+            ]
+        }
+    ]
+}
+```
+
+The identifier can be any string, but usually is made to be somewhat descriptive. Note that the above is a somewhat simplified version of LIF because in LIF a view is typically associated with some metadata that indicates what kind of annotations are in the view.
+
+
+### 3.2. Tokens, sentences, parts of speech and dependencies
 
 The next information to be extracted are the individual tokens, sentence boundaries, parts of speech of tokens and dependencies between tokens. Most features are directly derived from this basic linguistic information. It is not determined yet what part-of-speech and dependency set to use. Due to differences in integrating POS taggers and dependency parsers in Python and Mathematica we may need to work with two sets of parts-of-speech and dependencies.
 
@@ -230,7 +321,7 @@ It is not necessarily the case that we first run one component that creates toke
 It depends on the structure of the `doc` object how the methods in lines 5 and 7 are written.
 
 
-### 2.3. Feature vectors
+### 3.3. Feature vectors
 
 Feature extraction has two steps:
 
@@ -238,7 +329,7 @@ Feature extraction has two steps:
 2. Feature extraction for each candidate term
 
 
-#### 2.3.1. Identifying candidate terms
+#### 3.3.1. Identifying candidate terms
 
 Feature vectors are extracted for all candidate technology terms. Candidate technology terms are extracted using a pattern over parts of speech (here using the Penn tag set, depending on the tagger used these patterns may change).
 
@@ -319,7 +410,7 @@ As mentioned earlier, the result of this processing is an new view with term ann
 **Alternative implementation**. An alternative to the above is to use noun chunks if your linguistic analysis provides them. This would give you candidates like *the thermometer* and terms that include one of the many adjectives that are part of the stoplist, but you could add some code that shortens the candidate terms under those conditions. Note that if you use the spaCy noun chunks for this you will miss out on some one-token proper names, for example, with *Sue sleeps* you do not get *Sue* as a noun chunk.
 
 
-#### 2.3.2. Extracting features for candidate terms
+#### 3.3.2. Extracting features for candidate terms
 
 The goal of this stage is to associate a set of features to each candidate term, for which the features dictionary on the annotation can be used. Here is an example with a very minimal set of features:
 
@@ -361,7 +452,7 @@ The following features are the features that have been used in the FUSE implemen
 | prev_Jpr     | first adj_prep to the left of chunk, within 4 words                 |
 | prev_J       | adjective immediately before the candidate term                     |
 
-Many changes will be made to this set of features. Some of the them are approximations of syntactic features. For example, prev_V is really intended to capture the dominating verb of a term but since we did not have dependency relations this was faked in a rather complicated way.
+Changes will be made to this set of features. Some of the them are approximations of syntactic features. For example, prev_V is really intended to capture the dominating verb of a term but since we did not have dependency relations this was faked in a rather complicated way.
 
 The top-level code for adding features can look as follows:
 
@@ -380,6 +471,38 @@ Most complexity lies in the add_features() code which creates a graph from the L
 There are three kinds of nodes: token nodes, term nodes and sentence nodes. The term nodes form a linked list in the graph (edges indicated by solid arrows). Token nodes are connected to the terms and sentences that they occur in (dashed arrows), similarly terms and sentences are connected to the tokens they contain, and terms are linked to the sentence they occur in and vice versa. Finally, dependency relations are expressed between the token nodes (dotted arrows). Each token node is associated with a feature structure with information like the part of speech that was derived during NLP analysis.
 
 
-## 3. Classification
+## 4. Classification
 
-To be written.
+- Classification - technologies
+  - Create seeds by compiling lists of technology terms and lists of terms that are not technologies
+    - Inherit existing lists fom the FUSE code
+    - Additional term-level annotation candidate terms from WIkipedia data
+    - Technologies as mentioned in the Wikipedia article titles
+  - Create positive and negative examples of each term by collecting and typing feature vectors
+  - Use a logic regression algorith for the actual classification
+- Classification - main technology
+  - To extract the main technology in the text
+  - Uses same vectors as before
+  - Training data is created by manual annotation over technologies in documents
+  - Annotation is limited to some section of the document
+  - Technologies are annotated as "main", "component", "related" or "attribute"
+  - Use logic regression.
+
+---
+
+More prose to be added.
+
+
+
+## 5. Maturity Score
+
+- Maturity Score
+  - Score between 0 and 1 that indicates maturity level of a technology
+  - Based on textual evidence on whether a technology was used or referred to
+  - Evidence for use is collected from the feature vectors and quantified as a weighted count
+  - Scores are compiled indexed by time.
+
+---
+
+More prose to be added.
+
