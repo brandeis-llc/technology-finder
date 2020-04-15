@@ -1,4 +1,4 @@
-# Technology Finder -  Code Design
+# 	Technology Finder -  Code Design
 
 This design is based on the code initially developed for the FUSE project, but simplified as much as possible by (1) removing most of the housekeeping code, (2) simplifying a couple of overly complex components and (3) using Python third-party modules instead of interacting with Java modules for tagging and classifying. This design has been partially implemented and it appears that the size of the code will be reduced by a factor 5. The technology finder consists of four parts:
 
@@ -35,19 +35,37 @@ This document does not include notes on extracting states and further technology
     - Additional term-level annotation candidate terms from WIkipedia data
     - Technologies as mentioned in the Wikipedia article titles
   - Create positive and negative examples of each term by collecting and typing feature vectors 
-  - Use a logic regression algorith for the actual classification
+  - Use a logisticc regression algorith for the actual classification
 - Classification - main technology
   - To extract the main technology in the text
   - Uses same vectors as before
   - Training data is created by manual annotation over technologies in documents
   - Annotation is limited to some section of the document
   - Technologies are annotated as "main", "component", "related" or "attribute"
-  - Use logic regression.
+  - Use logistic regression.
 - Maturity Score
   - Score between 0 and 1 that indicates maturity level of a technology
   - Based on textual evidence on whether a technology was used or referred to
   - Evidence for use is collected from the feature vectors and quantified as a weighted count
   - Scores are compiled indexed by time.
+
+Here is a schedule of tasks, with percentage done and remaining estimated effort in hours.
+
+| task                         | % done | effort | comment                                       |
+| ---------------------------- | ------ | ------ | --------------------------------------------- |
+| data handling                | 100    | -      | will need updates for new data types          |
+| basic NLP processing         | 100    | -      |                                               |
+| Term extraction              | 50     | 4      | need to add pattern to restrict candiates     |
+| feature extraction           | 60     | 12     | feature engineering needed                    |
+| technologies - seeds         | 80     | 4      | especially adding non-technology seeds        |
+| technologies - samples       | 100    |        | code is in place, rerun it on new seeds       |
+| main technology              | 0      | 12     | mostly feature engineering                    |
+| main technology - annotation | 0      | 48     | annotators are being hired right now          |
+| maturity score               | 0      | 8      | little effort because the algorithm is simple |
+
+This schedule does not include the effort on Mathematic integration.
+
+
 
 
 ## 2. Data Handling
@@ -448,29 +466,35 @@ Most complexity lies in the add_features() code which creates a graph from the L
 
 There are three kinds of nodes: token nodes, term nodes and sentence nodes. The term nodes form a linked list in the graph (edges indicated by solid arrows). Token nodes are connected to the terms and sentences that they occur in (dashed arrows), similarly terms and sentences are connected to the tokens they contain, and terms are linked to the sentence they occur in and vice versa. Finally, dependency relations are expressed between the token nodes (dotted arrows). Each token node is associated with a feature structure with information like the part of speech that was derived during NLP analysis.
 
-
 ## 4. Classification
 
-- Classification - technologies
-  - Create seeds by compiling lists of technology terms and lists of terms that are not technologies
-    - Inherit existing lists fom the FUSE code
-    - Additional term-level annotation candidate terms from WIkipedia data
-    - Technologies as mentioned in the Wikipedia article titles
-  - Create positive and negative examples of each term by collecting and typing feature vectors
-  - Use a logic regression algorith for the actual classification
-- Classification - main technology
-  - To extract the main technology in the text
-  - Uses same vectors as before
-  - Training data is created by manual annotation over technologies in documents
-  - Annotation is limited to some section of the document
-  - Technologies are annotated as "main", "component", "related" or "attribute"
-  - Use logic regression.
+There are two classifiers, one to assign technology and non-technology labels to candidate terms and one to select one of the technologies as themain technology.
+
+### 4.1. Technology classifier
+
+The algorithm is a semi-supervised algorith similar to bootstrapping. A set of seeds is compiled manually and can potentially be expanded after iterations of the algorith on new data. Seeds are collected out of context, that is, we take a term and label it as a technology, non-technology or vague. Seeds are taken from a couple of sources:
+
+- All the seeds (2000+) used in the FUSE code
+- Additional term-level annotation of candidate terms from WIkipedia data
+  - at the moment the 100 most frequent terms from the SensorData mini corpus have been annotated 
+- Technologies as mentioned in Wikipedia article titles
+  - this yielded about 15K technology terms
+
+The main current issue is to expand the number of negative examples (that is, non-technologies. We will deal with this by doing more annotation and by mining WordNet.
+
+With the seeds we can create positive and negative samples for a corpus for which we have feature vectors for all candiate terms (step 3, feature extraction). Those sample can then be used to train a logistic regression algorithm for the actual classification. Experience from the FUSE project indicated that downsampling was needed and that classification of the term should be at the document level. We also suspect that it may be useful to use two classifiers, one using internal features (head of the term, tag signature, suffix) and one using external features (context, dependencies). The former has high precision extraction of technologies, the latter is needed to boost recall. Combing the features in one model tended to drown out the context features.
+
+### 4.2. Selecting the main technology
+
+This classifier runs over all the technologies in a text or just on a subset of technologies that occur early in the document or, if document strcutre is available, in a specific section like the introduction. We will initially use the same vectors as for thetechnology classifier (as with the FUSE project), but if new features appear useful we will add them. 
+
+Training data is created by manual annotation over technologies in context, possibly limited to the first 50 technologies to reduce annotation load. Technologies are annotated using an adapted version of the ACT types as used in FUSE: "main", "component", "task", "related" or "attribute". Again, a logistic regression algorithm will be used.
+
+
 
 
 ## 5. Maturity Score
 
-- Maturity Score
-  - Score between 0 and 1 that indicates maturity level of a technology
-  - Based on textual evidence on whether a technology was used or referred to
-  - Evidence for use is collected from the feature vectors and quantified as a weighted count
-  - Scores are compiled indexed by time.
+The maturity score is a score between 0 and 1 that indicates the maturity level of a technology. A technology is considered more mature when it has been used for some task or as a component. We extract usage counts based on textual evidence on whether a technology was used or referred to. For example, if a technology occurs in the context "we deployed X" then we count that as one piece of evidence that X has been used. Evidence for use is collected from the feature vectors and quantified as a weighted count. The weighted count adjusts for the frequency of a technology terms as well as frequencies of other technology terms and highest maturity score found. Scores are relative to the highest raw score found.
+
+Scores are compiled indexed by time. This means that collecting maturity data from Wikipedia documents is tricky in that we need to know when the text fragment that mentions the use was written. More likely we will use open-source documents like patents to build the time series of matrurity scores for technologies. 
