@@ -26,7 +26,7 @@ Features used for FUSE (theones with check marks havebeen implemented):
 
 Notes:
 
-- section_loc: not done because we have no documenst structure yet
+- section_loc: not done because we have no document structure yet
 
 - prev_V: we use the governor of the term instead
 
