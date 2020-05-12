@@ -269,3 +269,107 @@ class ChunkNode(Node):
         super().__init__(view_id, annotation)
         self.tokens = []
         self.sentence = None
+
+
+
+class GenericGraph(object):
+
+    """Build from term, state and relation tokens from a sentence. Creating the
+    edges from the dependencies between those tokens."""
+
+    def __init__(self, sentence, dep_idx):
+        self.sentence = sentence  # instance of states.Sentence
+        self.nodes = []
+        self.nodes_idx = {}
+        self.edges = []
+        for token in sentence.tokens:
+            node = GenericNode(self, token)
+            self.nodes.append(node)
+            self.nodes_idx[node.id] = node
+        token_ids = [node.id for node in self.nodes]
+        for t1 in token_ids:
+            for t2 in token_ids:
+                if t1 == t2:
+                    continue
+                if (t1, t2) in dep_idx:
+                    label = dep_idx[(t1, t2)]
+                    edge = GenericEdge(self, t1, label, t2)
+                    edge_r = GenericEdge(self, t2, label + '_r', t1)
+                    self.edges.append(edge)
+                    self.edges.append(edge_r)
+
+    def __str__(self):
+        return '<Graph sid=%s nodes=%d edges=%d>' \
+            % (self.sentence.id, len(self.nodes), len(self.edges))
+
+    def get_node(self, node_id):
+        return self.nodes_idx.get(node_id)
+
+    def find_path(self, source_token, target_token):
+        """Return the shortest pathh in the dependency graph between the source and
+        target token."""
+        source_node = self.get_node(source_token.id)
+        target_node = self.get_node(target_token.id)
+        path = self.bfs(source_node, target_node)
+        return path
+
+    def bfs(self, source, target):
+        """Breath-first search of a graph, starting from source and ending when target
+        is found. Used to find the shortest path between source and target."""
+        visited = set(source.id)
+        queue = [(source, [])]
+        while queue:
+            node, path = queue.pop(0)
+            if node.id == target.id:
+                return path
+            for edge in node.edges_out:
+                label = edge.label
+                next_node = edge.target
+                if next_node.id not in visited:
+                    queue.append((next_node, path + [label]))
+                    visited.add(next_node.id)
+        return None
+
+    def pp(self):
+        print(self)
+        for n in self.nodes:
+            n.pp()
+
+
+class GenericNode(object):
+
+    def __init__(self, graph, token):
+        self.id = token.id
+        self.graph = graph
+        self.token = token
+        self.edges_in = []
+        self.edges_out = []
+
+    def __str__(self):
+        return '<Node %s "%s">' % (self.id, self.token.text.replace("\n", '\\n'))
+
+    def pp(self):
+        print('  %s' % self)
+        for edge in self.edges_out:
+            edge.pp()
+
+
+class GenericEdge(object):
+
+    def __init__(self, graph, t1, label, t2):
+        self.weight = 1
+        self.graph = graph
+        self.t1 = t1
+        self.t2 = t2
+        self.label = label
+        self.source = self.graph.get_node(t1)
+        self.target = self.graph.get_node(t2)
+        self.source.edges_out.append(self)
+        self.target.edges_in.append(self)
+
+    def __str__(self):
+        return '<Edge %s %s %s>' % (self.t1, self.label, self.t2)
+
+    def pp(self):
+        if not self.label.endswith('_r'):
+            print('    %s --> %s' % (self.label, self.t2))

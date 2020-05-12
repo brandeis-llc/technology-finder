@@ -1,0 +1,86 @@
+Potential trigger terms indicating state change, extracted manually from wordnet (Peter Anick)
+* S: (v) change (undergo a change; become different in essence; losing one's or its original nature) "She changed completely as she grew older"; "The weather changed last night"
+* S: (v) grow, develop, produce, get, acquire (come to have or undergo a change of (physical features and attributes)) "He grew a beard"; "The patient developed abdominal pains"; "I got funny spots all over my body"; "Well-developed breasts"
+* S: (v) regenerate (undergo regeneration) 
+* S: (v) convert (change in nature, purpose, or function; undergo a chemical change) "The substance converts to an acid"
+* S: (v) mutate (undergo mutation) "cells mutate"
+* S: (v) decrepitate (undergo decrepitation and crackle) "The salt decrepitated"
+* S: (v) alkalinize, alkalinise (become alkaline) 
+* S: (v) change shape, change form, deform (assume a different shape or form) 
+* S: (v) change magnitude (change in size or magnitude) 
+* S: (v) deaden (become lifeless, less lively, intense, or active; lose life, force, or vigor) 
+* S: (v) break (be broken in) "If the new teacher won't break, we'll add some stress"
+* S: (v) decay, crumble, dilapidate (fall into decay or ruin) "The unoccupied house started to decay"
+* S: (v) hydrate (become hydrated and combine with water) 
+* S: (v) dry, dry out (become dry or drier) "The laundry dries in the sun"
+* S: (v) strengthen (gain strength) "His body strengthened"
+* S: (v) distill, distil (undergo the process of distillation) 
+* S: (v) deoxidize, deoxidise, reduce (to remove oxygen from a compound, or cause to react with hydrogen or form a hydride, or to undergo an increase in the number of electrons) 
+* S: (v) crack (break into simpler molecules by means of heat) "The petroleum cracked"
+* S: (v) oxidize, oxidise, oxidate (add oxygen to or combine with oxygen) 
+* S: (v) oxidise, oxidize, oxidate (enter into a combination with oxygen or become converted into an oxide) "This metal oxidizes easily"
+* S: (v) soften (become soft or softer) "The bread will soften if you pour some liquid on it"
+* S: (v) ionize, ionise (become converted into ions) 
+* S: (v) stabilize, stabilise (become stable or more stable) "The economy stabilized"
+* S: (v) destabilize, destabilise (become unstable) "The economy destabilized rapidly"
+* S: (v) lighten, lighten up (become lighter) "The room lightened up"
+* S: (v) discolor, discolour, colour, color (change color, often in an undesired manner) "The shirts discolored"
+* S: (v) discolor (lose color or turn colorless) "The painting discolored"
+* S: (v) darken (become dark or darker) "The sky darkened"
+* S: (v) dim (become dim or lusterless) "the lights dimmed and the curtain rose"
+* S: (v) boil (immerse or be immersed in a boiling liquid, often for cooking purposes) "boil potatoes"; "boil wool"
+* S: (v) crack, check, break (become fractured; break or crack on the surface only) "The glass cracked when it was heated"
+* S: (v) change surface (undergo or cause to undergo a change in the surface) 
+* S: (v) sublime, sublimate (vaporize and then condense right back again) 
+* S: (v) cool, cool off, cool down (lose intensity) "His enthusiasm cooled considerably"
+* S: (v) warm up (become more friendly or open) "She warmed up after we had lunch together"
+* S: (v) warm, warm up (get warm or warmer) "The soup warmed slowly on the stove"
+* S: (v) transform, transmute, metamorphose (change in outward structure or looks) "He transformed into a monster"; "The salesman metamorphosed into an ugly beetle"
+* S: (v) dull (become dull or lusterless in appearance; lose shine or brightness) "the varnished table top dulled with time"
+* S: (v) stiffen (become stiff or stiffer) "He stiffened when he saw his boss enter the room"
+* S: (v) tighten (become tight or tighter) "The rope tightened"
+* S: (v) fail, go bad, give way, die, give out, conk out, go, break, break down (stop operating or functioning) "The engine finally went"; "The car died on the road"; "The bus we travelled in broke down on the way to town"; "The coffee maker broke"; "The engine failed on the way to town"; "her eyesight went after the accident"
+* S: (v) give way, yield (end resistance, as under pressure or force) "The door yielded to repeated blows with a battering ram"
+* S: (v) harden, indurate (become hard or harder) "The wax hardened"
+* S: (v) harden, indurate (make hard or harder) "The cold hardened the butter"
+* S: (v) suffuse (to become overspread as with a fluid, a colour, a gleam of light) "His whole frame suffused with a cold dew"
+* S: (v) reorient (set or arrange in a new or different determinate position) "Orient the house towards the South"
+* S: (v) purify (become clean or pure or free of guilt and sin) "The hippies came to the ashram in order to purify"
+* S: (v) digest (become assimilated into the body) "Protein digests in a few hours"
+* S: (v) decalcify (lose calcium or calcium compounds) 
+* S: (v) decarboxylate (lose a carboxyl group) "the compound decarboxylated"
+* S: (v) acetylate, acetylize, acetylise (receive substitution of an acetyl group) "the compounds acetylated"
+* S: (v) capacitate (cause (spermatozoa) to undergo the physical changes necessary to fertilize an egg) 
+* S: (v) caseate (become cheeselike) "necrotic tissue caseates"
+* S: (v) caseate (turn into cheese) "The milk caseated"
+* S: (v) clinker (turn to clinker or form clinker under excessive heat in burning) 
+* S: (v) cure (be or become preserved) "the apricots cure in the sun"
+* S: (v) salinate (add salt to) "salinated solution"
+* S: (v) desalinate, desalt, desalinize, desalinise (remove salt from) "desalinate water"
+* S: (v) vitrify (undergo vitrification; become glassy or glass-like) 
+* S: (v) vulcanize, vulcanise (undergo vulcanization) "vulcanize rubber"
+* S: (v) saponify (become converted into soap by being hydrolized into an acid and alcohol as a result of being treated with an alkali) "the oil saponified"
+* S: (v) decay (undergo decay or decomposition) "The body started to decay and needed to be cremated"
+* S: (v) hydrolyze, hydrolyse (undergo hydrolysis; decompose by reacting with water) 
+* S: (v) gelatinize, gelatinise (become gelatinous or change into a jelly) "the starch gelatinized when it was heated"
+* S: (v) recombine (undergo genetic recombination) "The DNA can recombine"
+* S: (v) plasticize, plasticise (become plastic, as by having a plasticizer added) 
+* S: (v) incandesce (become incandescent or glow with heat) "an incandescing body"
+* S: (v) calcify (become inflexible and unchanging) "Old folks can calcify"
+* S: (v) isomerize, isomerise (change into an isomer) 
+* S: (v) evaporate, vaporise (change into a vapor) "The water evaporated in front of our eyes"
+* S: (v) keratinize, keratinise (become horny and impregnated with keratin) 
+* S: (v) opacify (become opaque) "the tissue in the eye's cornea may opacify and the patient may go blind"
+* S: (v) sequester (undergo sequestration by forming a stable compound with an ion) "The cations were sequestered"
+* S: (v) transaminate (undergo transfer from one compound to another) "amino groups can transaminate"
+* S: (v) vesiculate (become vesicular or full of air cells) "The organs vesiculated"
+* S: (v) vascularize, vascularise (become vascular and have vessels that circulate fluids) "The egg yolk vascularized"
+* S: (v) shear (become deformed by forces tending to produce a shearing strain) 
+* S: (v) synthesize (combine and form a synthesis) "Vitamin D only synthesizes when sunlight is available" 
+* S: (v) settle (become clear by the sinking of particles) "the liquid gradually settled"
+* S: (v) solarize, solarise (become overexposed) "The film solarized"
+* S: (v) reticulate (form a net or a network) 
+* S: (v) flocculate (form into an aggregated lumpy or fluffy mass) "the protoplasms flocculated"
+* S: (v) carbonate (turn into a carbonate) 
+* S: (v) ice up, frost over, ice over (become covered with a layer of ice; of a surface such as a window) "When the wings iced up, the pilot was forced to land his plane"
+
