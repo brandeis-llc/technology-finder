@@ -60,15 +60,15 @@ There are no technologies in this input file so you can not see that the code al
 $ python3 main.py -i data/input/auger-architectomics.txt -o out2.lif
 ```
 
-The output file will have a non-empty view with technologies. Note that the technology classifier is in a very early incarnation and that its performance is still very poor.
+The output file will have a non-empty view with technologies. Note that the technology classifier is in a very early incarnation and that its performance is still rather poor.
 
-The script can also run on a directory:
+The code can run on either plain text or on files in the LIF format. Any other format would first have to be converted. The ability ro run on text or LIF files is illustrated when you run the script on a directory:
 
 ```bash
 $ python3 main.py -i data/input -o out --limit 2
 ```
 
-In this case the first two document in "data/input" will be processed and the results will be put in the "out" directory, which may not exist already. Without the "--limit" option all files will be processed.
+In this case the first two documents in "data/input" will be processed (one of them is a LIF file) and the results will be put in the "out" directory, which may not exist already. Without the "--limit" option all files will be processed.
 
 
 

@@ -3,24 +3,25 @@
 A simple graph intended to store information from a LIF object and to make
 certain pieces of information needed for the ML features easily accessable. For
 example, it should be easy to find the next three tokens, or the governing
-token, or the part-of-speech or the last word of a term.
+token, or the part-of-speech or the last word of a term. Terms themselves do not
+occur in the graph, but they all point to chunks in the graph.
 
 Characteristics of the graph:
 
-- It contains three kinds of nodes: token nodes, term nodes and sentence nodes.
+- It contains three kinds of nodes: token nodes, chunk nodes and sentence nodes.
 
 - All nodes have unique identifiers and a node can be looked up in an index.
 
 - The token nodes are a linked list, that is, the token points to both the
   previous and the next token.
 
-- Each token node points at a sentence node and potentially at a term node
+- Each token node points at a sentence node and potentially at a chunk node
 
-- Each term node points at a sentence node.
+- Each chunk node points at a sentence node.
 
-- Each sentence node contains a list of token nodes and a list of term nodes
+- Each sentence node contains a list of token nodes and a list of chunk nodes
 
-- Each term node contains a list of token nodes.
+- Each chunk node contains a list of token nodes.
 
 - Each token node contains a link to the governing token (from a dependency
   parse) as well as a list of links to dependents. The links contain both the
@@ -32,17 +33,17 @@ def create_graph(lif_object):
     """Create a graph from a LIF object."""
     pos_view = lif_object.get_view('tokens')
     dep_view = lif_object.get_view('dependencies')
-    term_view = lif_object.get_view('terms')
-    graph = Graph()
-    _add_markables(graph, pos_view, term_view)
+    chunk_view = lif_object.get_view('chunks')
+    graph = Graph(lif_object)
+    _add_markables(graph, pos_view, chunk_view)
     _add_dependencies(graph, dep_view)
     graph.connect()
     return graph
 
 
-def _add_markables(graph, pos_view, term_view):
+def _add_markables(graph, pos_view, chunk_view):
     """Add nodes to the graph from markables in the views (that is, tokens,
-    sentences and terms).""" 
+    sentences and chunks)."""
     for anno in pos_view.annotations:
         if anno.type.endswith('Sentence'):
             node = SentenceNode(pos_view.id, anno)
@@ -50,9 +51,9 @@ def _add_markables(graph, pos_view, term_view):
         elif anno.type.endswith('Token'):
             node = TokenNode(pos_view.id, anno)
             graph.add_token(node)
-    for term in term_view.annotations:
-        term_node = TermNode(term_view.id, term)
-        graph.add_term(term_node)
+    for chunk in chunk_view.annotations:
+        chunk_node = ChunkNode(chunk_view.id, chunk)
+        graph.add_chunk(chunk_node)
 
 
 def _add_dependencies(graph, dep_view):
@@ -72,11 +73,12 @@ def _add_dependencies(graph, dep_view):
 
 class Graph(object):
     
-    def __init__(self):
+    def __init__(self, lif=None):
         # a list for each node category
+        self.lif = lif
         self.sentences = []
         self.tokens = []
-        self.terms = []
+        self.chunks = []
         # and an index for all nodes
         self.nodes_idx = {}
 
@@ -100,8 +102,8 @@ class Graph(object):
         self.sentences.append(node)
         self._add_node(node)
         
-    def add_term(self, node):
-        self.terms.append(node)
+    def add_chunk(self, node):
+        self.chunks.append(node)
         self._add_node(node)
         
     def _add_node(self, node):
@@ -109,43 +111,44 @@ class Graph(object):
 
     def connect(self):
         self._connect_sentences_and_tokens()
-        self._connect_sentences_and_terms()
-        self._connect_terms_and_tokens()
+        self._connect_sentences_and_chunks()
+        self._connect_chunks_and_tokens()
     
     def _connect_sentences_and_tokens(self):
         for sentence_node in self.sentences:
             s = sentence_node.annotation
             for (pos, n) in enumerate(self.tokens_in_range(s.start, s.end)):
-                sentence_node.tokens.append(n) 
+                sentence_node.tokens.append(n)
                 n.sentence = sentence_node
                 n.sentence_position = pos
 
-    def _connect_sentences_and_terms(self):
+    def _connect_sentences_and_chunks(self):
         for sentence_node in self.sentences:
             s = sentence_node.annotation
-            for n in self.terms_in_range(s.start, s.end):
-                sentence_node.terms.append(n) 
+            for n in self.chunks_in_range(s.start, s.end):
+                sentence_node.chunks.append(n)
                 n.sentence = sentence_node
     
-    def _connect_terms_and_tokens(self):
-        for term_node in self.terms:
-            t = term_node.annotation
+    def _connect_chunks_and_tokens(self):
+        for chunk_node in self.chunks:
+            t = chunk_node.annotation
             for (pos, n) in enumerate(self.tokens_in_range(t.start, t.end)):
-                term_node.tokens.append(n)
-                n.term = term_node
-                n.term_position = pos
+                chunk_node.tokens.append(n)
+                n.chunk = chunk_node
+                n.chunk_position = pos
 
     def tokens_in_range(self, p1, p2):
         """Get all tokens such that token.start >= p1 and token.end <= p2."""
         return self.nodes_in_range(self.tokens, p1, p2)
 
-    def terms_in_range(self, p1, p2):
-        """Get all terms such that term.start >= p1 and term.end <= p2."""
-        return self.nodes_in_range(self.terms, p1, p2)
+    def chunks_in_range(self, p1, p2):
+        """Get all chunks such that chunk.start >= p1 and chunk.end <= p2."""
+        return self.nodes_in_range(self.chunks, p1, p2)
 
     def nodes_in_range(self, nodes, p1, p2):
         """Get all nodes such that node.start >= p1 and node.end <= p2."""
         # TODO: this operates at O(n), but could be improved to run at O(logn)
+        # TODO: using binary search (but only if nodes are ordered)
         answer = []
         for node in nodes:
             if node.annotation.end < p1:
@@ -156,10 +159,15 @@ class Graph(object):
                 break
         return answer
 
-    def print_terms(self):
-        for term_node in self.terms:
-            print(term_node.annotation)
-            for token_node in term_node.tokens:
+    def get_head_token(self, annotation):
+        """Given an annotation, return the last token in the annotation."""
+        tokens = self.tokens_in_range(annotation.start, annotation.end)
+        return tokens[-1].annotation if tokens else None
+
+    def print_chunks(self):
+        for chunk_node in self.chunks:
+            print(chunk_node.annotation)
+            for token_node in chunk_node.tokens:
                 print('   ', token_node.annotation)
             print()
 
@@ -168,8 +176,8 @@ class Graph(object):
             print(sent_node.annotation)
             for token_node in sent_node.tokens:
                 print('   ', token_node.annotation)
-            for term_node in sent_node.terms:
-                print('   ', term_node.annotation)
+            for chunk_node in sent_node.chunks:
+                print('   ', chunk_node.annotation)
             print()
 
 
@@ -195,14 +203,14 @@ class TokenNode(Node):
       previous    -  None or a TokenNode
       next        -  None of a TokenNode
       sentence    -  a SentenceNode
-      term        -  None or a TermNode
+      chunk       -  None or a ChunkNode
       governor    -  a <label, TokenNode> pair
       dependents  -  a list of <label, TokenNode> pairs
     
     Other instance variables:
 
       sentence_position  -  the position in the sentence (0-based)
-      term_position      -  the position in the term (0-based)
+      chunk_position     -  the position in the chunk (0-based)
 
     """
     
@@ -212,8 +220,8 @@ class TokenNode(Node):
         self.next = None
         self.sentence = None
         self.sentence_position = None
-        self.term = None
-        self.term_position = None
+        self.chunk = None
+        self.chunk_position = None
         self.governor = None
         self.dependents = []
 
@@ -236,27 +244,27 @@ class SentenceNode(Node):
     Instance variables that implement links in the graph:
 
       tokens   -  a list of token nodes contained in the sentence
-      terms    -  a list of term nodes contained in the sentence
+      chunks   -  a list of chunk nodes contained in the sentence
 
     """
     
     def __init__(self, view_id, annotation):
         super().__init__(view_id, annotation)
         self.tokens = []
-        self.terms = []
+        self.chunks = []
 
 
-class TermNode(Node):
-    
+class ChunkNode(Node):
+
     """Implements a token node in the graph.
     
     Instance variables that implement links in the graph:
 
-      tokens    -  a list of token nodes contained in the term
+      tokens    -  a list of token nodes contained in the chunk
       sentence  -  a SentenceNode
 
     """
-        
+
     def __init__(self, view_id, annotation):
         super().__init__(view_id, annotation)
         self.tokens = []
