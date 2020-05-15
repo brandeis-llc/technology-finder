@@ -2,27 +2,34 @@
 
 Usage:
 
-$ python collect_terms out-all.txt 100
+$ python collect_terms data/saved/relations-all-20200511.txt.gz 100
 
-This takes out-all.txt, which was created by some version of states.py, collects
-all terms found and then prints out the 100 most frequent ones. Results are
-written to terms-0100.txt.
+This takes relations-all-20200511.txt.gz, collects all terms found and then
+prints out the 100 most frequent ones. The input file was created by some old
+untagged version of collect_relations.py on the SensorData corpus. Results are
+written to terms-0100.txt. Note that the resulting file was moved to data/lists
+and then manually annotated by adding '-' markers to terms that were definitely
+of no interest.
 
-You can change the frequence or the input file, but the code expects the input
-file to have lines like
+You can change the minimal frequency or the input file, but the code expects the
+input file to be compressed and have lines like
 
 TERMS   laser light     beam splitter BS        mirrors objective lenses
+
+When you change the minimal frequency then the output file will be named
+slightly differently to reflect that.
 
 """
 
 
 import sys
+import gzip
 import collections
 
 
 def collect_terms(fname):
     all_terms = []
-    for line in open(sys.argv[1]):
+    for line in gzip.open(sys.argv[1], 'rt'):
         if line.startswith('TERMS'):
             terms = line.strip().split('\t')[1:]
             for term in terms:
