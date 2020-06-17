@@ -1,0 +1,28 @@
+Pairs of terms, states and relations
+================================================================================
+
+The file created by collect_relations.py, called out-relations.txt unless it was
+renamed, contains a list of whiteline-separated paragraphs. Each paragraph has
+a sentence for which at least one pair could be found and for each sentence we
+have the following lines:
+
+- One line, starting with FNAME, that contains the file name where the sentence
+  occurs.
+
+  FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+
+- A set of lines starting with one of REL-TRM, REL-STA and TRM-STA, one for each
+  pair found. The prefix is followed by four things: (1) the token identifiers
+  of the head of each element of the pair, (2) the first element of the pair,
+  (3) the second element of the pair, and (4) the dependency chain between the
+  two elements. Only pairs with short dependency chains were added.
+
+  REL-TRM t26-t19	improved	typical value	improved --nsubjpass--> value
+
+- One line with the tokenized sentence, with parts of speech.
+
+- A set of lines each starting with DEP, reflecting the full dependency parse.
+
+- One line with the actual sentence.
+
+The full set has about 33K sentences with pairs.

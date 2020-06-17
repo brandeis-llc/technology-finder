@@ -1,0 +1,6 @@
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	typical value	nm	nm	spherical focal spot	times	less volume	standard confocal microscopy
+STATES	volume
+RELS	improved
+The typical value of – nm can be improved to – nm, which corresponds to an almost spherical focal spot with – times less volume than that of standard confocal microscopy .
+

@@ -25,6 +25,8 @@ terms that it co-occurs with, ranked by frequency of the term:
   4300  field   magnetic electric coil electrons electromagnetic view current electrical ions light
   3589  power   nuclear electric electrical solar high reactive microwave electricity low optical
 
+See ../doc/collect_characterization.txt for a more verbose explanation.
+
 """
 
 import sys
@@ -71,7 +73,8 @@ def read_relations(fname, limit=sys.maxsize):
 
 def print_dictionary(dname, dictionary, minfreq=1):
     keys = sorted(dictionary, key = lambda key: len(dictionary[key]))
-    with open("out-context-%s-nr.txt" % dname, 'w') as fh:
+    with open("out-context-%s-nr.txt" % dname, 'w') as fh, \
+         open("out-context-%s-nr.tab" % dname, 'w') as fh_tab:
         fh.write("\nDICTIONARY %s with %d elements\n\n" % (dname, len(dictionary)))
         for key in reversed(keys):
             val = dictionary[key]
@@ -80,7 +83,9 @@ def print_dictionary(dname, dictionary, minfreq=1):
             valcounter = Counter(val)
             vals = [t for t, c in valcounter.most_common()[:10]]
             fh.write("%4d\t%-18s\t%s\n" % (sum(valcounter.values()), key, ' '.join(vals)))
-    with open("out-context-%s-az.txt" % dname, 'w') as fh:
+            fh_tab.write("%d\t%s\t%s\n" % (sum(valcounter.values()), key, ' '.join(vals)))
+    with open("out-context-%s-az.txt" % dname, 'w') as fh, \
+         open("out-context-%s-az.tab" % dname, 'w') as fh_tab:
         fh.write("\nDICTIONARY %s with %d elements\n\n" % (dname, len(dictionary)))
         for key in sorted(dictionary.keys()):
             val = dictionary[key]
@@ -89,6 +94,7 @@ def print_dictionary(dname, dictionary, minfreq=1):
             valcounter = Counter(val)
             vals = [t for t, c in valcounter.most_common()[:10]]
             fh.write("%4d\t%-18s\t%s\n" % (sum(valcounter.values()), key, ' '.join(vals)))
+            fh_tab.write("%d\t%s\t%s\n" % (sum(valcounter.values()), key, ' '.join(vals)))
 
 
 if __name__ == '__main__':

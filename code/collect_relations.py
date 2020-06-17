@@ -4,7 +4,7 @@ Experiments for getting all terms and roles and relations between them.
 
 $ python collect_relations.py LIMIT?
 
-Takes as input a corpus processed by the main.oy script, the location of the
+Takes as input a corpus processed by the main.py script, the location of the
 corpus is set in CORPUS. The optional LIMIT parameter restricts how many
 documents from the corpus are processed.
 
