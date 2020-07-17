@@ -1,0 +1,144 @@
+A. GENERAL TECHNOLOGY FEATURES
+--------------------------------------------------------------------------------
+
+1. Position
+
+- Location of the in the document
+- Distribution of the term in the document
+- Location in the section
+- Location in the sentence
+
+
+2. Frequencies
+
+- Number of occurrences of the term in the document
+- Maturity score
+	(not a document level feature, maybe not include here)
+
+
+3. Internal Features
+
+- first_word: first word of the term
+- last_word: last word in the term
+- term_length: number of tokens in the term
+- tag_signature: tags of the tokens in the term
+- number of characters in term
+- suffix and prefix
+
+
+4. External features (1) - simple context
+
+- prev_n3: previous three nouns
+- prev_n2: previous two nouns
+- next_n3: next three nouns
+- next_n2: next two nouns
+- prev_V: previous verb
+- prev_VNP: previous verb with object: *[increase the speed] of the [computer]*
+- prev_Npr: first noun_prep to the left of the term, within 4 words
+- prev_Jpr: first adj_prep to the left of chunk, within 4 words
+- prev_J: adjective immediately before the candidate term
+
+
+5. External features (2) - phrase structure and dependencies
+
+- predicate of the term
+- phrase type
+- parse tree path from term to predicate
+- parse tree path to the top
+- voice of the phrase (active versus passive)
+- relative position relative to the predicate (before or after)
+- subcategorization of the predicate
+- dependency path to the root
+- dependency path to the predicate
+
+
+6. Semantic features
+
+- predicate type (verbnet class)
+- wordnet synsets of surrounding nominal
+	need to take some set of synsets for this
+
+
+
+B. Features specifically formulated for the subject technologies
+--------------------------------------------------------------------------------
+
+NOTE: these can often be seen as specific instances of the features above
+
+
+Position
+
+– title, abstract, early in documents
+
+
+Frequencies
+
+- Number of occurrences of the term in the document
+	frequency is high in the document, low frequency in other documents
+	low maturity score
+
+- Maturity score
+
+
+
+Modifiers - Clause
+
+- Differentiation/contrast
+- For example, use of "traditional"
+
+
+Modifiers - Adjective
+
+- Surrounded by positive attributes
+
+	novel, improved, new, faster, more (secure,efficient)
+	low-cost, scalable, unique, recently (published), rapid
+	experimental
+
+	Measure this by extracting adjectives within a certain window 
+	and compare them to a list of positive attributes
+	Or by running the ACT code
+
+- Positive terms a couple of sentences later
+
+	advance, improvement, pave the way, toward, great potential
+
+
+Modifiers - Prepositional phrase
+
+- Telic and formal role are spelled out.
+- See document sent out by James
+- Modifying clause “for”, “based on”, “consists of”
+
+
+Characteristics of names
+
+- More characters than average technical term
+- Derivational morphology, e.g. –scopy, -meter,
+- Inflectional morphology, e.g. "ing"
+	Can be used in nominalized, sortal, or agentive function
+
+
+Substrings of technical term come back later on
+
+- they are qualifications and/or further specify the technology
+- similarly, the term can come back in expanded form, again indicating further qualifications
+
+
+Trigger verbs in left context
+
+- e.g. “device”, “create”, “develop”
+
+
+Specializations of tech in adjectival modifications
+
+
+Function of technical term
+
+- Keyterm classifier classifies term as a task rather than a component
+
+
+Low maturity score
+
+
+Higher likelihood to have spelled out acronym
