@@ -1,6 +1,6 @@
 """lif.py
 
-NOTE: this script was adapted from the tarsqi toolkit (utilities/lif.py).
+NOTE: this script was originally adapted from the tarsqi toolkit (utilities/lif.py).
 
 Interface to the LAPPS Interchance Format and to the LAPPS Data container.
 
@@ -27,7 +27,6 @@ On the command line:
 $ python lif.py --container INFILE OUTFILE
 $ python lif.py --lif INFILE OUTFILE
 
-Example input files are in ../data/in/lif.
 
 """
 
@@ -80,8 +79,8 @@ class LIF(LappsObject):
                 self.views.append(View(json_obj=v))
 
     def __str__(self):
-        view_ids = [view.id for view in self.views]
-        return "<LIF with views {}>".format(':'.join(view_ids))
+        views = [(view.id, len(view.annotations)) for view in self.views]
+        return "<LIF with views {}>".format(' '.join(["%s:%s" % (i, c) for i, c in views]))
 
     def get_view(self, identifier):
         for view in self.views:
@@ -98,57 +97,6 @@ class LIF(LappsObject):
 
     def as_json_string(self):
         return json.dumps(self.as_json(), sort_keys=True, indent=4, separators=(',', ': '))
-
-    def add_tarsqi_view(self, tarsqidoc):
-        view = View()
-        view.id = self._get_new_view_id()
-        view.metadata["contains"] = {
-            "http://vocab.lappsgrid.org/Token": {"producer": "TTK"},
-            "http://vocab.lappsgrid.org/Token#pos": {"producer": "TTK"},
-            "http://vocab.lappsgrid.org/Sentence": {"producer": "TTK"},
-            "http://vocab.lappsgrid.org/Paragraph": {"producer": "TTK"},
-            "http://vocab.lappsgrid.org/NounChunk": {"producer": "TTK"},
-            "http://vocab.lappsgrid.org/VerbChunk": {"producer": "TTK"},
-            "http://vocab.lappsgrid.org/Event": {"producer": "TTK"},
-            "http://vocab.lappsgrid.org/TimeExpression": {"producer": "TTK"},
-            "http://vocab.lappsgrid.org/TemporalRelation": {"producer": "TTK"}}
-        for tag in tarsqidoc.tags.tags:
-            anno = {"id": _get_id(tag), "@type": _get_type(tag),
-                    "start": tag.begin, "end": tag.end, "features": {}}
-            # TODO: the attributes for TemporalRelations need to be turned from
-            # TTK attributes into LIF attributes, thi smay also need ot be done
-            # for events and times
-            for attr, val in tag.attrs.items():
-                anno["features"][attr] = val
-            if anno["@type"] is not None:
-                view.annotations.append(Annotation(anno))
-        self.views.append(view)
-
-    def _get_new_view_id(self):
-        ids = [view.id for view in self.views]
-        for i in xrange(1, sys.maxsize):
-            if "v{}".format(i) not in ids:
-                return "v{}".format(i)
-
-
-def _get_id(tag):
-    identifier = tag.get_identifier()
-    if identifier is not None:
-        return identifier
-    return IdentifierFactory.new_id(tag)
-
-
-TYPE_MAPPINGS = {
-    # for now ignoring Slinks and Alinks
-    'docelement': 'Paragraph', 's': 'Sentence', 'lex': 'Token',
-    'ng': 'NounChunk', 'vg': 'VerbChunk', 'EVENT': 'Event',
-    'TIMEX3': 'TimeExpression', 'TLINK': 'TemporalRelation'}
-
-
-def _get_type(tag):
-    vocab = "http://vocab.lappsgrid.org"
-    type_name = TYPE_MAPPINGS.get(tag.name)
-    return "{}/{}".format(vocab, type_name) if type_name is not None else None
 
 
 class Text(object):
@@ -174,8 +122,9 @@ class View(object):
 
     def __init__(self, id=None, json_obj=None):
         self.id = id
-        self.metadata = {}
+        self.metadata = { "contains": {} }
         self.annotations = []
+        self.annotations_idx = {}
         if json_obj is not None:
             self.id = json_obj['id']
             self.metadata = json_obj['metadata']
@@ -187,6 +136,16 @@ class View(object):
 
     def __str__(self):
         return "<View id={} with {:d} annotations>".format(self.id, len(self.annotations))
+
+    def index(self):
+        """Create an dictionary of all annotations in the view with the annotations
+        indexed on their identifiers."""
+        self.annotations_idx = {}
+        for annotation in self.annotations:
+            self.annotations_idx[annotation.id] = annotation
+
+    def get_annotation(self, anno_id):
+        return self.annotation_dx.get(anno_id)
 
     def as_json(self):
         d = {"id": self.id,
@@ -226,6 +185,9 @@ class Annotation(object):
             return self.text
         return self.features.get('text')
 
+    def get_feature(self, feature):
+        return self.features.get(feature)
+
     def as_json(self):
         d = {"id": self.id, "@type": self.type, "features": self.features}
         if self.start is not None:
@@ -239,11 +201,9 @@ class Annotation(object):
 
 class IdentifierFactory(object):
 
-    identifiers = {'docelement': 0, 's': 0, 'lex': 0, 'ng': 0, 'vg': 0}
-
     @classmethod
     def new_id(cls, tag):
-        cls.identifiers[tag.name] += 1
+        cls.identifiers[tag.name] = cls.identifiers.get(tag.name, 0) + 1
         return "{}{:d}".format(tag.name, cls.identifiers[tag.name])
 
 

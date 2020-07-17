@@ -43,25 +43,30 @@ Notes:
 """
 
 
-def add_term_features(graph, verbose=False):
-    """Pull features from the graph and add them as vectors to the terms. All
-    the nodes in the graphs include an annotation from the LIF object and
-    therefore changing those annotations will also update the LIF object."""
-    for term in graph.terms:
-        if term.tokens[-1].annotation.features['pos'] == 'PRP':
+def add_term_features(graph, lif, verbose=False):
+    """Pull features from the graph and add them as vectors to the terms in the LIF
+    object. Terms are linked to NodeChunks in the graph via the chunk in the
+    node and the chunk feature on the term."""
+    chunk_idx = {}
+    for chunk in graph.chunks:
+        chunk_idx[chunk.annotation.id] = chunk
+    for term in lif.get_view('terms').annotations:
+        chunk = chunk_idx.get(term.features.get("chunk_id"))
+        # TODO: this is code to skip some chunks, should be moved to where we
+        # determine what chunks have terms in them and what there extends are
+        if chunk.tokens[-1].annotation.features['pos'] == 'PRP':
             continue
         if verbose:
-            print(term.annotation)
-            for token in term.tokens:
+            for token in chunk.tokens:
                 print('   ', token.annotation, token.annotation.features)
             print()
-        feats = extract_term_features(graph, term)
+        feats = extract_term_features(graph, chunk)
         atomify_features(feats)
         vector = ' '.join(["%s=%s" % (k, v) for k, v in feats.items()])
-        term.annotation.features['vector'] = vector
+        term.features['vector'] = vector
         if verbose:
-            print(vector)
-            print()
+            print(vector, '\n')
+
 
 def extract_term_features(graph, term):
     head = term.tokens[-1].annotation
@@ -96,6 +101,7 @@ def atomify_features(features):
 def print_features(feats):
     for feat, val in feats.items():
         print("  %s=%s" % (feat, val))
+
 
 def sentence_loc(term):
     return [tok.sentence_position for tok in term.tokens]

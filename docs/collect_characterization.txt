@@ -1,0 +1,50 @@
+Characterizations of the context of terms, states and relations
+================================================================================
+
+Description of the output of ../code/collect_characterization.py
+
+That script takes the output of ../code/collect_relations.py and create files
+that list relations, terms and states and show their contexts following short
+dependency chains. The input is described in collect_relations.txt in this
+directory.
+
+It creates the following files:
+
+  out-context-rel2state-az.txt
+  out-context-rel2state-nr.txt
+  out-context-rel2term-az.txt
+  out-context-rel2term-nr.txt
+  out-context-state2rel-az.txt
+  out-context-state2rel-nr.txt
+  out-context-state2term-az.txt
+  out-context-state2term-nr.txt
+  out-context-term2rel-az.txt
+  out-context-term2rel-nr.txt
+  out-context-term2state-az.txt
+  out-context-term2state-nr.txt
+
+The files contain a header and tab-separated lines, but with extra spaces added
+for readability. In addition, there are 12 pure tab-separated files that are
+harder to read but easier to process or put in a spreadsheet.
+
+Each line has three columns:
+
+	1- frequency of the focus element
+	2- focus element
+	3- context of the focus element
+
+The name of the file tells you what the content is. For example, the third part
+of the name of the first file above is "rel2state", which indicates that the
+file lists each relation (that is, the focus element is a relation) with all the
+states that it occurs in a pair with (that is, the context of the focus elements
+is a list of states).
+
+Here are a few lines from out-context-state2term-nr.txt:
+
+  4860  light   visible laser infrared image ultraviolet beam speed incident polarized surface
+  4839  energy  thermal electrical kinetic high higher electrons photon lower electron enough
+  4300  field   magnetic electric coil electrons electromagnetic view current electrical ions light
+  3589  power   nuclear electric electrical solar high reactive microwave electricity low optical
+
+The third column is ordered on frequency, so "visible" occurs with "light" more
+often than "laser" does.

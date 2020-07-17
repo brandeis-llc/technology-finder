@@ -1,0 +1,64 @@
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	typical value	nm	nm	spherical focal spot	times	less volume	standard confocal microscopy
+STATES	volume
+RELS	improved
+The typical value of – nm can be improved to – nm, which corresponds to an almost spherical focal spot with – times less volume than that of standard confocal microscopy . 
+
+
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	method	molecules	common focal area	objectives	sides	light	i.e. coherent superposition	light	detector
+STATES	molecules	light	coherent	light
+RELS	illuminated	collected
+By this method, molecules residing in the common focal area of both objectives can be illuminated coherently from both sides and the reflected or emitted light can be collected coherently, i.e. coherent superposition of emitted light on the detector is possible.
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	laser light	beam splitter BS	mirrors	objective lenses
+STATES	light
+RELS	divided
+The laser light is divided by a beam splitter BS and directed by mirrors towards the two opposing objective lenses.
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	Excited molecules	position	fluorescence light	objective lenses	same beam splitter	dichroic mirror DM	detector
+STATES	molecules	fluorescence	light
+RELS	collected	deflected
+Excited molecules at this position emit fluorescence light, which is collected by both objective lenses, combined by the same beam splitter and deflected by a dichroic mirror DM onto a detector.
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	superposition	light pathways	place
+STATES	light
+RELS	take
+There superposition of both emitted light pathways can take place again.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	ideal case	objective lens	light	solid angle	Ω
+STATES	light
+RELS	collect
+In the ideal case each objective lens can collect light from a solid angle of Ω =  
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	It	different ways	Pi microscope	type A	coherent superposition	excitation light	resolution
+STATES	coherent	light
+RELS	operated	generate	increased
+It can be operated in three different ways: In a Pi microscope of type A, the coherent superposition of excitation light is used to generate the increased resolution.
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	type C mode	excitation	emission	light	highest possible resolution increase	optical axis	confocal microscopy
+STATES	emission	light	optical
+RELS	operated
+When operated in the type C mode, both excitation and emission light are allowed to interfere, leading to the highest possible resolution increase ~fold along the optical axis as compared to confocal microscopy.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	Pi microscope	appropriate excitation	deexcitation beams	it	nm sized spot	decreased focal volume	confocal microscopy	factor	cells
+STATES	volume	cells
+RELS	create
+Using a Pi microscope with appropriate excitation and deexcitation beams, it was possible to create a uniformly  nm sized spot, which corresponds to a decreased focal volume compared to confocal microscopy by a factor of – in fixed cells.
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	combination	Pi microscopy	RESOLFT	switchable proteins	it	images	living cells	low light levels	isotropic resolutions	nm
+STATES	proteins	cells	light
+RELS	take
+With the combination of Pi microscopy and RESOLFT microscopy with switchable proteins, it is now possible to take images of living cells at low light levels with isotropic resolutions below  nm.

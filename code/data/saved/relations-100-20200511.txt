@@ -1,0 +1,630 @@
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	typical value	nm	nm	spherical focal spot	times	less volume	standard confocal microscopy
+STATES	volume
+RELS	improved
+The typical value of – nm can be improved to – nm, which corresponds to an almost spherical focal spot with – times less volume than that of standard confocal microscopy .
+
+
+
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	method	molecules	common focal area	objectives	sides	light	i.e. coherent superposition	light	detector
+STATES	molecules	light	coherent	light
+RELS	illuminated	collected
+By this method, molecules residing in the common focal area of both objectives can be illuminated coherently from both sides and the reflected or emitted light can be collected coherently, i.e. coherent superposition of emitted light on the detector is possible.
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	laser light	beam splitter BS	mirrors	objective lenses
+STATES	light
+RELS	divided
+The laser light is divided by a beam splitter BS and directed by mirrors towards the two opposing objective lenses.
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	Excited molecules	position	fluorescence light	objective lenses	same beam splitter	dichroic mirror DM	detector
+STATES	molecules	fluorescence	light
+RELS	collected	deflected
+Excited molecules at this position emit fluorescence light, which is collected by both objective lenses, combined by the same beam splitter and deflected by a dichroic mirror DM onto a detector.
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	superposition	light pathways	place
+STATES	light
+RELS	take
+There superposition of both emitted light pathways can take place again.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	ideal case	objective lens	light	solid angle	Ω
+STATES	light
+RELS	collect
+In the ideal case each objective lens can collect light from a solid angle of Ω =  
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	It	different ways	Pi microscope	type A	coherent superposition	excitation light	resolution
+STATES	coherent	light
+RELS	operated	generate	increased
+It can be operated in three different ways: In a Pi microscope of type A, the coherent superposition of excitation light is used to generate the increased resolution.
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	type C mode	excitation	emission	light	highest possible resolution increase	optical axis	confocal microscopy
+STATES	emission	light	optical
+RELS	operated
+When operated in the type C mode, both excitation and emission light are allowed to interfere, leading to the highest possible resolution increase ~fold along the optical axis as compared to confocal microscopy.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	Pi microscope	appropriate excitation	deexcitation beams	it	nm sized spot	decreased focal volume	confocal microscopy	factor	cells
+STATES	volume	cells
+RELS	create
+Using a Pi microscope with appropriate excitation and deexcitation beams, it was possible to create a uniformly  nm sized spot, which corresponds to a decreased focal volume compared to confocal microscopy by a factor of – in fixed cells.
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_microscope.lif.gz
+TERMS	combination	Pi microscopy	RESOLFT	switchable proteins	it	images	living cells	low light levels	isotropic resolutions	nm
+STATES	proteins	cells	light
+RELS	take
+With the combination of Pi microscopy and RESOLFT microscopy with switchable proteins, it is now possible to take images of living cells at low light levels with isotropic resolutions below  nm.
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_STED_microscopy.lif.gz
+TERMS	green excitation pulse	red STEDpulse	focal region	lenses	emission	excited fluorescent molecules	ground state
+STATES	emission	fluorescent	molecules
+RELS	stimulated
+The green excitation pulse is immediately followed by a red STEDpulse, which enters the focal region through both lenses inducing stimulated emission of the excited fluorescent molecules to the ground state .
+
+FNAME	/DATA/ttap/processed/SensorData/4Pi_STED_microscopy.lif.gz
+TERMS	fluorescence emission	center	it	neighbouring regions	it	STED beam	minimum	center
+STATES	fluorescence	emission
+RELS	suppress
+To permit fluorescence emission from the center but suppress it from neighbouring regions it is useful to phase shift the STED beam to have a minimum at the center.
+
+
+FNAME	/DATA/ttap/processed/SensorData/Abbe_refractometer.lif.gz
+TERMS	They	adjustments	effects	dispersion	analog scales	readings
+STATES	analog
+RELS	eliminating	taken
+They also had adjustments for eliminating the effects of dispersion and analog scales from which the readings were taken.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Abbe_refractometer.lif.gz
+TERMS	liquid sample	thin layer	prism	refracting prism
+STATES	liquid
+RELS	illuminating
+In the Abbe refractometer the liquid sample is sandwiched into a thin layer between an illuminating prism and a refracting prism.
+
+FNAME	/DATA/ttap/processed/SensorData/Abbe_refractometer.lif.gz
+TERMS	light source	prism	bottom surface	ground	groundglass joint	point	surface	generating	light rays	directions
+STATES	light	light
+RELS	illuminating	roughened
+A light source is projected through the illuminating prism, the bottom surface of which is ground i.e., roughened like a groundglass joint, so each point on this surface can be thought of as generating light rays traveling in all directions.
+
+FNAME	/DATA/ttap/processed/SensorData/Abbe_refractometer.lif.gz
+TERMS	modern Abbe refractometers	digital display	measurement	need	small graduations
+STATES	digital	measurement
+RELS	eliminating
+Some modern Abbe refractometers use a digital display for measurement, eliminating the need for discerning between small graduations.
+
+FNAME	/DATA/ttap/processed/SensorData/Abbe_refractometer.lif.gz
+TERMS	advanced instruments	today	solidstate	Peltier effect	instrument	sample	need	external water bath
+STATES	heat	water
+RELS	heat	cool	eliminating
+The most advanced instruments of today use solidstate Peltier effect devices to heat and cool the instrument and the sample, eliminating the need for an external water bath.
+
+FNAME	/DATA/ttap/processed/SensorData/Abdominal_ultrasonography.lif.gz
+TERMS	patients	deranged liver function tests	ultrasound	hepatomegaly	reflectiveness	example	bile duct diseases	tumor	liver
+STATES	liver	liver	tumor	liver
+RELS	increased	increased
+In patients with deranged liver function tests, ultrasound may show increased liver size  hepatomegaly , increased reflectiveness which might, for example, indicate cholestasis , gallbladder or bile duct diseases, or a tumor in the liver.
+
+FNAME	/DATA/ttap/processed/SensorData/Abdominal_ultrasonography.lif.gz
+TERMS	Advantages	ultrasound imaging	abdominal structures	procedure	exposure	Xrays	it	pregnant patients	example	techniques	tomography CT scan	abdomen
+STATES	Xrays
+RELS	computed
+Advantages of ultrasound imaging of abdominal structures are that the procedure can be performed quickly, bedside, involves no exposure to Xrays which makes it useful in pregnant patients, for example and is inexpensive compared to other oftenused techniques such as computed tomography CT scan of the abdomen.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorber.lif.gz
+TERMS	Most absorbers	part	particle detector	particle accelerators	absorbers	radiation damage	accelerator components
+STATES	particle	particle
+RELS	reduce
+Most absorbers are used as part of a particle detector , particle accelerators use absorbers to reduce the radiation damage on accelerator components. 
+
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	intensity	absorption	function	frequency	variation	absorption spectrum
+STATES	absorption	frequency	absorption
+RELS	varies
+The intensity of the absorption varies as a function of frequency, and this variation is the absorption spectrum .
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	detection technique	frequency range	purpose	experiment
+STATES	frequency
+RELS	vary
+The source, sample arrangement and detection technique vary significantly depending on the frequency range and the purpose of the experiment.
+
+
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	Rotational lines	instance	rotational state	molecule
+STATES	molecule
+RELS	changed
+Rotational lines , for instance, occur when the rotational state of a molecule is changed.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	width	absorption lines	spectrometer	it
+STATES	absorption
+RELS	record
+The width of absorption lines may be determined by the spectrometer used to record it.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	temperature	pressure	absorbing material	line width
+STATES	temperature	pressure
+RELS	increasing	increase
+Increasing the temperature or pressure of the absorbing material will also tend to increase the line width.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	absorption spectrum	scattering	reflection spectrum
+STATES	absorption
+RELS	derived
+Therefore, the absorption spectrum can be derived from a scattering or reflection spectrum.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	absorptions	absorption spectrum	sample
+STATES	absorption
+RELS	confound
+These absorptions can mask or confound the absorption spectrum of the sample.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	spectroscopy	example	determination	bond lengths	angles	high precision
+STATES	Microwave
+RELS	microwave
+Microwave spectroscopy , for example, allows for the determination of bond lengths and angles with high precision.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	straightforward approach	absorption spectroscopy	radiation	source	reference spectrum	radiation	detector	sample spectrum	material	interest	source	detector
+STATES	absorption
+RELS	generate
+The most straightforward approach to absorption spectroscopy is to generate radiation with a source, measure a reference spectrum of that radiation with a detector and then remeasure the sample spectrum after placing the material of interest in between the source and detector.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	sample spectrum	absorption spectrum	it	experimental conditions	spectrum	source	absorption spectra	other materials	source	detector	wavelength dependent characteristics	detector
+STATES	absorption	absorption	spectra	materials	wavelength
+RELS	affected
+The sample spectrum alone is not sufficient to determine the absorption spectrum because it will be affected by the experimental conditions—the spectrum of the source, the absorption spectra of other materials in between the source and detector and the wavelength dependent characteristics of the detector.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	reference spectrum	same way	experimental conditions	combination	absorption spectrum	material
+STATES	absorption
+RELS	affected	yields
+The reference spectrum will be affected in the same way, though, by these experimental conditions and therefore the combination yields the absorption spectrum of the material alone.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	novel source	broad spectrum radiation	synchrotron radiation	spectral regions
+STATES	spectral
+RELS	developed
+One recently developed, novel source of broad spectrum radiation is synchrotron radiation which covers all of these spectral regions.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	Other radiation sources	narrow spectrum	emission wavelength	spectral range
+STATES	emission	wavelength	spectral
+RELS	generate
+Other radiation sources generate a narrow spectrum but the emission wavelength can be tuned to cover a spectral range.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_spectroscopy.lif.gz
+TERMS	other issues	absorption spectroscopy experiment	optics	radiation	means	sample material
+STATES	absorption	optics	cell
+RELS	setting
+Two other issues that must be considered in setting up an absorption spectroscopy experiment include the optics used to direct the radiation and the means of holding or containing the sample material called a cuvette or cell.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_wavemeter.lif.gz
+TERMS	resonance	unknown frequency	resonant circuit	energy	dip	meter
+STATES	resonance	frequency	circuit	energy
+RELS	adjusted
+When adjusted to resonance with the unknown frequency, the resonant circuit absorbs energy, which is indicated by a dip on the meter.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_wavemeter.lif.gz
+TERMS	Wavemeters	frequency measurements	high accuracy	radio transmitter	correct frequency band	harmonics	output
+STATES	frequency	radio	frequency
+RELS	checking	operating	checking
+Wavemeters are used for frequency measurements that do not require high accuracy, such as checking that a radio transmitter is operating within its correct frequency band, or checking for harmonics in the output.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_wavemeter.lif.gz
+TERMS	Many radio amateurs	them	simple way	output frequency
+STATES	radio	frequency
+RELS	check
+Many radio amateurs keep them as a simple way to check their output frequency.    
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_wavemeter.lif.gz
+TERMS	simple form	device	variable capacitor	coil	terminals
+STATES	coil
+RELS	wired
+The most simple form of the device is a variable capacitor with a coil wired across its terminals.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_wavemeter.lif.gz
+TERMS	terminals	LC circuit	diode	end	diode	LC circuit	terminal	LC circuit	diode
+STATES	circuit	circuit	circuit
+RELS	wired	wired
+Attached to one the terminals of the LC circuit is a diode , then between the end of the diode not wired to the LC circuit and the terminal of the LC circuit not bearing the diode is wired a ceramic decoupling capacitor.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_wavemeter.lif.gz
+TERMS	super high frequencies SHF	resonant λ quarter wave rod	length
+STATES	frequencies
+RELS	vary
+UHF and super high frequencies SHF is a resonant λ quarter wave rod which can vary in length.
+
+FNAME	/DATA/ttap/processed/SensorData/Absorption_wavemeter.lif.gz
+TERMS	design	Xband	GHz	resonant cavity	length
+STATES	cavity
+RELS	changed
+Another design for Xband  GHz is a resonant cavity which can be changed in length.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerated_solvent_extraction.lif.gz
+TERMS	process	high temperature	pressure	extraction	less time	less solvent	better analyte recovery	traditional methods	extreme conditions
+STATES	temperature	pressure	solvent	analyte
+RELS	taking
+The process uses high temperature and pressure, which results in the extraction taking less time and requiring less solvent, and possibly also giving better analyte recovery, than traditional methods that use less extreme conditions.   
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerated_solvent_extraction.lif.gz
+TERMS	elevated temperature	extraction efficiency	analyte	interest	elevated pressure	solvent	liquid state	temperature	boiling point
+STATES	temperature	analyte	pressure	solvent	liquid	temperature
+RELS	increase	increased
+The elevated temperature is employed to increase extraction efficiency of the analyte of interest and the elevated pressure is used to keep the solvent in a liquid state as the temperature is increased above its boiling point  .
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	Accelerator mass spectrometry	AMS	other forms	mass spectrometry	it	ions	high kinetic energies	mass analysis
+STATES	mass	mass	ions	mass
+RELS	accelerates
+ Accelerator mass spectrometry  AMS  differs from other forms of mass spectrometry in that it accelerates ions to extraordinarily high kinetic energies before mass analysis.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	method	molecular isobars	many cases	atomic isobars
+STATES	atomic
+RELS	suppresses
+The method suppresses molecular isobars completely and in many cases can separate atomic isobars
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	negative ions	ion source
+STATES	ions	atoms
+RELS	created	ionized
+Generally, negative ions are created atoms are ionized  in an ion source .
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	fortunate cases	suppression	unwanted isobar	negative ions	case	C measurements
+STATES	ions
+RELS	form
+In fortunate cases this already allows the suppression of an unwanted isobar, which does not form negative ions as  N in the case of  C measurements.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	large nuclear particle accelerator	principle	Tandem van de Graaff Accelerator
+STATES	nuclear	particle
+RELS	operating
+This is a large nuclear particle accelerator based on the principle of a Tandem van de Graaff Accelerator operating at .
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	volts	stages	tandem	particles
+STATES	particles
+RELS	operating	accelerate
+to many million volts with two stages operating in tandem to accelerate the particles.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	connecting point	stages	ions	charge	thin layer	gas	thin carbon foil
+STATES	ions	charge	carbon
+RELS	change	stripping
+At the connecting point between the two stages, the ions change charge from negative to positive by passing through a thin layer of matter stripping, either gas or a thin carbon foil.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	Molecules	stage
+STATES	Molecules
+RELS	break	stripping
+Molecules will break apart in this stripping stage.   
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	impact	ions electrons	it	ion
+STATES	ions	electrons
+RELS	strips	converting
+Additionally, the impact strips off several of the ions electrons, converting it into a positively charged ion.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	second half	accelerator	ion	positive centre	electrostatic accelerator	negative ion
+STATES	electrostatic
+RELS	accelerated
+In the second half of the accelerator, the now positively charged ion is accelerated away from the highly positive centre of the electrostatic accelerator which previously attracted the negative ion.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	ions	accelerator	they	several percent	speed	light
+STATES	ions	light
+RELS	leave	moving
+When the ions leave the accelerator they are positively charged and are moving at several percent of the speed of light.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	stage	background	stable atomic isobar	negative ions	S	Cl	setup
+STATES	atomic	ions
+RELS	left	forming	suppressed
+After this stage, no background is left, unless a stable atomic isobar forming negative ions exists e.g.  S if measuring  Cl, which is not suppressed at all by the setup described so far.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	other ways	AMS	they	mass selectivity	specificity	high kinetic energies	molecule destruction	singleion counting
+STATES	mass	molecule
+RELS	work	improving	creating	stripping
+There are other ways in which AMS is achieved; however, they all work based on improving mass selectivity and specificity by creating high kinetic energies before molecule destruction by stripping, followed by singleion counting.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	early work	Richard A. Muller	Lawrence Berkeley Laboratory	modern accelerators	radioactive particles	energy	background interferences	particle identification techniques
+STATES	radioactive	particles	energy	particle
+RELS	inspired	accelerate
+In , inspired by this early work, Richard A. Muller at the Lawrence Berkeley Laboratory recognised that modern accelerators could accelerate radioactive particles to an energy where the background interferences could be separated using particle identification techniques.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	He	seminal paper	Science	accelerators cyclotrons	linear	detection	tritium	C	several other isotopes	scientific interest	Be	he	first successful radioisotope date	tritium	H
+STATES	paper
+RELS	published
+He published the seminal paper in Science  showing how accelerators cyclotrons and linear could be used for detection of tritium , radiocarbon   C , and several other isotopes of scientific interest including  Be ; he also reported the first successful radioisotope date experimentally obtained using tritium   H .
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerator_mass_spectrometry.lif.gz
+TERMS	AMS	concentration	C	archaeologists
+STATES	concentration
+RELS	dating
+AMS is most often employed to determine the concentration of  C , e.g. by archaeologists for radiocarbon dating .
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerograph.lif.gz
+TERMS	They	selfcontained box	film recorder	analogue instrument	they	digital media	data	Internet
+STATES	paper	film	digital	data
+RELS	constructed	record
+They are usually constructed as a selfcontained box, which previously included a paper or film recorder  an analogue instrument but now they often record directly on digital media and then the data is transmitted via the Internet . 
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerograph.lif.gz
+TERMS	Accelerographs	acceleration	ground	respect	time
+STATES	acceleration
+RELS	record
+Accelerographs record the acceleration of the ground with respect to time.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerograph.lif.gz
+TERMS	response spectrum	earthquake	structures	different natural frequencies	periods
+STATES	frequencies
+RELS	computed	affect
+Often a response spectrum is computed to show how the earthquake would affect structures of different natural frequencies or periods.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerograph.lif.gz
+TERMS	example	accelerograph array	knowledge	nearsource earthquake	earthquake rupture propagation	Parkfield Experiment	massive set	strong motion instrumentation
+STATES	propagation
+RELS	improve	shaking
+An example of an accelerograph array that was established to improve knowledge of nearsource earthquake shaking as well as earthquake rupture propagation is the Parkfield Experiment, which involved a massive set of strong motion instrumentation. 
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerograph.lif.gz
+TERMS	level	acceleration	recording process
+STATES	acceleration
+RELS	set
+That means a level of acceleration must be set which starts the recording process.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerograph.lif.gz
+TERMS	Many trips	accelerometers	large earthquake	memory	extraneous noise	instrument
+STATES	noise
+RELS	filled
+Many trips have been made to accelerometers after a large earthquake, only to find that the memory was filled with extraneous noise, or the instrument was malfunctioning.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	multiaxis models	accelerometer	magnitude	direction	proper acceleration	vector quantity	orientation	direction	weight changes	acceleration	vibration	shock	resistive medium	case	it
+STATES	acceleration	vector	acceleration	acceleration
+RELS	falling	increases
+Single and multiaxis models of accelerometer are available to detect magnitude and direction of the proper acceleration, as a vector quantity, and can be used to sense orientation because direction of weight changes, coordinate acceleration, vibration, shock , and falling in a resistive medium a case where the proper acceleration changes, since it starts at zero, then increases.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	gravitational field	example	ground reaction force	equivalent upward thrust	reference frame	accelerometer	own casing	respect	freefalling reference frame
+STATES	field
+RELS	accelerates
+When held fixed in a gravitational field by, for example, applying a ground reaction force or an equivalent upward thrust, the reference frame for an accelerometer its own casing accelerates upwards with respect to a freefalling reference frame.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	effects	acceleration	other acceleration	instrument	accelerometer	difference	rocket	launch pad	same rocket	deep space	it	engines	g.	similar reasons	accelerometer	type	free fall
+STATES	acceleration	acceleration	space
+RELS	accelerate
+The effects of this acceleration are indistinguishable from any other acceleration experienced by the instrument, so that an accelerometer cannot detect the difference between sitting in a rocket on the launch pad, and being in the same rocket in deep space while it uses its engines to accelerate at  g. For similar reasons, an accelerometer will read zero during any type of free fall .
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	nonfree fall	air resistance	drag forces	acceleration	constant terminal velocity
+STATES	air	resistance	forces	acceleration
+RELS	produces	reduce
+However this does not include a nonfree fall in which air resistance produces drag forces that reduce the acceleration, until constant terminal velocity is reached.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	accelerometer	acceleration	mass	point	spring	mass	same rate	casing
+STATES	acceleration	mass	mass
+RELS	accelerate
+When the accelerometer experiences an acceleration, the mass is displaced to the point that the spring is able to accelerate the mass at the same rate as the casing.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	commercial devices	capacitive components	mechanical motion	electrical signal
+STATES	piezoelectric	mechanical	electrical	signal
+RELS	convert
+In commercial devices, piezoelectric , piezoresistive and capacitive components are commonly used to convert the mechanical motion into an electrical signal.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	performance	low frequency range	they	servo mode	high stability	linearity
+STATES	frequency
+RELS	operated
+Their performance is superior in the low frequency range and they can be operated in servo mode to achieve high stability and linearity.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	type	accelerometer	small heater	bottom	small dome	air	dome	it
+STATES	air
+RELS	heats
+Another, far less common, type of MEMSbased accelerometer contains a small heater at the bottom of a very small dome, which heats the air inside the dome to cause it to rise.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	device	amplifier	signal
+STATES	signal
+RELS	connected	amplify
+This device can be connected to an amplifier to amplify the signal.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	Accelerometer vibration data	user	machines	faults	equipment
+STATES	data
+RELS	rotating	fails
+Accelerometer vibration data allows the user to monitor machines and detect these faults before the rotating equipment fails completely.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	last several years	several companies	sports watches	runners	footpods	accelerometers	speed	distance	runner	unit
+STATES	distance
+RELS	produced	wearing
+Within the last several years, several companies have produced and marketed sports watches for runners that include footpods , containing accelerometers to help determine the speed and distance for the runner wearing the unit.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	freefall sensor	FFS	accelerometer	system
+STATES	sensor
+RELS	dropped	falling
+A freefall sensor FFS is an accelerometer used to detect if a system has been dropped and is falling.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	device	consumer electronic products	variety	manufacturers
+STATES	electronic
+RELS	produced
+This device is included in the many common computer and consumer electronic products that are produced by a variety of manufacturers.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	ACN systems	crashstrength accelerations
+STATES	activated
+RELS	activated
+ACN systems are activated by detecting crashstrength accelerations.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	stability control computer	individual wheels	andor	engine power	difference	driver input	vehicles actual movement
+STATES	power
+RELS	reduce	minimize
+The stability control computer can selectively brake individual wheels andor reduce engine power to minimize the difference between driver input and the vehicles actual movement.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	pedometers	accelerometer	number	steps	mechanical sensor
+STATES	distance	mechanical	sensor
+RELS	taken
+Some pedometers use an accelerometer to more accurately measure the number of steps taken and distance traveled than a mechanical sensor can provide.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	January	new mobile phones	digital cameras	tilt sensor	accelerometer	purpose	auto image rotation	motionsensitive minigames	shake	photographs
+STATES	digital	sensor
+RELS	correct	taking
+As of January , almost all new mobile phones and digital cameras contain at least a tilt sensor and sometimes an accelerometer for the purpose of auto image rotation, motionsensitive minigames, and to correct shake when taking photographs.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	Camcorders	accelerometers	image stabilization	optical elements	light path	sensor	unintended motions	image	detected motion
+STATES	optical	light	sensor
+RELS	moving	adjust	smooth
+Camcorders use accelerometers for image stabilization , either by moving optical elements to adjust the light path to the sensor to cancel out unintended motions or digitally shifting the image to smooth out detected motion.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	digital cameras	accelerometers	orientation	photo	current picture
+STATES	digital
+RELS	taken	rotating
+Some digital cameras contain accelerometers to determine the orientation of the photo being taken and also for rotating the current picture when viewing.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	drop	heads	hard disk	data loss	possible head	disk damage	shock
+STATES	data
+RELS	avoid
+If a drop is detected, the heads of the hard disk are parked to avoid data loss and possible head or disk damage by the ensuing shock .
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometer.lif.gz
+TERMS	gravimeter	integral vibration isolation	signal processing
+STATES	signal
+RELS	counteracted
+This is counteracted in the gravimeter by integral vibration isolation and signal processing .
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	multiaxis models	accelerometer	magnitude	direction	proper acceleration	vector quantity	orientation	direction	weight changes	acceleration	vibration	shock	resistive medium	case	it
+STATES	acceleration	vector	acceleration	acceleration
+RELS	falling	increases
+Single and multiaxis models of accelerometer are available to detect magnitude and direction of the proper acceleration, as a vector quantity, and can be used to sense orientation because direction of weight changes, coordinate acceleration, vibration, shock , and falling in a resistive medium a case where the proper acceleration changes, since it starts at zero, then increases.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	gravitational field	example	ground reaction force	equivalent upward thrust	reference frame	accelerometer	own casing	respect	freefalling reference frame
+STATES	field
+RELS	accelerates
+When held fixed in a gravitational field by, for example, applying a ground reaction force or an equivalent upward thrust, the reference frame for an accelerometer its own casing accelerates upwards with respect to a freefalling reference frame.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	effects	acceleration	other acceleration	instrument	accelerometer	difference	rocket	launch pad	same rocket	deep space	it	engines	g.	similar reasons	accelerometer	type	free fall
+STATES	acceleration	acceleration	space
+RELS	accelerate
+The effects of this acceleration are indistinguishable from any other acceleration experienced by the instrument, so that an accelerometer cannot detect the difference between sitting in a rocket on the launch pad, and being in the same rocket in deep space while it uses its engines to accelerate at  g. For similar reasons, an accelerometer will read zero during any type of free fall .
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	nonfree fall	air resistance	drag forces	acceleration	constant terminal velocity
+STATES	air	resistance	forces	acceleration
+RELS	produces	reduce
+However this does not include a nonfree fall in which air resistance produces drag forces that reduce the acceleration, until constant terminal velocity is reached.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	accelerometer	acceleration	mass	point	spring	mass	same rate	casing
+STATES	acceleration	mass	mass
+RELS	accelerate
+When the accelerometer experiences an acceleration, the mass is displaced to the point that the spring is able to accelerate the mass at the same rate as the casing.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	commercial devices	capacitive components	mechanical motion	electrical signal
+STATES	piezoelectric	mechanical	electrical	signal
+RELS	convert
+In commercial devices, piezoelectric , piezoresistive and capacitive components are commonly used to convert the mechanical motion into an electrical signal.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	performance	low frequency range	they	servo mode	high stability	linearity
+STATES	frequency
+RELS	operated
+Their performance is superior in the low frequency range and they can be operated in servo mode to achieve high stability and linearity.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	type	accelerometer	small heater	bottom	small dome	air	dome	it
+STATES	air
+RELS	heats
+Another, far less common, type of MEMSbased accelerometer contains a small heater at the bottom of a very small dome, which heats the air inside the dome to cause it to rise.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	device	amplifier	signal
+STATES	signal
+RELS	connected	amplify
+This device can be connected to an amplifier to amplify the signal.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	Accelerometer vibration data	user	machines	faults	equipment
+STATES	data
+RELS	rotating	fails
+Accelerometer vibration data allows the user to monitor machines and detect these faults before the rotating equipment fails completely.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	last several years	several companies	sports watches	runners	footpods	accelerometers	speed	distance	runner	unit
+STATES	distance
+RELS	produced	wearing
+Within the last several years, several companies have produced and marketed sports watches for runners that include footpods , containing accelerometers to help determine the speed and distance for the runner wearing the unit.
+ 
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	freefall sensor	FFS	accelerometer	system
+STATES	sensor
+RELS	dropped	falling
+A freefall sensor FFS is an accelerometer used to detect if a system has been dropped and is falling.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	device	consumer electronic products	variety	manufacturers
+STATES	electronic
+RELS	produced
+This device is included in the many common computer and consumer electronic products that are produced by a variety of manufacturers.
+
+FNAME	/DATA/ttap/processed/SensorData/Accelerometers.lif.gz
+TERMS	ACN systems	crashstrength accelerations
+STATES	activated
+RELS	activated
+ACN systems are activated by detecting crashstrength accelerations.

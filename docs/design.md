@@ -346,7 +346,7 @@ The full pattern has exceptions listed for the initial tokens and instead of NN 
 [JJ, [en_jj_vb_noise]]
 ```
 
-The embedded list contains a list of exceptions or a file with exceptions. The first line would match an NN as long as the word is not ‘fig’ or ‘figure’. The second line matches an adjective, but uses stop list with a few hundred adjectives.
+The embedded list contains a list of exceptions or a file with exceptions. The first line would match an NN as long as the word is not ‘fig’ or ‘figure’. The second line matches an adjective, but uses a stop list with a few hundred adjectives.
 
 The main challenge for the code that selects candidate terms is to write a pattern matcher that allows for the exceptions. This matcher is used by the extract_candidate_terms() method below.
 
@@ -464,11 +464,13 @@ Most complexity lies in the add_features() code which creates a graph from the L
 
 <img src="images/jane-sleeps.png" width="500"/>
 
-There are three kinds of nodes: token nodes, term nodes and sentence nodes. The term nodes form a linked list in the graph (edges indicated by solid arrows). Token nodes are connected to the terms and sentences that they occur in (dashed arrows), similarly terms and sentences are connected to the tokens they contain, and terms are linked to the sentence they occur in and vice versa. Finally, dependency relations are expressed between the token nodes (dotted arrows). Each token node is associated with a feature structure with information like the part of speech that was derived during NLP analysis.
+There are three kinds of nodes: token nodes, term nodes and sentence nodes. The token nodes form a linked list in the graph (edges indicated by solid arrows). Token nodes are connected to the terms and sentences that they occur in (dashed arrows), similarly terms and sentences are connected to the tokens they contain, and terms are linked to the sentence they occur in and vice versa. Finally, dependency relations are expressed between the token nodes (dotted arrows). Each token node is associated with a feature structure with information like the part of speech that was derived during NLP analysis.
+
+
 
 ## 4. Classification
 
-There are two classifiers, one to assign technology and non-technology labels to candidate terms and one to select one of the technologies as themain technology.
+There are two classifiers, one to assign technology and non-technology labels to candidate terms and one to select one of the technologies as the main technology.
 
 ### 4.1. Technology classifier
 
