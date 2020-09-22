@@ -27,6 +27,9 @@ terms that it co-occurs with, ranked by frequency of the term:
 
 See ../doc/collect_characterization.txt for a more verbose explanation.
 
+In addition to the above 12 text files it also creates 12 tab files with the
+same information but slightly easier to read by a script.
+
 """
 
 import sys

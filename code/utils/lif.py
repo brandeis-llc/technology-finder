@@ -175,8 +175,8 @@ class Annotation(object):
     def __str__(self):
         text = self.get_text()
         text = '' if text is None else text.replace("\n", "\\n")
-        return "<{} {} {}-{} '{}'>".format(os.path.basename(self.type), self.id,
-                                           self.start, self.end, text)
+        return "<Annotation type={} id={} {}-{} '{}'>".format(
+            os.path.basename(self.type), self.id, self.start, self.end, text)
 
     def get_text(self):
         """Return the text string from the text instance variable or the text feature,

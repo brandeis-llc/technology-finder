@@ -110,7 +110,7 @@ The files "out.file.feats" and "out.file.lbl" will have the same amount of lines
 
 One disadvantage of the LIF format is that it takes a lot of space. For example, the example file "auger-architectomics.txt" is only about 300 bytes, but the result after processing is about 50K, more than a hundred times larger.
 
-Files are not compressed when written to disk, but can be compressed manually afterwards. When the classifier needs to read the files in a directory it will recognize that a file was compressed (it checks for a .gz extension) and it can read the file. compressed or not.
+Files are not compressed when written to disk, but can be compressed manually afterwards. When the classifier needs to read the files in a directory it will recognize that a file was compressed (it checks for a .gz extension) and it can read the file whether it is compressed or not.
 
 ### Building classifier models
 

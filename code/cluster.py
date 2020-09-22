@@ -1,9 +1,12 @@
 """cluster.py
 
 This clustering script is meant to run on one of the files where a term, state
-or relations is mapped with its restricted context from one of the other three
-types. Examples are in data/saved, for example, out-context-rel2state-nr.txt can
-be used to cluster relations on the states they occur with.
+or relation is mapped with its restricted context from one of the other three
+types.
+
+That input is assumed to be created by collect_characterization.py. Examples are
+in data/saved, for example, out-context-rel2state-nr.txt can be used to cluster
+relations on the states they occur with.
 
 """
 
