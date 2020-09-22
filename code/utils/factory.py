@@ -90,7 +90,7 @@ class AnnotationFactory(object):
                          "chunk_offsets": "%s:%s" % (noun_chunk.start, noun_chunk.end),
                          "chunk_first": token_ids[0],
                          "chunk_last": token_ids[-1]}
-        anno.text = noun_chunk.text
+        anno.text = text
         return anno
 
     @classmethod

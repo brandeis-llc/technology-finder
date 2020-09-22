@@ -8,7 +8,7 @@ $ python main.py -i INPUT -o OUTPUT
 
 Takes the INPUT file or directory and creates OUTPUT. If INPUT is a directory
 than an OUTPUT directory will be created and for each source file in INPUT a new
-output file in OUTPUT will be created. The -i and -o options are both options,
+output file in OUTPUT will be created. The -i and -o options are both optional,
 standard input and/or standard output are used.
 
 Four other options are available:
@@ -37,7 +37,7 @@ import spacy
 from classify import Classifier
 from utils import exists, isdir, isfile, logger
 from utils.lif import LIF, View
-from utils.graph import create_graph
+from utils.graph import DocumentGraph
 from utils.features import add_term_features
 from utils.factory import AnnotationFactory
 from utils.matcher import match

@@ -40,10 +40,10 @@ def _match_pattern(tokens, pattern):
     # into finding the last token that matches
     matches = []
     result = _match_element(tokens[-1], pattern[-1], len(tokens) - 1)
-    if result is None:
-        return []
-    else:
+    if result is True:
         matches.append(len(tokens) - 1)
+    else:
+        return []
 
     # consume elements before the last token, going right to left, compare to
     # first element of pattern
@@ -72,7 +72,7 @@ def _match_disjunction(token_pos, disjunction, i):
     else:
         pos = disjunction
         exceptions = set()
-    result = token_pos[1] == pos and token_pos[1] not in exceptions
+    result = token_pos[1] == pos and token_pos[0] not in exceptions
     _debug('    %s %s %s' % (token_pos[1], pos, result))
     return result
 
