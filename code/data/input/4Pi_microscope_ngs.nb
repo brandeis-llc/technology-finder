@@ -1,0 +1,420 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16369,        412]
+NotebookOptionsPosition[     14649,        377]
+NotebookOutlinePosition[     15062,        393]
+CellTagsIndexPosition[     15019,        390]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Position of Nounchunks ", "Section",
+ CellChangeTimes->{{3.8090909897602987`*^9, 
+  3.809091008710984*^9}},ExpressionUUID->"a973f74e-65d2-4386-9bbf-\
+ed13d63b04c5"],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{"Import", " ", "text", " ", "file"}], " ", "*)"}]], "Input",Expressi\
+onUUID->"5d5916c9-db25-411e-9d93-980dd9bf2f6c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "path", " ", "=", " ", 
+    "\"\<C:\\\\Users\\\\mualp\\\\Desktop\\\\SensorData\\\\4Pi_microscope.txt\>\
+\""}], ";"}], " "}]], "Input",
+ CellChangeTimes->{{3.8090911474328732`*^9, 3.809091155825509*^9}, {
+   3.8092743425153356`*^9, 3.8092743489028783`*^9}, 3.8092744516962094`*^9},
+ CellLabel->"In[36]:=",ExpressionUUID->"cd4105a3-3aa3-41f8-bc6d-5c3da7906c0e"],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+  "Function", " ", "to", " ", "get", " ", "all", " ", "nounchunks", " ", 
+   "from", " ", "a", " ", "textfile"}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.8092744601861362`*^9, 
+  3.809274462559866*^9}},ExpressionUUID->"7a426f56-7916-4639-82ec-\
+a9c92b1ffd10"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NounChunks", "[", "path_", "]"}], ":=", " ", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "noise1", ",", "noise2", ",", "chunkpositions", ",", "nounchunks"}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"noise1", " ", "=", " ", 
+      RowBox[{"Join", "[", 
+       RowBox[{
+        RowBox[{"WordList", "[", 
+         RowBox[{"\"\<Determiner\>\"", ",", 
+          RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], ",", 
+        RowBox[{"WordList", "[", 
+         RowBox[{"\"\<Conjunction\>\"", ",", 
+          RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], ",", 
+        RowBox[{"WordList", "[", 
+         RowBox[{"\"\<Pronoun\>\"", ",", 
+          RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], ",", 
+        RowBox[{"WordList", "[", 
+         RowBox[{"\"\<Preposition\>\"", ",", 
+          RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], ",", 
+        RowBox[{"WordList", "[", 
+         RowBox[{"\"\<Stopwords\>\"", ",", 
+          RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], ",", 
+        "noisestring", ",", 
+        RowBox[{"Capitalize", "[", 
+         RowBox[{"WordList", "[", 
+          RowBox[{"\"\<Determiner\>\"", ",", 
+           RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], "]"}], 
+        ",", 
+        RowBox[{"Capitalize", "[", 
+         RowBox[{"WordList", "[", 
+          RowBox[{"\"\<Conjunction\>\"", ",", 
+           RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], "]"}], 
+        ",", 
+        RowBox[{"Capitalize", "[", 
+         RowBox[{"WordList", "[", 
+          RowBox[{"\"\<Pronoun\>\"", ",", 
+           RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], "]"}], 
+        ",", 
+        RowBox[{"Capitalize", "[", 
+         RowBox[{"WordList", "[", 
+          RowBox[{"\"\<Preposition\>\"", ",", 
+           RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], "]"}], 
+        ",", 
+        RowBox[{"Capitalize", "[", "noisestring", "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"noise2", " ", "=", " ", 
+      RowBox[{"Join", "[", 
+       RowBox[{
+        RowBox[{"TextCases", "[", 
+         RowBox[{
+          RowBox[{"Import", "[", "path", "]"}], ",", "\"\<Noun\>\""}], "]"}], 
+        ",", 
+        RowBox[{"WordList", "[", 
+         RowBox[{"\"\<Noun\>\"", ",", 
+          RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], ",", 
+        RowBox[{"WordList", "[", 
+         RowBox[{"\"\<Verb\>\"", ",", 
+          RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], ",", 
+        RowBox[{"WordList", "[", 
+         RowBox[{"\"\<Pronoun\>\"", ",", 
+          RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], ",", 
+        RowBox[{"Capitalize", "[", 
+         RowBox[{"WordList", "[", 
+          RowBox[{"\"\<Noun\>\"", ",", 
+           RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], "]"}], 
+        ",", 
+        RowBox[{"Capitalize", "[", 
+         RowBox[{"WordList", "[", 
+          RowBox[{"\"\<Verb\>\"", ",", 
+           RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], "]"}], 
+        ",", 
+        RowBox[{"Capitalize", "[", 
+         RowBox[{"WordList", "[", 
+          RowBox[{"\"\<Pronoun\>\"", ",", 
+           RowBox[{"IncludeInflections", "\[Rule]", "True"}]}], "]"}], 
+         "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"chunkpositions", " ", "=", " ", 
+      RowBox[{"DeleteDuplicates", "[", 
+       RowBox[{
+        RowBox[{"Sort", "[", 
+         RowBox[{"DeleteDuplicates", "[", 
+          RowBox[{"Flatten", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"StringPosition", "[", 
+                RowBox[{
+                 RowBox[{"Import", "[", "path", "]"}], ",", "#", ",", 
+                 RowBox[{"Overlaps", "\[Rule]", "False"}]}], "]"}], "&"}], "/@", 
+              RowBox[{"TextCases", "[", 
+               RowBox[{
+                RowBox[{"StringRiffle", "[", 
+                 RowBox[{"DeleteCases", "[", 
+                  RowBox[{
+                   RowBox[{"ReadList", "[", 
+                    RowBox[{"path", ",", "Word"}], "]"}], ",", 
+                   RowBox[{"Alternatives", "@@", "noise1"}]}], "]"}], "]"}], 
+                ",", "\"\<NounPhrase\>\""}], "]"}]}], "-", "1"}], ",", "1"}], 
+           "]"}], "]"}], "]"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#1", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", 
+          RowBox[{"#2", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "&"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"nounchunks", " ", "=", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"StringTake", "[", 
+         RowBox[{
+          RowBox[{"Import", "[", "path", "]"}], ",", 
+          RowBox[{"#", "+", "1"}]}], "]"}], "&"}], "/@", "chunkpositions"}]}],
+      ";", "\[IndentingNewLine]", 
+     RowBox[{"DeleteCases", "[", 
+      RowBox[{"nounchunks", ",", 
+       RowBox[{"Alternatives", "@@", "noise2"}]}], "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8090911240156155`*^9, 3.8090911453863273`*^9}, {
+   3.809274323642991*^9, 3.8092743574057665`*^9}, 3.8092744439716845`*^9},
+ CellLabel->"In[37]:=",ExpressionUUID->"b936d6fc-0811-433a-a144-3492f63fe4df"],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{"Get", " ", "nounchunks"}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.8092744853394213`*^9, 
+  3.809274500362814*^9}},ExpressionUUID->"5e59a4ab-2e9a-4a3d-be9e-\
+4056b51f33f7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NounChunks", "[", "path", "]"}]], "Input",
+ CellLabel->"In[38]:=",ExpressionUUID->"0eda6705-21e9-4302-805b-1624616e9ce5"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"fluorescence microscope\"\>", ",", "\<\"axial resolution\"\>", 
+   ",", "\<\"confocal microscopy\"\>", ",", "\<\"objective lenses\"\>", 
+   ",", "\<\"geometrical location\"\>", ",", "\<\"objective lenses\"\>", 
+   ",", "\<\"emitted light\"\>", ",", "\<\"coherent superposition\"\>", 
+   ",", "\<\"emitted light\"\>", ",", "\<\"ideal case\"\>", 
+   ",", "\<\"laser light\"\>", ",", "\<\"objective lenses\"\>", 
+   ",", "\<\"focal point superposition\"\>", ",", "\<\"light beams\"\>", 
+   ",", "\<\"Excited molecules\"\>", ",", "\<\"position emit\"\>", 
+   ",", "\<\"objective lenses\"\>", ",", "\<\"emitted light\"\>", 
+   ",", "\<\"ideal case\"\>", ",", "\<\"coherent superposition\"\>", 
+   ",", "\<\"increased resolution\"\>", ",", "\<\"coherent superposition\"\>",
+    ",", "\<\"optical axis\"\>", ",", "\<\"confocal microscopy\"\>", 
+   ",", "\<\"real Pi microscope light\"\>", 
+   ",", "\<\"twophoton excitation microscopy\"\>", 
+   ",", "\<\"field information\"\>", 
+   ",", "\<\"improved spatial resolution\"\>", ",", "\<\"focal volume\"\>", 
+   ",", "\<\"confocal microscopy\"\>", ",", "\<\"isotropic resolutions\"\>"}],
+   "}"}]], "Output",
+ CellChangeTimes->{3.809274501482105*^9},
+ CellLabel->"Out[38]=",ExpressionUUID->"f1e5c049-299f-4e3a-a7d3-82fe870991fb"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+  "Get", " ", "corresponding", " ", "positions", " ", "for", " ", "all", " ", 
+   "nounchunks"}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.8092744736258645`*^9, 
+  3.809274476196303*^9}},ExpressionUUID->"cde8cbfa-98c7-4b63-8166-\
+07261172c817"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DeleteDuplicates", "[", 
+  RowBox[{"Sort", "[", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"StringPosition", "[", 
+        RowBox[{
+         RowBox[{"Import", "[", "path", "]"}], ",", "#"}], "]"}], "&"}], "/@", 
+      RowBox[{"NounChunks", "[", "path", "]"}]}], ",", "1"}], "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.809090416642964*^9, 3.8090904418060627`*^9}, {
+   3.8090907826301003`*^9, 3.809090784233677*^9}, {3.809090855496088*^9, 
+   3.809090871195093*^9}, {3.8090911590540895`*^9, 3.8090911708632*^9}, {
+   3.8092743718363247`*^9, 3.8092743904347734`*^9}, {3.8092744209685917`*^9, 
+   3.8092744324004145`*^9}, 3.809274468517968*^9},
+ CellLabel->"In[39]:=",ExpressionUUID->"547342b0-7d6c-42dc-85be-e9aacbad0de0"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"38", ",", "60"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"79", ",", "94"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"248", ",", "266"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"338", ",", "353"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"391", ",", "410"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"480", ",", "495"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"679", ",", "691"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"727", ",", "748"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"753", ",", "765"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"891", ",", "900"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1053", ",", "1063"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1147", ",", "1162"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1179", ",", "1203"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1221", ",", "1231"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1241", ",", "1257"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1267", ",", "1279"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1328", ",", "1343"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1464", ",", "1476"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1517", ",", "1526"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1677", ",", "1698"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1744", ",", "1763"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1834", ",", "1855"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2107", ",", "2118"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2135", ",", "2153"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2162", ",", "2185"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2305", ",", "2335"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2571", ",", "2587"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3037", ",", "3063"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3566", ",", "3577"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3591", ",", "3609"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3806", ",", "3826"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.809274444809106*^9, 3.8092745226143837`*^9},
+ CellLabel->"Out[39]=",ExpressionUUID->"0ed268bf-a58b-4f3a-ae37-5cca80f12044"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+  "Check", " ", "to", " ", "see", " ", "if", " ", "nounchunk", " ", 
+   "positions", " ", "are", " ", "correct"}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.809274669591474*^9, 3.809274687044371*^9}, {
+  3.8092754550998507`*^9, 
+  3.809275459227631*^9}},ExpressionUUID->"4b2957e4-e36c-4013-ab19-\
+557572e76bfa"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"StringTake", "[", 
+    RowBox[{
+     RowBox[{"Import", "[", "path", "]"}], ",", "#"}], "]"}], "&"}], "/@", 
+  RowBox[{"(", 
+   RowBox[{"DeleteDuplicates", "[", 
+    RowBox[{"Sort", "[", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"StringPosition", "[", 
+          RowBox[{
+           RowBox[{"Import", "[", "path", "]"}], ",", "#"}], "]"}], "&"}], "/@", 
+        RowBox[{"NounChunks", "[", "path", "]"}]}], ",", "1"}], "]"}], "]"}], 
+    "]"}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.8092745270487046`*^9, 3.8092745854243097`*^9}, {
+  3.809274645773245*^9, 3.8092746462498026`*^9}},
+ CellLabel->"In[42]:=",ExpressionUUID->"79443750-89b5-4ad0-82ad-dde04185265b"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"fluorescence microscope\"\>", ",", "\<\"axial resolution\"\>", 
+   ",", "\<\"confocal microscopy\"\>", ",", "\<\"objective lenses\"\>", 
+   ",", "\<\"geometrical location\"\>", ",", "\<\"objective lenses\"\>", 
+   ",", "\<\"emitted light\"\>", ",", "\<\"coherent superposition\"\>", 
+   ",", "\<\"emitted light\"\>", ",", "\<\"ideal case\"\>", 
+   ",", "\<\"laser light\"\>", ",", "\<\"objective lenses\"\>", 
+   ",", "\<\"focal point superposition\"\>", ",", "\<\"light beams\"\>", 
+   ",", "\<\"Excited molecules\"\>", ",", "\<\"position emit\"\>", 
+   ",", "\<\"objective lenses\"\>", ",", "\<\"emitted light\"\>", 
+   ",", "\<\"ideal case\"\>", ",", "\<\"coherent superposition\"\>", 
+   ",", "\<\"increased resolution\"\>", ",", "\<\"coherent superposition\"\>",
+    ",", "\<\"optical axis\"\>", ",", "\<\"confocal microscopy\"\>", 
+   ",", "\<\"real Pi microscope light\"\>", 
+   ",", "\<\"twophoton excitation microscopy\"\>", 
+   ",", "\<\"field information\"\>", 
+   ",", "\<\"improved spatial resolution\"\>", ",", "\<\"focal volume\"\>", 
+   ",", "\<\"confocal microscopy\"\>", ",", "\<\"isotropic resolutions\"\>"}],
+   "}"}]], "Output",
+ CellChangeTimes->{3.809274566445034*^9, 3.809274597115307*^9, 
+  3.809274660784011*^9},
+ CellLabel->"Out[42]=",ExpressionUUID->"8ed5097d-c69d-4e83-953a-a0853b4ddec2"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1142.7, 581.6999999999999},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"20b60090-4770-488b-854f-048208fcc864"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 170, 3, 67, "Section",ExpressionUUID->"a973f74e-65d2-4386-9bbf-ed13d63b04c5"],
+Cell[753, 27, 162, 3, 28, "Input",ExpressionUUID->"5d5916c9-db25-411e-9d93-980dd9bf2f6c"],
+Cell[918, 32, 409, 9, 28, "Input",ExpressionUUID->"cd4105a3-3aa3-41f8-bc6d-5c3da7906c0e"],
+Cell[1330, 43, 310, 7, 28, "Input",ExpressionUUID->"7a426f56-7916-4639-82ec-a9c92b1ffd10"],
+Cell[1643, 52, 5414, 127, 373, "Input",ExpressionUUID->"b936d6fc-0811-433a-a144-3492f63fe4df"],
+Cell[7060, 181, 223, 5, 28, "Input",ExpressionUUID->"5e59a4ab-2e9a-4a3d-be9e-4056b51f33f7"],
+Cell[CellGroupData[{
+Cell[7308, 190, 145, 2, 28, "Input",ExpressionUUID->"0eda6705-21e9-4302-805b-1624616e9ce5"],
+Cell[7456, 194, 1314, 21, 109, "Output",ExpressionUUID->"f1e5c049-299f-4e3a-a7d3-82fe870991fb"]
+}, Open  ]],
+Cell[8785, 218, 294, 7, 28, "Input",ExpressionUUID->"cde8cbfa-98c7-4b63-8166-07261172c817"],
+Cell[CellGroupData[{
+Cell[9104, 229, 799, 17, 28, "Input",ExpressionUUID->"547342b0-7d6c-42dc-85be-e9aacbad0de0"],
+Cell[9906, 248, 2189, 66, 71, "Output",ExpressionUUID->"0ed268bf-a58b-4f3a-ae37-5cca80f12044"]
+}, Open  ]],
+Cell[12110, 317, 360, 8, 28, "Input",ExpressionUUID->"4b2957e4-e36c-4013-ab19-557572e76bfa"],
+Cell[CellGroupData[{
+Cell[12495, 329, 762, 20, 28, "Input",ExpressionUUID->"79443750-89b5-4ad0-82ad-dde04185265b"],
+Cell[13260, 351, 1361, 22, 109, "Output",ExpressionUUID->"8ed5097d-c69d-4e83-953a-a0853b4ddec2"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
