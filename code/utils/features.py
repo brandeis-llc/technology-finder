@@ -34,6 +34,44 @@ Notes:
   more than, due to, different from, suitable for, equal to, dependent on,
   useful for, etcetera; probably following back prep->pobj dependencies
 
+
+Features for subject technologies:
+
+  in_title         term occurs in the title of the document
+  in_title_h       ... same, but now for the head of the term
+  in_title_un      ... same, but now for any unigram in the term
+  in_title_bi      ... same, but now for any bigram in the term
+  in_beginning     term occurs in the beginning of the document
+  in_beginning_h   ... same, but now for the head of the term
+  in_beginning_un  ... same, but now for any unigram in the term
+  in_beginning_bi  ... same, but now for any bigram in the term
+  freq             frequency of the term in the document
+  freq_h           ... same, but now for the head of the term in the document
+  freq_un          ... same, but now for any unigram of the term in the document
+  freq_bi          ... same, but now for any bigram of the term in the document
+  relpos           distribution of term, number for overal relative position
+  relpos_h         ... same, but now for the head of the term
+  relpos_un        ... same, but now for all unigrams of the term
+  relpos_bi        ... same, but now for all bigrams of the term
+  range            range over the document where the term occurs
+  range_           ... same, but now for the head of the term
+  range_u          ... same, but now for all unigrams of the term
+  range_bi         ... same, but now for all bigrams of the term
+  fan_out          how often does the term occur in any other term
+  fan_out_h        ... same, but now for the head word
+  fan_out_un       ... same, but now for any unigram in the term
+  fan_out_bi       ... same, but now for any bigram in the term
+  fan_in           how often do other terms occur in term
+  fan_in_h         ... same, but now for the head word
+  fan_in_un        ... same, but now for any unigram in the term
+  fan_in_bi        ... same, but now for any bigram in the term
+
+Notes:
+- see ../../docs/subject-technology-features.md for more information
+- need to figure out the relative importance of features
+- all counts and frequencies are relative to the number of terms in the document
+- all counts, frequencies and ranges are numbers from 0 to 100
+
 """
 
 import textwrap
