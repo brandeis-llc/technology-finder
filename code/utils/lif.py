@@ -2,17 +2,12 @@
 
 NOTE: this script was originally adapted from the tarsqi toolkit (utilities/lif.py).
 
-Interface to the LAPPS Interchance Format and to the LAPPS Data container.
+Interface to the LAPPS Interchance Format.
 
 Contains code to:
 
-- Read JSON-LD strings for containers and LIF objects
-- Export Containers and LIF objects to JSON-LD strings
-
-To read and write a data container:
-
->>> container = Container(infile)
->>> container.write(outfile, pretty=True)
+- Read JSON-LD strings for LIF objects
+- Export LIF objects to JSON-LD strings
 
 To read and write a LIF object:
 
@@ -24,14 +19,15 @@ writing, most typically by adding views.
 
 On the command line:
 
-$ python lif.py --container INFILE OUTFILE
-$ python lif.py --lif INFILE OUTFILE
+$ python lif.py INFILE OUTFILE
 
+This will just copy the file and test whether input and output are similar.
 
 """
 
 import os
 import sys
+import time
 import codecs
 import json
 import subprocess
@@ -122,7 +118,7 @@ class View(object):
 
     def __init__(self, id=None, json_obj=None):
         self.id = id
-        self.metadata = { "contains": {} }
+        self.metadata = { "timestamp": time.asctime(), "contains": {} }
         self.annotations = []
         self.annotations_idx = {}
         if json_obj is not None:
@@ -137,6 +133,9 @@ class View(object):
     def __str__(self):
         return "<View id={} with {:d} annotations>".format(self.id, len(self.annotations))
 
+    def add_contains(self, annotation_type):
+        self.metadata.setdefault('contains', {})[annotation_type] = {}
+
     def index(self):
         """Create an dictionary of all annotations in the view with the annotations
         indexed on their identifiers."""
@@ -148,10 +147,9 @@ class View(object):
         return self.annotation_dx.get(anno_id)
 
     def as_json(self):
-        d = {"id": self.id,
-             "metadata": self.metadata,
-             "annotations": [a.as_json() for a in self.annotations]}
-        return d
+        return {"id": self.id,
+                "metadata": self.metadata,
+                "annotations": [a.as_json() for a in self.annotations]}
 
     def pp(self):
         print(self)
@@ -161,41 +159,39 @@ class View(object):
 
 class Annotation(object):
 
+    """An instance of this is very similar to an annotation in LIF, but one
+    difference is that there is a text instance variable."""
+
     def __init__(self, json_obj):
         self.id = json_obj['id']
         self.type = json_obj['@type']
         self.start = json_obj.get("start")
         self.end = json_obj.get("end")
         self.target = json_obj.get("target")
-        self.text = None
-        self.features = {}
-        for feat, val in json_obj.get("features", {}).items():
-            self.features[feat] = val
+        features = json_obj.get('features', {})
+        self.text = features.get('text')
+        self.features = { f: a for (f, a)  in features.items() }
 
     def __str__(self):
-        text = self.get_text()
+        text = self.text
         text = '' if text is None else text.replace("\n", "\\n")
-        return "<Annotation type={} id={} {}-{} '{}'>".format(
-            os.path.basename(self.type), self.id, self.start, self.end, text)
-
-    def get_text(self):
-        """Return the text string from the text instance variable or the text feature,
-        returns None of there is no string available."""
-        if self.text is not None:
-            return self.text
-        return self.features.get('text')
+        #if not text and 'text' in self.features:
+        #    text = self.features['text'].strip()
+        offsets = '' if self.start is None else "%s-%s " % (self.start, self.end)
+        return "<Annotation type={} id={} {}'{}'>".format(
+            os.path.basename(self.type), self.id, offsets, text)
 
     def get_feature(self, feature):
         return self.features.get(feature)
 
     def as_json(self):
         d = {"id": self.id, "@type": self.type, "features": self.features}
-        if self.start is not None:
-            d["start"] = self.start
-        if self.end is not None:
-            d["end"] = self.end
-        if self.target is not None:
-            d["target"] = self.target
+        for attr in ('start', 'end', 'target'):
+            val = getattr(self, attr)
+            if val is not None:
+                d[attr] = val
+        if self.text is not None:
+            d["features"]['text'] = self.text
         return d
 
 
@@ -213,24 +209,19 @@ def compare(file1, file2):
     and sorting them."""
     lines1 = sorted(codecs.open(file1).readlines())
     lines2 = sorted(codecs.open(file2).readlines())
-    with codecs.open("comp1", 'w') as c1, codecs.open("comp2", 'w') as c2:
-        c1.write("\n".join([l.strip().rstrip(',') for l in lines1]))
-        c2.write("\n".join([l.strip().rstrip(',') for l in lines2]))
-    subprocess.call(['echo', '$ ls -al comp?'])
-    subprocess.call(['ls', '-al', "comp1"])
-    subprocess.call(['ls', '-al', "comp2"])
-    subprocess.call(['echo', '$ diff', 'comp1', 'comp2'])
-    subprocess.call(['diff', 'comp1', 'comp2'])
+    lines1 = [l.replace(' ', '').strip().rstrip(',') for l in lines1]
+    lines2 = [l.replace(' ', '').strip().rstrip(',') for l in lines2]
+    print("Testing equality of input and output file modulo spaces and final commas")
+    if lines1 == lines2:
+        print("==> lines in input and output file are identical")
+    else:
+        print("==> lines in input and output file are not identical")
 
 
 if __name__ == '__main__':
 
-    input_type, infile, outfile = sys.argv[1:4]
-
-    if input_type == '--lif':
-        lapps_object = LIF(infile)
-    elif input_type == '--container':
-        lapps_object = Container(infile)
+    infile, outfile = sys.argv[1:3]
+    lapps_object = LIF(infile)
 
     # doesn't print this quite as I like it, for a view it first does the
     # annotations, then the id and then the metadata

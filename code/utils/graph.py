@@ -57,22 +57,22 @@ class DocumentGraph(object):
         # and an index for all nodes
         self.nodes_idx = {}
         # now add what you need to add
-        pos_view = lif.get_view('tokens')
+        tok_view = lif.get_view('tokens')
         dep_view = lif.get_view('dependencies')
         chunk_view = lif.get_view('chunks')
-        self._add_markables(pos_view, chunk_view)
+        self._add_markables(tok_view, chunk_view)
         self._add_dependencies(dep_view)
         self.connect()
 
-    def _add_markables(graph, pos_view, chunk_view):
+    def _add_markables(graph, tok_view, chunk_view):
         """Add nodes to the graph from markables in the views (that is, tokens,
         sentences and chunks)."""
-        for anno in pos_view.annotations:
+        for anno in tok_view.annotations:
             if anno.type.endswith('Sentence'):
-                node = SentenceNode(pos_view.id, anno)
+                node = SentenceNode(tok_view.id, anno)
                 graph.add_sentence(node)
             elif anno.type.endswith('Token'):
-                node = TokenNode(pos_view.id, anno)
+                node = TokenNode(tok_view.id, anno)
                 graph.add_token(node)
         for chunk in chunk_view.annotations:
             chunk_node = ChunkNode(chunk_view.id, chunk)
@@ -158,7 +158,7 @@ class DocumentGraph(object):
     def nodes_in_range(self, nodes, p1, p2):
         """Get all nodes such that node.start >= p1 and node.end <= p2."""
         # TODO: this operates at O(n), but could be improved to run at O(logn)
-        # TODO: using binary search (but only if nodes are ordered)
+        # TODO: use binary search (but only if nodes are ordered)
         answer = []
         for node in nodes:
             if node.annotation.end < p1:

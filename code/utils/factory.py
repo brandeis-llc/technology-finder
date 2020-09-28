@@ -22,12 +22,16 @@ class AnnotationFactory(object):
 
     @classmethod
     def sentence_annotation(cls, sent, doc):
+        """Create Sentence annotation from a spaCy sentence, which is an instance
+        of spacy.tokens.span.Span."""
         w1 = doc[sent.start]
         w2 = doc[sent.end - 1]
         return make_annotation('s', 'Sentence', w1.idx, w2.idx + len(w2))
 
     @classmethod
     def token_annotation(cls, token):
+        """Create a Token annotation from a spaCy token, which is an instance of
+        spacy.tokens.span.Token."""
         p1 = token.idx
         p2 = token.idx + len(token.text)
         anno = make_annotation('t', 'Token', p1, p2)
@@ -37,6 +41,8 @@ class AnnotationFactory(object):
 
     @classmethod
     def chunk_annotation(cls, noun_chunk):
+        """Create a NounChunk annotation from a spaCy chunk, which is an instance
+        of spacy.tokens.span.Span."""
         anno = make_annotation('nc', 'NounChunk',
                                noun_chunk.start_char, noun_chunk.end_char)
         anno.features = {"text": noun_chunk.text}
@@ -85,8 +91,7 @@ class AnnotationFactory(object):
         start = tokens[token_ids[0]].start
         end = tokens[token_ids[-1]].end
         anno = make_annotation('term', 'Term', start, end)
-        anno.features = {"text": text,
-                         "chunk_id": noun_chunk.id,
+        anno.features = {"chunk_id": noun_chunk.id,
                          "chunk_offsets": "%s:%s" % (noun_chunk.start, noun_chunk.end),
                          "chunk_first": token_ids[0],
                          "chunk_last": token_ids[-1]}
@@ -95,32 +100,26 @@ class AnnotationFactory(object):
 
     @classmethod
     def technology_annotation(cls, term_annotation):
-        text = term_annotation.features.get('text')
         anno = make_annotation('tech', 'Technology',
                                term_annotation.start, term_annotation.end)
-        anno.features = {"text": text }
-        # TODO: do we need this one? (same for all the others)
-        anno.text = text
+        anno.text = text = term_annotation.text
         return anno
 
     @classmethod
     def state_annotation(cls, token_annotation):
-        text = token_annotation.features.get('text')
         anno = make_annotation('st', 'State',
                                token_annotation.start, token_annotation.end)
-        anno.features = {"tokenID": token_annotation.id, "text": text }
+        anno.features = {"tokenID": token_annotation.id}
         # TODO: do we need this one? (same for all the others)
-        anno.text = text
+        anno.text = token_annotation.text
         return anno
 
     @classmethod
     def relation_annotation(cls, token_annotation):
-        text = token_annotation.features.get('text')
         anno = make_annotation('st', 'Relation',
                                token_annotation.start, token_annotation.end)
-        anno.features = {"tokenID": token_annotation.id, "text": text }
-        # TODO: do we need this one? (same for all the others)
-        anno.text = text
+        anno.features = {"tokenID": token_annotation.id}
+        anno.text = token_annotation.text
         return anno
 
 

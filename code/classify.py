@@ -10,7 +10,8 @@ $ python3 classify.py --get-features PROCESSED_CORPUS FEATURES_FILE N?
 
 Collect all term feature vectors from PROCESSED_CORPUS and writes them to
 FEATURES_FILE. Limit to N files if the third argument is present, default is to
-process all files.
+process all files. The corpus is required to have Sentence, Token, NounChunk,
+Dependency and Term annotations, an example corpus is in data/input/mini-corpus.
 
 This also creates two files with terms and counts: terms-az.txt contains an
 aplhabetical list of all terms and terms-nr.txt a list of terms with frequency
@@ -77,16 +78,18 @@ from utils.factory import AnnotationFactory
 
 class Vector(object):
 
+    """A vector includes the file name that the term occurs in and the offsets in
+    that file, it also includes the name of the term, the rest is all the features
+    as extracted by utils.features.py."""
+
     def __init__(self, fname, term):
-        # TODO: not sure whether I want/need the offsets here
-        # TODO: may not even need the file name
         self.vector = (os.path.basename(fname),
                        "%s:%s" % (term.start, term.end),
-                       term.get_text(),
+                       term.text,
                        term.features['vector'])
 
     def __str__(self):
-        return "\t".join(self.vector)
+        return "\t".join([str(field) for field in self.vector])
 
 
 def vectors_file_name(model_name):
@@ -117,7 +120,7 @@ def get_features(directory, features_file, n):
             content = read_file(fname)
             lif = LIF(json_string=content)
             for term in lif.get_view('terms').annotations:
-                text = term.get_text()
+                text = term.text
                 if text is not None:
                     text = text.strip().replace("\n", ' ')
                     terms[text] = terms.get(text, 0) + 1
@@ -298,6 +301,7 @@ class Classifier(object):
         tech_view = lif.get_view('technologies')
         if tech_view is None:
             tech_view = View('technologies')
+            tech_view.add_contains("http://vocab.lappsgrid.org/Technology")
             lif.views.append(tech_view)
         for anno in lif.get_view('terms').annotations:
             vector = anno.features.get('vector')

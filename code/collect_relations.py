@@ -134,7 +134,7 @@ class Sentences(object):
             if anno.type.endswith('Token'):
                 self.add_token(anno)
         for term in terms_view.annotations:
-            if not term.get_text().lower() in stoplist:
+            if not term.text.lower() in stoplist:
                 self.add_term(term)
         for state in states_view.annotations:
             self.add_state(state)
@@ -246,9 +246,9 @@ def index_depencencies_on_token_ids(lif):
 def write_pair(fh, pair):
     pair_type, a1, t1, a2, t2, p = pair
     elements = ["--%s--> %s" % (pe[0], pe[1].text()) for pe in p]
-    path = "%s %s" % (a1.get_text(), ' '.join(elements))
+    path = "%s %s" % (a1.text, ' '.join(elements))
     fh.write('%s %s-%s\t%s\t%s\t%s\n' % (pair_type, t1.id, t2.id,
-                                         a1.get_text(), a2.get_text(), path))
+                                         a1.text, a2.text, path))
 
 
 def write_tokens(fh, sentence):

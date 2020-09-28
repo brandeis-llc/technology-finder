@@ -1,7 +1,7 @@
 """features.py
 
 
-Features used for FUSE (theones with check marks havebeen implemented):
+Features used for FUSE (the ones with check marks have been implemented):
 
 ✓ sentence_loc   the token offsets in the sentence
   section_loc    the location in section
@@ -14,33 +14,29 @@ Features used for FUSE (theones with check marks havebeen implemented):
 ✓ last_word      last word of the candidate term
 ✓ plen           length of the candidate term
 ✓ tag_list       tag signature of the candidate term
-✓  prev_V         previous verb
+✓ prev_V         previous verb
   prev_VNP       previous verb with object: *[increase the speed] of the [computer]*
   prev_Npr       first noun_prep to the left of chunk, within 4 words
   prev_Jpr       first adj_prep to the left of chunk, within 4 words
-✓  prev_J         adjective immediately before the candidate term
-✓  suffix3        last three characters of the term
-✓  suffix4        last four characters of the term
-✓  suffix5        last five characters of the term
-
+✓ prev_J         adjective immediately before the candidate term
+✓ suffix3        last three characters of the term
+✓ suffix4        last four characters of the term
+✓ suffix5        last five characters of the term
 
 Notes:
-
 - section_loc: not done because we have no document structure yet
-
 - prev_V: we use the governor of the term instead
-
 - prev_VNP: requires following back the dobj->prep->pobj dependencies
-
 - prev_Npr: things like overview of, aspects of. differences between, approach
   to, analyis of, combination of, etcetera; probably following back prep->pobj
   dependencies
-
 - prev_Jpr: things like such that, equivalent to, applicable to, followed by,
   more than, due to, different from, suitable for, equal to, dependent on,
   useful for, etcetera; probably following back prep->pobj dependencies
 
 """
+
+import textwrap
 
 
 def add_term_features(graph, lif, verbose=False):
@@ -56,16 +52,16 @@ def add_term_features(graph, lif, verbose=False):
         # determine what chunks have terms in them and what there extends are
         if chunk.tokens[-1].annotation.features['pos'] == 'PRP':
             continue
-        if verbose:
-            for token in chunk.tokens:
-                print('   ', token.annotation, token.annotation.features)
-            print()
         feats = extract_term_features(graph, chunk)
         atomify_features(feats)
         vector = ' '.join(["%s=%s" % (k, v) for k, v in feats.items()])
         term.features['vector'] = vector
         if verbose:
-            print(vector, '\n')
+            for token in chunk.tokens:
+                print(token.annotation, token.annotation.features)
+            for line in textwrap.wrap(vector, width=90):
+                print('   ', line)
+            print()
 
 
 def extract_term_features(graph, term):

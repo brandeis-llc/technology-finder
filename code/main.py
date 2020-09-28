@@ -2,19 +2,23 @@
 
 Main Technology Finder script.
 
-Typical use:
+USAGE:
 
 $ python main.py -i INPUT -o OUTPUT
 
 Takes the INPUT file or directory and creates OUTPUT. If INPUT is a directory
 than an OUTPUT directory will be created and for each source file in INPUT a new
 output file in OUTPUT will be created. The -i and -o options are both optional,
-standard input and/or standard output are used.
+standard input and/or standard output are used if they are absent.
 
-Four other options are available:
+OPTIONS:
 
 -h
     print a help message
+
+--terms TERMS_FILE
+    use an external file with term offsets, bypasses the default processing of
+    terms which is to use spaCy and a matcher
 
 --no-classifier
     do not run the classifier and stop after candidate term extraction
@@ -27,75 +31,53 @@ Four other options are available:
 
 """
 
+
 import os
 import sys
 import json
-import argparse
-
-import spacy
 
 from classify import Classifier
 from utils import exists, isdir, isfile, logger
 from utils.lif import LIF, View
 from utils.graph import DocumentGraph
 from utils.features import add_term_features
-from utils.factory import AnnotationFactory
+from utils.factory import AnnotationFactory, make_annotation
 from utils.matcher import match
+from utils.spacy import SpacyAnalysis
+from utils.argparser import parse_arguments
 
 
-NLP = None
-
-
-def load_spacy():
-    global NLP
-    NLP = spacy.load("en_core_web_sm")
-
-
-class Batch(object):
-
-    """Class to manage processing of files and directories."""
-
-    def __init__(self, inpath, outpath):
-        # inpath is a filename, directory name or None, when None the input is
-        # expected to be read from the standard input
-        self.inpath = inpath
-        # outpath is a filename, directory name or None, when None output will
-        # be written to standard output
-        self.outpath = outpath
-
-    def run(self, classifier=True, limit=None, verbose=False):
-        if exists(self.outpath):
-            exit('Warning: output already exists')
-        elif isdir(self.inpath):
-            if self.outpath is None:
-                exit('Warning: output directory must be specified')
-            self._run_on_directory(classifier, limit=limit, verbose=verbose)
-        elif isfile(self.inpath):
-            TechnologyFinder(self.inpath, self.outpath).run(classifier, verbose)
-        elif self.inpath is None:
-            tf = TechnologyFinder(None, self.outpath, instring=sys.stdin.read())
-            tf.run(classifier, verbose)
-        else:
-            print('Warning: input does not exist')
-
-    def _run_on_directory(self, classifier, limit=sys.maxsize, verbose=False):
+def run(inpath, outpath, classifier=True,
+        terms=False, limit=sys.maxsize, verbose=False):
+    if exists(outpath):
+        exit('Warning: output already exists')
+    elif isdir(inpath):
+        if outpath is None:
+            exit('Warning: output directory must be specified')
         if verbose:
-            print("Processing directory '%s'" % self.inpath)
-        if not os.path.exists(self.outpath):
-            os.makedirs(self.outpath)
+            print("Processing directory '%s'" % inpath)
+        if not os.path.exists(outpath):
+            os.makedirs(outpath)
         with logger.Logger() as log:
-            fnames = list(sorted(os.listdir(self.inpath)))
+            fnames = list(sorted(os.listdir(inpath)))
             for c, fname in enumerate(fnames[:limit]):
-                infile = os.path.join(self.inpath, fname)
-                outfile = os.path.join(self.outpath, fname)
+                infile = os.path.join(inpath, fname)
+                outfile = os.path.join(outpath, fname)
                 outfile = set_file_extension(outfile)
                 print(c, outfile)
                 log.write_line(fname, c)
                 try:
-                    TechnologyFinder(infile, outfile).run(classifier, verbose)
+                    TechnologyFinder(infile, outfile).run(classifier, None, verbose)
                 except Exception as e:
                     log.write_error(e)
             log.write_time_elapsed()
+    elif isfile(inpath):
+        TechnologyFinder(inpath, outpath).run(classifier, terms, verbose)
+    elif inpath is None:
+        tf = TechnologyFinder(None, outpath, None, instring=sys.stdin.read())
+        tf.run(classifier, verbose)
+    else:
+        print('Warning: input does not exist')
 
 
 def set_file_extension(filename):
@@ -115,24 +97,22 @@ class TechnologyFinder(object):
         outpath are file names or None, if inpath is None then instring has the
         input as a string."""
         AnnotationFactory.reset()
-        if NLP is None:
-            load_spacy()
         self.inpath = inpath
         self.outpath = outpath
         self.instring = instring
         self.lif = None
-        self.doc = None
+        self.spacydoc = None
         self.graph = None
         self._read_input()
         self._initialize_views()
 
-    def run(self, classifier=True, verbose=False):
+    def run(self, classifier=True, terms=None, verbose=False):
         self.verbose = verbose
         if verbose:
             print("Processing file '%s'" % self.inpath)
         self._run_spacy()
         self._create_graph()
-        self._get_terms()
+        self._get_terms(terms)
         self._add_features()
         if classifier:
             self._classify_terms()
@@ -160,80 +140,70 @@ class TechnologyFinder(object):
 
     def _initialize_views(self):
         """Initializes the views that are added by spaCy processing."""
-        self.lif.views.extend([View("tokens"),
-                               View("chunks"),
-                               View("dependencies")])
+        v1 = View("tokens")
+        v2 = View("chunks")
+        v3 = View("dependencies")
+        v1.add_contains("http://vocab.lappsgrid.org/Sentence")
+        v1.add_contains("http://vocab.lappsgrid.org/Token")
+        v2.add_contains("http://vocab.lappsgrid.org/NounChunk")
+        v3.add_contains("http://vocab.lappsgrid.org/DependencyStructure")
+        v3.add_contains("http://vocab.lappsgrid.org/Dependency")
+        self.lif.views.extend([v1, v2, v3])
 
     def _run_spacy(self):
         """Run the spaCy NLP model and add NLP analysis elements as annotations
         to the LIF object."""
-        self.doc = NLP(self.lif.text.value)
-        self._add_annotations()
-
-    def _add_annotations(self):
-        """Add annotations from the spacy.tokens.doc.Doc instance to the part of
-        speech, chunk and dependency views."""
-        self.pos_view = self.lif.get_view("tokens")
-        self.chk_view = self.lif.get_view("chunks")
-        self.dep_view = self.lif.get_view("dependencies")
-        for annotation in _get_sentence_annotations(self.doc):
-            self.pos_view.annotations.append(annotation)
-        for sentence in _get_sentences_and_tokens(self.doc):
-            idx2id = {}
-            self._add_annotations_first_pass(sentence, idx2id)
-            self._add_annotations_second_pass(sentence, idx2id)
-            if self.verbose:
-                print()
-        for chunk in self.doc.noun_chunks:
-            anno = AnnotationFactory.chunk_annotation(chunk)
-            self.chk_view.annotations.append(anno)
-
-    def _add_annotations_first_pass(self, sentence, idx2id):
-        """Create all token annotations and add them and build an index from the
-        sentence offsets to the token identifiers."""
-        for token in sentence:
-            tok_annotation = AnnotationFactory.token_annotation(token)
-            self.pos_view.annotations.append(tok_annotation)
-            idx2id[token.i] = "%s:%s" % (self.pos_view.id, tok_annotation.id)
-            if self.verbose:
-                print("%2s  %2s  %2s  %3s  %-12s  %-5s    %-8s  %-10s  %2s  %s"
-                      % (token.idx, token.idx + len(token.text), token.i, tok_annotation.id,
-                         token.text.strip(), token.pos_, token.tag_,
-                         token.dep_, token.head.i, token.head.text))
-
-    def _add_annotations_second_pass(self, sentence, idx2id):
-        """Loop through the tokens again and create the dependency for each of
-        them (but not adding them to the view yet), using the index created in
-        the previous loop for access to the identifiers. Then, when we know what
-        dependencies we have for the dependency structure, create the structure
-        and add it and then add all dependencies."""
-        dep_annos = []
-        for token in sentence:
-            dep_annotation = AnnotationFactory.dependency_annotation(token, idx2id)
-            dep_annos.append(dep_annotation)
-        dep_struct = AnnotationFactory.dependency_structure_annotation(dep_annos)
-        self.dep_view.annotations.append(dep_struct)
-        for dep_anno in dep_annos:
-            self.dep_view.annotations.append(dep_anno)
+        self.spacy = SpacyAnalysis(self.lif.text.value)
+        tok_view = self.lif.get_view("tokens")
+        chk_view = self.lif.get_view("chunks")
+        dep_view = self.lif.get_view("dependencies")
+        tokens, chunks, dependencies = self.spacy.annotations(tok_view.id)
+        for anno in tokens:
+            tok_view.annotations.append(anno)  # tokens and sentences
+        for anno in chunks:
+            chk_view.annotations.append(anno)  # noun chunks
+        for anno in dependencies:
+            dep_view.annotations.append(anno)  # dependencies, with structure
 
     def _create_graph(self):
         """Create a graph from the LIF object."""
-        self.graph = create_graph(self.lif)
+        self.graph = DocumentGraph(self.lif)
         if self.verbose:
             self.graph.print_sentences()
+            self.graph.print_chunks()
 
-    def _get_terms(self):
-        """Add candidate terms as annotations. We start with the noun chunks
-        from the spaCy analysis, then run a pattern matcher over it, if there
-        is a from the matching pattern, the term will be created for that slice
-        of the noun chunk."""
+    def _get_terms(self, terms):
+        """Add candidate terms as annotations. Here you can either use the term
+        offsets handed in with the --terms parameter or built the terms using
+        spaCy and a matcher."""
         term_view = View('terms')
+        term_view.add_contains("http://vocab.lappsgrid.org/Term")
         self.lif.views.append(term_view)
+        if terms is None:
+            self._get_terms_from_spacy(term_view)
+        else:
+            self._get_terms_from_import(term_view)
+
+    def _get_terms_from_spacy(self, term_view):
+        """We start with the noun chunks from the spaCy analysis, then run a
+        pattern matcher over them, if there is matching pattern, the term will
+        be created for that slice of the noun chunk."""
         for chunk_node in self.graph.chunks:
             result = match(chunk_node)
             if result:
                 anno = AnnotationFactory.term_annotation(chunk_node, result)
                 term_view.annotations.append(anno)
+
+    def _get_terms_from_import(self, term_view):
+        # TODO: this is implemented the wrong way, we need to start with the
+        # spacy terms and then check whether they include the offsets we are
+        # given; alternatively we can try to get the tokens some other way
+        text = self.lif.text.value
+        for p1, p2 in ((1,2), (3,4)):
+            anno = make_annotation('term', 'Term', p1, p2)
+            anno.text = text[p1:p2]
+            print(anno, anno.features)
+            term_view.annotations.append(anno)
 
     def _add_features(self):
         """Pull features from the graph and add them as a vector to the term."""
@@ -241,9 +211,7 @@ class TechnologyFinder(object):
 
     def _classify_terms(self):
         # When called from this main script we use the small default classifier
-        # (triggered by None as the first argument)
         Classifier().classify_lif(self.lif)
-        # classify_lif(None, self.lif)
 
     def _write_output(self):
         """Save the LIF object into outpath or write it to standard outpath if
@@ -256,52 +224,9 @@ class TechnologyFinder(object):
             print(json_string)
 
 
-def _get_sentence_annotations(doc):
-    annotations = []
-    for s in doc.sents:
-        w1 = doc[s.start]
-        w2 = doc[s.end - 1]
-        p1 = w1.idx
-        p2 = w2.idx + len(w2)
-        annotations.append(AnnotationFactory.sentence_annotation(s, doc))
-    return annotations
-
-
-def _get_sentences_and_tokens(doc):
-    """Return a list of sentences where each sentence is a list of tokens as
-    extracted from the document, which is an instance of spacy.tokens.doc.Doc."""
-    sentences = []
-    for s in doc.sents:
-        sentence = []
-        sentences.append(sentence)
-        for t in s:
-            sentence.append(t)
-    return sentences
-
-
 if __name__ == '__main__':
 
-    h_input = \
-        "the input file or input directory to process," \
-        + " take standard input if this is not specified."
-    h_output = \
-        "the output file or output directory to write the results to," \
-        + " write to standard output if not specified; if INPUT is a" \
-        + " directory then this should be a directory too, it will be " \
-        + " created if it does not exist"
-    h_classifier = "switch off the classifier"
-    h_verbose = "print some of the created data structures to standard output"
-    h_limit = "the maximum number of files to process"
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-i", metavar='INPUT', help=h_input)
-    parser.add_argument("-o", metavar='OUTPUT', help=h_output)
-    parser.add_argument("--no-classifier", dest='classifier',
-                        help=h_classifier, action="store_false")
-    parser.add_argument("--verbose", help=h_verbose, action="store_true")
-    parser.add_argument("--limit", help=h_limit, type=int)
-    args = parser.parse_args()
-
-    Batch(args.i, args.o).run(limit=args.limit,
-                              verbose=args.verbose,
-                              classifier=args.classifier)
+    args = parse_arguments()
+    run(args.i, args.o,
+        limit=args.limit, terms=args.terms,
+        verbose=args.verbose, classifier=args.classifier)
